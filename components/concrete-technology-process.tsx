@@ -67,7 +67,7 @@ export function ConcreteTechnologyProcess() {
           className="relative"
         >
           <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-500/20 to-slate-600/20 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
             <Image
               src="/tech.jpg?height=600&width=600"
               alt="BDR's advanced concrete inspection robot in action"
@@ -86,12 +86,12 @@ export function ConcreteTechnologyProcess() {
                   duration: 3,
                   repeatDelay: 1,
                 }}
-                className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-slate-500/50 rounded-lg"
+                className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-teal-500/50 rounded-lg"
               >
-                <div className="absolute top-0 left-0 size-2 bg-slate-500 rounded-full"></div>
-                <div className="absolute top-0 right-0 size-2 bg-slate-500 rounded-full"></div>
-                <div className="absolute bottom-0 left-0 size-2 bg-slate-500 rounded-full"></div>
-                <div className="absolute bottom-0 right-0 size-2 bg-slate-500 rounded-full"></div>
+                <div className="absolute top-0 left-0 size-2 bg-teal-500 rounded-full"></div>
+                <div className="absolute top-0 right-0 size-2 bg-teal-500 rounded-full"></div>
+                <div className="absolute bottom-0 left-0 size-2 bg-teal-500 rounded-full"></div>
+                <div className="absolute bottom-0 right-0 size-2 bg-teal-500 rounded-full"></div>
               </motion.div>
 
               {/* Scanning lines */}
@@ -103,7 +103,7 @@ export function ConcreteTechnologyProcess() {
                   duration: 2,
                   ease: "linear",
                 }}
-                className="absolute left-0 right-0 h-px bg-slate-500/70"
+                className="absolute left-0 right-0 h-px bg-teal-500/70"
               ></motion.div>
 
               {/* Data points */}
@@ -118,7 +118,7 @@ export function ConcreteTechnologyProcess() {
                     delay: i * 0.2,
                     repeatDelay: 3,
                   }}
-                  className="absolute size-1.5 bg-slate-500 rounded-full"
+                  className="absolute size-1.5 bg-teal-500 rounded-full"
                   style={{
                     top: `${Math.random() * 100}%`,
                     left: `${Math.random() * 100}%`,
@@ -129,8 +129,8 @@ export function ConcreteTechnologyProcess() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute -top-10 -left-10 size-40 bg-slate-500/30 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-10 -right-10 size-40 bg-slate-600/30 rounded-full blur-3xl"></div>
+          <div className="absolute -top-10 -left-10 size-40 bg-teal-500/30 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-10 -right-10 size-40 bg-cyan-500/30 rounded-full blur-3xl"></div>
         </motion.div>
 
         <motion.div
@@ -141,10 +141,9 @@ export function ConcreteTechnologyProcess() {
           className="space-y-8"
         >
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold">How Our Concrete Inspection Technology Works</h3>
+            <h3 className="text-2xl font-bold">How Our Technology Works</h3>
             <p className="text-white/70">
-              Advanced robotics and AI combine to deliver unmatched precision in structural assessment without damaging
-              your building.
+              Unlike traditional methods, our approach uses intelligent automation to visualize what lies beneath — safely and precisely.
             </p>
           </div>
 
@@ -159,7 +158,7 @@ export function ConcreteTechnologyProcess() {
                 className="flex gap-4"
               >
                 <div className="flex-shrink-0 mt-1">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-slate-500 to-slate-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-600">
                     {step.icon}
                   </div>
                 </div>
@@ -174,12 +173,12 @@ export function ConcreteTechnologyProcess() {
       </div>
 
       <div className="mt-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-500/10 to-slate-600/10 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-600/10 rounded-2xl"></div>
         <div className="relative rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <Zap className="h-12 w-12 text-slate-500" />
+                <Zap className="h-12 w-12 text-teal-500" />
               </div>
               <h4 className="text-xl font-bold mb-2">Non-Destructive Testing</h4>
               <p className="text-white/70">
@@ -188,14 +187,14 @@ export function ConcreteTechnologyProcess() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <Layers className="h-12 w-12 text-slate-500" />
+                <Layers className="h-12 w-12 text-teal-500" />
               </div>
               <h4 className="text-xl font-bold mb-2">Deep Penetration Analysis</h4>
               <p className="text-white/70">We analyze multiple concrete layers simultaneously, up to 18 inches deep.</p>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <Database className="h-12 w-12 text-slate-500" />
+                <Database className="h-12 w-12 text-teal-500" />
               </div>
               <h4 className="text-xl font-bold mb-2">Predictive Analytics</h4>
               <p className="text-white/70">

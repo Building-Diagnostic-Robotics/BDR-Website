@@ -5,7 +5,8 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, Building2, CheckCircle, Phone, Mail, MapPin, Menu, X, Search, Filter, LocateIcon as LocationIcon, Briefcase, Clock, Users } from 'lucide-react'
+import { QuoteForm } from "@/components/quote-form"
+import { ArrowRight, Building2, CheckCircle, Phone, Mail, MapPin, Menu, X, Search, Filter, LocateIcon as LocationIcon, Briefcase, Clock, Users, ChevronDown } from 'lucide-react'
 
 const jobCategories = [
   "Engineering",
@@ -162,6 +163,7 @@ export default function CareersPage() {
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null)
   const [selectedType, setSelectedType] = useState<string | null>(null)
   const [filtersVisible, setFiltersVisible] = useState(false)
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
 
   // Filter jobs based on search term and filters
   const filteredJobs = jobs.filter((job) => {
@@ -275,16 +277,56 @@ export default function CareersPage() {
           </div>
 
           <nav className="hidden lg:flex items-center space-x-8">
-            {["solutions", "benefits", "coverage", "technology", "about", "careers"].map((item) => (
-              <a
-                key={item}
-                href={item === "careers" ? "/careers" : `/#${item}`}
-                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+            <Link
+              href="/"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            {/* Solutions dropdown moved to first */}
+            <div className="relative group">
+              <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
+                Solutions
+                <ChevronDown className="ml-1 h-4 w-4" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link
+                  href="/solutions/roof"
+                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
+                >
+                  Roof Inspections
+                </Link>
+                <Link
+                  href="/solutions/concrete"
+                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
+                >
+                  Concrete Inspections
+                </Link>
+              </div>
+            </div>
+            <a
+              href="/#contact"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              Contact Us
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a
+              href="/#about"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              About
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <Link
+              href="/careers"
+              className="relative text-sm font-medium text-white hover:text-white transition-colors group"
+            >
+              Careers
+              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600"></span>
+            </Link>
             <Link
               href="/blogs"
               className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
@@ -296,7 +338,7 @@ export default function CareersPage() {
 
           <div className="flex items-center gap-4 z-50">
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => setShowQuoteModal(true)}
               className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
             >
               Get a Quote
@@ -348,14 +390,14 @@ export default function CareersPage() {
             </a>
           ))}
           <Link
-              href="/blogs"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Blogs
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            href="/blogs"
+            className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+          >
+            Blogs
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+          </Link>
           <Button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => setShowQuoteModal(true)}
             className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
           >
             Get a Quote
@@ -782,23 +824,13 @@ export default function CareersPage() {
               <h3 className="text-lg font-bold">Services</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Moisture Detection
+                  <Link href="/solutions/roof" className="text-white/70 hover:text-white text-sm">
+                    Roof Inspections
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Roof Mapping
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Leak Prevention
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Flat Roof Inspections
+                  <Link href="/solutions/concrete" className="text-white/70 hover:text-white text-sm">
+                    Concrete Inspections
                   </Link>
                 </li>
               </ul>
@@ -808,9 +840,9 @@ export default function CareersPage() {
               <h3 className="text-lg font-bold">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
+                  <a href="/#about" className="text-white/70 hover:text-white text-sm">
                     About Us
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link href="/careers" className="text-white/70 hover:text-white text-sm">
@@ -818,14 +850,14 @@ export default function CareersPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    News & Press
+                  <Link href="/blogs" className="text-white/70 hover:text-white text-sm">
+                    Blogs
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Partners
-                  </Link>
+                  <a href="/#contact" className="text-white/70 hover:text-white text-sm">
+                    Contact Us
+                  </a>
                 </li>
               </ul>
             </div>
@@ -878,6 +910,22 @@ export default function CareersPage() {
           </div>
         </div>
       </footer>
+    {/* Quote Modal */}
+      {showQuoteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-lg w-full">
+            <div className="relative">
+              <button
+                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
+                onClick={() => setShowQuoteModal(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <QuoteForm />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
