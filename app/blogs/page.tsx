@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
@@ -18,7 +19,10 @@ import {
   Search,
   User,
   X,
+  ChevronDown,
 } from "lucide-react"
+
+import { QuoteForm } from "@/components/quote-form"
 
 // Import blog metadata
 import { allBlogs } from "./content"
@@ -32,6 +36,8 @@ export default function BlogsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,17 +119,49 @@ export default function BlogsPage() {
           </div>
 
           <nav className="hidden lg:flex items-center space-x-8">
-            {["solutions", "benefits", "coverage", "technology", "about"].map((item) => (
-              <a
-                key={item}
-                href={`/#${item}`}
-                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+            <Link
+              href="/"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            {/* Solutions dropdown moved to first */}
+            <div className="relative group">
+              <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
+                Solutions
+                <ChevronDown className="ml-1 h-4 w-4" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link
+                  href="/solutions/roof"
+                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
+                >
+                  Roof Inspections
+                </Link>
+                <Link
+                  href="/solutions/concrete"
+                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
+                >
+                  Concrete Inspections
+                </Link>
+              </div>
+            </div>
+            <a
+              href="/#contact"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              Contact Us
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a
+              href="/#about"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              About
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
             <Link
               href="/careers"
               className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
@@ -142,13 +180,12 @@ export default function BlogsPage() {
 
           <div className="flex items-center gap-4 z-50">
             <Button
-              onClick={() => (window.location.href = "/#contact")}
+              onClick={() => setShowQuoteModal(true)}
               className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
             >
               Get a Quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-
             <button onClick={toggleMobileMenu} className="lg:hidden text-white p-2" aria-label="Toggle menu">
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -157,65 +194,126 @@ export default function BlogsPage() {
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-white text-xl"
-            >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
+      {(() => {
+        const [showMobileSolutions, setShowMobileSolutions] = useState(false);
+        return (
+          <div
+            className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
+              mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
+              <div className="flex flex-col items-center space-y-4 mb-8">
+                <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
+                  <Phone className="h-5 w-5" />
+                  <span>(510) 514-9518</span>
+                </a>
+                <a
+                  href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-white text-xl"
+                >
+                  <MapPin className="h-5 w-5" />
+                  <span>19 Morris Ave, Brooklyn, NY</span>
+                </a>
+              </div>
+              <Link
+                href="/"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              {/* Mobile Solutions dropdown as disclosure */}
+              <div className="w-full flex flex-col items-center">
+                <button
+                  onClick={() => setShowMobileSolutions((v) => !v)}
+                  className="w-full flex items-center justify-between text-left text-2xl font-medium text-white/80 hover:text-white transition-colors mb-2 px-2"
+                  style={{ maxWidth: 400 }}
+                  aria-expanded={showMobileSolutions}
+                  aria-controls="mobile-solutions-dropdown"
+                >
+                  <span>Solutions</span>
+                  <ChevronDown className={`ml-2 h-5 w-5 transform transition-transform ${showMobileSolutions ? "rotate-180" : ""}`} />
+                </button>
+                {showMobileSolutions && (
+                  <div id="mobile-solutions-dropdown" className="mt-1 space-y-2 pl-4 w-full max-w-xs">
+                    <Link
+                      href="/roof"
+                      className="block text-sm text-white/70 hover:text-white hover:bg-gradient-to-r hover:from-teal-500 hover:to-cyan-600 px-4 py-2 rounded"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Roof Inspections
+                    </Link>
+                    <Link
+                      href="/concrete"
+                      className="block text-sm text-white/70 hover:text-white hover:bg-gradient-to-r hover:from-teal-500 hover:to-cyan-600 px-4 py-2 rounded"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Concrete Inspections
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <a
+                href="/#contact"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us
+              </a>
+              <a
+                href="/#about"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <Link
+                href="/careers"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Careers
+              </Link>
+              <Link
+                href="/blogs"
+                className="text-2xl font-medium text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blogs
+              </Link>
+              <Button
+                onClick={() => {
+                  setShowQuoteModal(true)
+                  setMobileMenuOpen(false)
+                }}
+                className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+              >
+                Get a Quote
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
           </div>
-
-          {["solutions", "benefits", "coverage", "technology", "about"].map((item) => (
-            <a
-              key={item}
-              href={`/#${item}`}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </a>
-          ))}
-
-          <Link
-            href="/careers"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Careers
-          </Link>
-          <Link
-            href="/blogs"
-            className="text-2xl font-medium text-white transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Blogs
-          </Link>
-          <Button
-            onClick={() => {
-              window.location.href = "/#contact"
-              setMobileMenuOpen(false)
-            }}
-            className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+        );
+      })()}
+      {/* Quote Modal */}
+      {showQuoteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-lg w-full">
+            <div className="relative">
+              <button
+                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
+                onClick={() => setShowQuoteModal(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <QuoteForm />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -427,23 +525,13 @@ export default function BlogsPage() {
               <h3 className="text-lg font-bold">Services</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Moisture Detection
+                  <Link href="/solutions/roof" className="text-white/70 hover:text-white text-sm">
+                    Roof Inspections
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Roof Mapping
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Leak Prevention
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Flat Roof Inspections
+                  <Link href="/solutions/concrete" className="text-white/70 hover:text-white text-sm">
+                    Concrete Inspections
                   </Link>
                 </li>
               </ul>
@@ -453,7 +541,7 @@ export default function BlogsPage() {
               <h3 className="text-lg font-bold">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
+                  <Link href="/#about" className="text-white/70 hover:text-white text-sm">
                     About Us
                   </Link>
                 </li>
@@ -468,8 +556,8 @@ export default function BlogsPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-white/70 hover:text-white text-sm">
-                    Partners
+                  <Link href="/#contact" className="text-white/70 hover:text-white text-sm">
+                    Contact Us
                   </Link>
                 </li>
               </ul>

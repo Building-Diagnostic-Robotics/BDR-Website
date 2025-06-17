@@ -3,40 +3,56 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
-// States we serve
+// States we serve - All states except Alaska and Hawaii
 const servedStates = [
-  // East Coast
-  "ME",
-  "NH",
-  "VT",
-  "MA",
-  "RI",
-  "CT",
-  "NY",
-  "NJ",
-  "PA",
-  "DE",
-  "MD",
-  "VA",
-  "NC",
-  "SC",
-  "GA",
-  "FL",
-  // West Coast
-  "WA",
-  "OR",
-  "CA",
-  // Additional states
-  "IL",
-  "TX",
-  "CO",
-  "MI",
-  "OH",
-  "IN",
-  "WI",
-  "MN",
+  "AL",
   "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
   "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY",
 ]
 
 // State abbreviations with their positions on the map
@@ -179,4 +195,3 @@ export function USMap() {
     </div>
   )
 }
-

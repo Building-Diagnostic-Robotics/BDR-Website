@@ -1,46 +1,37 @@
 "use client"
 
-import type React from "react"
-
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   ArrowRight,
   Building2,
   CheckCircle,
-  Download,
-  Eye,
+  Sun,
+  Timer,
   FileText,
-  Mail,
+  Layers,
   MapPin,
   Menu,
   Phone,
   Shield,
-  Smartphone,
-  Sun,
-  Timer,
   X,
+  ChevronDown,
+  Mail,
+  Download,
 } from "lucide-react"
-import { CustomerTypeModal } from "@/components/customer-type-modal"
-import { ExitIntentPopup } from "@/components/exit-intent-popup"
-import { ChatBot } from "@/components/chat-bot"
-import { TestimonialSlider } from "@/components/testimonial-slider"
-import { USMap } from "@/components/us-map"
+import { ConcreteTechnologyProcess } from "@/components/concrete-technology-process"
+import { ConcreteTestimonialSlider } from "@/components/concrete-testimonial-slider"
 import { QuoteForm } from "@/components/quote-form"
-import { useRouter } from "next/navigation"
-import { ChevronDown } from "lucide-react"
 
-export default function Home() {
+export default function ConcreteInspectionPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showExitPopup, setShowExitPopup] = useState(false)
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
-  const [showQuoteModal, setShowQuoteModal] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null)
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,29 +43,7 @@ export default function Home() {
     }
 
     window.addEventListener("scroll", handleScroll)
-
-    // Exit intent detection
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) {
-        const lastShown = localStorage.getItem("exitPopupLastShown")
-        const cooldownHours = 24
-
-        const showAgain = !lastShown || Date.now() - Number.parseInt(lastShown) > cooldownHours * 60 * 60 * 1000
-
-        const hasBeenSubmitted = sessionStorage.getItem("exitPopupSubmitted") === "true"
-
-        if (showAgain && !hasBeenSubmitted) {
-          setShowExitPopup(true)
-        }
-      }
-    }
-
-    document.addEventListener("mouseleave", handleMouseLeave)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      document.removeEventListener("mouseleave", handleMouseLeave)
-    }
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const toggleMobileMenu = () => {
@@ -118,48 +87,14 @@ export default function Home() {
     show: { opacity: 1, y: 0 },
   }
 
-  const router = useRouter()
-  const [submitted, setSubmitted] = useState(false)
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    const res = await fetch("/api/quoteForm", {
-      method: "POST",
-      body: new FormData(form),
-    })
-    if (res.ok) {
-      setSubmitted(true)
-    } else {
-      alert("Oops—something went wrong.")
-    }
-  }
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <div className="p-8 bg-white/5 rounded-xl text-center">
-          <h1 className="text-4xl font-bold mb-4">Thanks for your request!</h1>
-          <p className="text-lg mb-6">We've received your details and will be in touch soon.</p>
-          <button
-            onClick={() => setSubmitted(false)}
-            className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded"
-          >
-            Back to form
-          </button>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
       <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
         <div className="container flex justify-between items-center">
           <p className="text-sm md:text-base font-medium">
-            Save 50% or more and get results in 48 hours instead of weeks compared to traditional roof inspections!
-            Serving businesses nationwide.
+            Non-destructive concrete inspection with Ground Penetrating Radar - Identify structural issues without
+            damage! Serving businesses nationwide.
           </p>
           <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
             Call: (510) 514-9518
@@ -176,8 +111,7 @@ export default function Home() {
           <Link href="/" className="flex items-center space-x-2 z-50">
             <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50 z-0"></div>
-
-              <img src="/BDR.jpg" alt="Placeholder" className="h-16 w-16 rounded-lg z-10" />
+              <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
             </div>
           </Link>
 
@@ -202,12 +136,18 @@ export default function Home() {
           </div>
 
           <nav className="hidden lg:flex items-center space-x-8">
-            {/* Solutions dropdown moved to first */}
+            <Link
+              href="/"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+            >
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <div className="relative group">
-              <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
+              <button className="relative text-sm font-medium text-white hover:text-teal-400 transition-colors group flex items-center">
                 Solutions
                 <ChevronDown className="ml-1 h-4 w-4" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600"></span>
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <Link
@@ -216,26 +156,21 @@ export default function Home() {
                 >
                   Roof Inspections
                 </Link>
-                <Link
-                  href="/solutions/concrete"
-                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
-                >
+                <Link href="/solutions/concrete" className="block px-4 py-3 text-teal-400 bg-white/5 rounded-b-lg">
                   Concrete Inspections
                 </Link>
               </div>
             </div>
-            {/* Update order: Benefits, Coverage, Testimonials, About */}
-            {["benefits", "coverage", "testimonials", "about"].map((item) => (
-              <button
+            {["benefits", "technology", "testimonials"].map((item) => (
+              <Link
                 key={item}
-                onClick={() => scrollToSection(item)}
+                href={`#${item}`}
                 className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-              </button>
+              </Link>
             ))}
-            {/* Contact Us Button */}
             <button
               onClick={() => scrollToSection("contact")}
               className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
@@ -287,10 +222,6 @@ export default function Home() {
               <Phone className="h-5 w-5" />
               <span>(510) 514-9518</span>
             </a>
-            <a href="mailto:info@bdx-robotics.com" className="flex items-center space-x-2 text-white text-xl">
-              <Mail className="h-5 w-5" />
-              <span>info@bdx-robotics.com</span>
-            </a>
             <a
               href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
               target="_blank"
@@ -302,21 +233,16 @@ export default function Home() {
             </a>
           </div>
 
-          {["benefits", "coverage", "testimonials", "about"].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </button>
-          ))}
-          <button
-            onClick={() => scrollToSection("contact")}
+          <Link
+            href="/"
             className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            onClick={() => {
+              setMobileMenuOpen(false)
+              document.body.style.overflow = "auto"
+            }}
           >
-            Contact Us
-          </button>
+            Home
+          </Link>
           <div className="flex flex-col space-y-2 text-center">
             <span className="text-2xl font-medium text-white">Solutions</span>
             <Link
@@ -331,7 +257,7 @@ export default function Home() {
             </Link>
             <Link
               href="/solutions/concrete"
-              className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+              className="text-xl font-medium text-teal-400"
               onClick={() => {
                 setMobileMenuOpen(false)
                 document.body.style.overflow = "auto"
@@ -340,14 +266,47 @@ export default function Home() {
               Concrete Inspections
             </Link>
           </div>
-          <Link href="/blogs" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
+          {["benefits", "technology", "testimonials"].map((item) => (
+            <Link
+              key={item}
+              href={`#${item}`}
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false)
+                document.body.style.overflow = "auto"
+              }}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </Link>
+          ))}
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+          >
+            Contact Us
+          </button>
+          <Link
+            href="/blogs"
+            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            onClick={() => {
+              setMobileMenuOpen(false)
+              document.body.style.overflow = "auto"
+            }}
+          >
             Blogs
           </Link>
-          <Link href="/careers" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
-            Careers{" "}
+          <Link
+            href="/careers"
+            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            onClick={() => {
+              setMobileMenuOpen(false)
+              document.body.style.overflow = "auto"
+            }}
+          >
+            Careers
           </Link>
           <Button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => setShowQuoteModal(true)}
             className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
           >
             Get a Quote
@@ -357,33 +316,14 @@ export default function Home() {
       </div>
 
       <main className="flex-1">
-        <section ref={heroRef} className="relative w-full min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative w-full min-h-screen flex items-center pt-20 overflow-hidden">
           {/* Background elements */}
           <div className="absolute inset-0 z-0">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-teal-900/20 to-black/90"></div>
             <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-teal-500/10 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-cyan-500/10 blur-3xl rounded-full"></div>
-
-            {/* Grid pattern */}
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-
-            {/* Animated particles */}
-            <div className="absolute inset-0">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute rounded-full bg-white/10"
-                  style={{
-                    top: `${Math.random() * 100}%`,
-                    left: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 6 + 2}px`,
-                    height: `${Math.random() * 6 + 2}px`,
-                    animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-                    animationDelay: `${Math.random() * 5}s`,
-                  }}
-                ></div>
-              ))}
-            </div>
           </div>
 
           <div className="container px-4 md:px-6 z-10">
@@ -402,15 +342,15 @@ export default function Home() {
                     className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm"
                   >
                     <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
-                    Serving Businesses Nationwide
+                    Advanced Concrete Inspection Technology
                   </motion.div>
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2"
+                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2"
                   >
-                    Slash Roof Inspection Costs 50%+ with Smart Robots That See What Others Miss
+                    Non-Destructive Concrete Inspections with Ground Penetrating Radar
                   </motion.h1>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -418,9 +358,9 @@ export default function Home() {
                     transition={{ delay: 0.4, duration: 0.5 }}
                     className="max-w-[600px] text-white/70 md:text-xl"
                   >
-                    Our 90% accurate detection technology protects building value, maximizes insurance claims, delivers
-                    precise contractor estimates, prevents litigation headaches, and powers smarter engineering
-                    decisions—all in one scan.
+                    Our advanced robotic systems use Ground Penetrating Radar to identify rebar corrosion, voids, and
+                    structural weaknesses without damaging your building. Get comprehensive structural assessments with
+                    precision data.
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -448,7 +388,7 @@ export default function Home() {
                     onClick={() => setShowQuoteModal(true)}
                     className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
                   >
-                    Get a Free Quote
+                    Get a Free Concrete Inspection Quote
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                   <Button
@@ -480,14 +420,14 @@ export default function Home() {
                       variant="outline"
                       className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
                     >
-                      Roofing Contractor
+                      General Contractor
                     </Button>
                     <Button
                       onClick={() => openCustomerTypeModal("general-contractor")}
                       variant="outline"
                       className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
                     >
-                      General Contractor
+                      Structural Engineer
                     </Button>
                     <Button
                       onClick={() => openCustomerTypeModal("engineering-consultant")}
@@ -509,8 +449,8 @@ export default function Home() {
                 <div className="relative h-[400px] md:h-[400px] lg:h-[600px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
                   <Image
-                    src="/BDR_intro.gif?height=600&width=900"
-                    alt="Roof inspection robot in action on a flat commercial roof"
+                    src="/placeholder.svg?height=600&width=900"
+                    alt="Ground penetrating radar inspection of concrete structure"
                     fill
                     className="object-cover"
                     priority
@@ -521,18 +461,18 @@ export default function Home() {
                   <div className="absolute bottom-6 left-6 right-6 p-4 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-sm text-white/70">Cost Savings</div>
-                        <div className="text-xl font-bold">50-65%</div>
-                      </div>
-                      <div className="h-10 w-px bg-white/10"></div>
-                      <div>
-                        <div className="text-sm text-white/70">Time Saved</div>
-                        <div className="text-xl font-bold">85%</div>
+                        <div className="text-sm text-white/70">Non-Destructive</div>
+                        <div className="text-xl font-bold">100%</div>
                       </div>
                       <div className="h-10 w-px bg-white/10"></div>
                       <div>
                         <div className="text-sm text-white/70">Accuracy</div>
-                        <div className="text-xl font-bold">90%</div>
+                        <div className="text-xl font-bold">95%</div>
+                      </div>
+                      <div className="h-10 w-px bg-white/10"></div>
+                      <div>
+                        <div className="text-sm text-white/70">Time Saved</div>
+                        <div className="text-xl font-bold">80%</div>
                       </div>
                     </div>
                   </div>
@@ -546,9 +486,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* NEW Our Solutions Section */}
+        {/* Concrete Solutions Section */}
         <section id="solutions" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
           <div className="absolute inset-0 z-0">
             <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
@@ -565,18 +504,20 @@ export default function Home() {
               <div className="space-y-2">
                 <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm">
                   <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
-                  Our Solutions
+                  Concrete Solutions
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
-                  Advanced Inspection Services
+                  Advanced Concrete Slab Inspection Services
                 </h2>
-                <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
-                  Choose from our cutting-edge robotic inspection solutions designed to save you time, money, and
-                  provide unmatched accuracy.
-                </p>
-                <p className="text-lg font-medium text-teal-400">
-                  Call us today at (510) 514-9518 for a free consultation
-                </p>
+                <div className="flex flex-col items-center space-y-4">
+                  <p className="max-w-[10000px] text-white/70 md:text-xl/relaxed">
+                    Our robotic inspection systems find structural issues that traditional methods miss - preventing
+                    costly failures and ensuring safety.
+                  </p>
+                  <p className="text-lg font-medium text-teal-400">
+                    Call us today at (510) 514-9518 for a free consultation
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -585,100 +526,77 @@ export default function Home() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto"
+              className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
             >
-              {/* Roof Inspection Card */}
-              <motion.div
-                variants={item}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-300"
-              >
-                <div className="relative z-10 flex flex-col h-full p-8 backdrop-blur-sm">
-                  <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 p-4 w-fit mb-6">
-                    <Eye className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-4">Roof Inspections</h3>
-                  <p className="text-white/70 mb-6 flex-grow text-lg">
-                    Advanced robotic systems detect moisture, damage, and structural issues in flat roofs with 90%
-                    accuracy. Save 50-65% compared to traditional methods while getting detailed 3D mapping and
-                    comprehensive reports.
-                  </p>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">
-                        Moisture Detection
-                      </span>
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">3D Mapping</span>
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">
-                        Leak Prevention
-                      </span>
+              {[
+                {
+                  icon: <Building2 className="h-8 w-8" />,
+                  title: "Foundation Inspection",
+                  description:
+                    "Detect settlement issues, cracks, and moisture problems in building foundations before they compromise structural integrity.",
+                  gradient: "from-teal-500 to-cyan-400",
+                },
+                {
+                  icon: <Layers className="h-8 w-8" />,
+                  title: "Parking Garage Assessment",
+                  description:
+                    "Identify rebar corrosion, concrete deterioration, and structural weaknesses that could lead to catastrophic collapse.",
+                  gradient: "from-cyan-500 to-teal-500",
+                },
+                {
+                  icon: <Shield className="h-8 w-8" />,
+                  title: "Bridge & Infrastructure",
+                  description:
+                    "Comprehensive structural health monitoring for bridges, tunnels, and critical infrastructure without traffic disruption.",
+                  gradient: "from-teal-600 to-cyan-600",
+                },
+                {
+                  icon: <FileText className="h-8 w-8" />,
+                  title: "Building Structure Analysis",
+                  description:
+                    "Complete structural assessment of concrete buildings, identifying load-bearing issues and maintenance needs.",
+                  gradient: "from-cyan-600 to-teal-600",
+                },
+              ].map((solution, index) => (
+                <motion.div
+                  key={index}
+                  variants={item}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1"
+                >
+                  <div className="relative z-10 flex flex-col h-full p-6 backdrop-blur-sm">
+                    <div className={`rounded-full bg-gradient-to-br ${solution.gradient} p-3 w-fit mb-6`}>
+                      {solution.icon}
                     </div>
-                    <Button className="mt-10 w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-4 py-4 rounded-full text-sm group flex items-center justify-center" asChild>
-                      <Link href="/solutions/roof">
-                        <span className="flex items-center gap-2">
-                          Learn More About Roof Inspections
-                          <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
+                    <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
+                    <p className="text-white/70 mb-6 flex-grow">{solution.description}</p>
+                    <div className="mt-auto space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Phone className="h-4 w-4 text-teal-500" />
+                        <a href="tel:5105149518" className="text-white hover:text-teal-400 transition-colors">
+                          (510) 514-9518
+                        </a>
+                      </div>
+                      <Button
+                        onClick={() => setShowQuoteModal(true)}
+                        variant="ghost"
+                        className="group/btn px-0 text-white hover:bg-transparent"
+                      >
+                        <span className="mr-2">Get a Quote</span>
+                        <span className="relative overflow-hidden inline-block">
+                          <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover/btn:translate-x-full" />
+                          <ArrowRight className="h-4 w-4 absolute top-0 -left-6 transform transition-transform duration-300 group-hover/btn:translate-x-6" />
                         </span>
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.div>
-
-              {/* Concrete Inspection Card */}
-              <motion.div
-                variants={item}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-300"
-              >
-                <div className="relative z-10 flex flex-col h-full p-8 backdrop-blur-sm">
-                  <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 p-4 w-fit mb-6">
-                    <Building2 className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-4">Concrete Inspections</h3>
-                  <p className="text-white/70 mb-6 flex-grow text-lg">
-                    Non-destructive structural assessment using Ground Penetrating Radar and advanced robotics. Identify
-                    rebar corrosion, voids, and structural weaknesses without damaging your building.
-                  </p>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">
-                        Foundation Analysis
-                      </span>
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">
-                        Rebar Detection
-                      </span>
-                      <span className="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm">
-                        Non-Destructive
-                      </span>
+                      </Button>
                     </div>
-                    <Button className="mt-10 w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-4 py-4 rounded-full text-sm group flex items-center justify-center" asChild>
-                      <Link href="/solutions/concrete">
-                        <span className="flex items-center gap-2">
-                          Learn More About Concrete Inspections
-                          <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      </Link>
-                    </Button>
                   </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-500/5 to-slate-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.div>
+                </motion.div>
+              ))}
             </motion.div>
-
-            <div className="mt-12 flex justify-center">
-              <Button
-                onClick={() => setShowQuoteModal(true)}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-              >
-                Get a Free Quote for Any Service
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
           </div>
         </section>
 
+        {/* Benefits Section */}
         <section id="benefits" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black to-teal-950/30"></div>
             <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
@@ -698,13 +616,15 @@ export default function Home() {
                   <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
                   Key Benefits
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 leading-tight pb-2">
-                  Why Choose Our Robotic Inspection
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
+                  Why Choose Our Robotic Concrete Inspection
                 </h2>
-                <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
-                  Our technology delivers measurable advantages over traditional inspection methods.
-                </p>
-                <p className="text-lg font-medium text-teal-400">Questions? Call (510) 514-9518</p>
+                <div className="flex flex-col items-center space-y-4">
+                  <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
+                    Our technology delivers measurable advantages over traditional concrete inspection methods.
+                  </p>
+                  <p className="text-lg font-medium text-teal-400">Questions? Call (510) 514-9518</p>
+                </div>
               </div>
             </motion.div>
 
@@ -718,39 +638,47 @@ export default function Home() {
               {[
                 {
                   icon: <CheckCircle />,
-                  title: "50-65% Cost Savings",
+                  title: "Cost Savings",
                   description:
-                    "Cut your inspection costs by more than half compared to traditional methods while getting more detailed and accurate results.",
+                    "Cut inspection costs by 50%+ compared to traditional drilling and coring methods while getting more accurate results.",
                 },
                 {
                   icon: <Shield />,
-                  title: "Prevent Costly Damage",
+                  title: "Destructive Testing",
                   description:
-                    "Detect issues before they cause $100,000+ in structural damage and extend your building's lifespan by years.",
+                    "No drilling, coring, or damage to your structure. Our non-invasive technology preserves building integrity.",
+                },
+                {
+                  icon: (
+                    <span className="text-base font-bold text-white w-10 h-10 flex items-center justify-center">
+                      90%
+                    </span>
+                  ),
+                  title: "Accuracy Rate",
+                  description:
+                    "Detect rebar location, corrosion, voids, and cracks with 90% accuracy using advanced Ground Penetrating Radar.",
                 },
                 {
                   icon: <Timer />,
-                  title: "85% Faster Results",
+                  title: "Faster Results",
                   description:
-                    "Complete comprehensive inspections in hours instead of days or weeks, with detailed reports delivered within 24-48 hours.",
+                    "Complete comprehensive structural assessments 75% faster than traditional methods with detailed reports in 24-48 hours.",
                 },
                 {
                   icon: <Sun />,
-                  title: "Tax Incentives Available",
+                  title: "Prevent Catastrophic Failures",
                   description:
-                    "Access up to $5/sq.ft in tax credits and incentives for necessary repairs identified through our detailed inspection reports.",
+                    "Identify structural issues before they become million-dollar liability problems or safety hazards.",
                 },
                 {
-                  icon: <FileText />,
-                  title: "Comprehensive Reports",
+                  icon: (
+                    <span className="text-xl font-bold text-white w-10 h-10 flex items-center justify-center">
+                      50
+                    </span>
+                  ),
+                  title: "States Served",
                   description:
-                    "Receive detailed digital reports with high-resolution imagery, structural maps, and actionable recommendations.",
-                },
-                {
-                  icon: <Smartphone />,
-                  title: "Nationwide Service",
-                  description:
-                    "We serve businesses across the United States with our mobile inspection units and rapid deployment capabilities.",
+                    "Nationwide service with mobile inspection units and rapid deployment capabilities across all 50 states.",
                 },
               ].map((feature, index) => (
                 <motion.div
@@ -758,39 +686,23 @@ export default function Home() {
                   variants={item}
                   className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-6 backdrop-blur-sm hover:shadow-lg shadow-teal-500/5 transition-all duration-300"
                 >
-                  <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                  <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-                  <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 mb-4">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                   <p className="text-white/70">{feature.description}</p>
-
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-teal-500 to-cyan-600 group-hover:w-full transition-all duration-700"></div>
                 </motion.div>
               ))}
             </motion.div>
-
-            <div className="mt-12 flex justify-center">
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-              >
-                Schedule Your Inspection
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
           </div>
         </section>
 
-        <section id="coverage" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
+        {/* Technology Section */}
+        <section id="technology" className="relative w-full py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black to-teal-950/30"></div>
+            <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-1/4 right-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
           </div>
 
           <div className="container px-4 md:px-6 relative z-10">
@@ -804,43 +716,29 @@ export default function Home() {
               <div className="space-y-2">
                 <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm">
                   <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
-                  Nationwide Coverage
+                  Our Technology
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
-                  Serving Businesses Across America
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl leading-relaxed pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
+                  How Our Concrete Inspection Technology Works
                 </h2>
+                <div className="flex flex-col items-center space-y-4">
                 <p className="max-w-[1000px] text-white/70 md:text-xl/relaxed">
-                  Our mobile inspection units are ready to deploy to your location, with coverage all over America
+                  Advanced robotics and AI combine to deliver unmatched precision in structural assessment without
+                  damaging your building.
                 </p>
+              </div>
               </div>
             </motion.div>
 
-            <USMap />
-
-            <div className="mt-12 text-center">
-              <p className="text-white/70 mb-4">
-                Not seeing your state highlighted? Contact us anyway - we're rapidly expanding our coverage!
-              </p>
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-              >
-                Check Availability in Your Area
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
+            <ConcreteTechnologyProcess />
           </div>
         </section>
 
-
-
+        {/* Testimonials Section */}
         <section id="testimonials" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
           <div className="absolute inset-0 z-0">
             <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
-
-            {/* Grid pattern */}
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20"></div>
           </div>
 
@@ -858,15 +756,17 @@ export default function Home() {
                   Client Success Stories
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
-                  What Our Clients Say
+                  What Our Concrete Inspection Clients Say
                 </h2>
-                <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
-                  Hear from building owners and contractors who have transformed their inspection process.
-                </p>
+                <div className="flex flex-col items-center space-y-4">
+                  <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
+                    Real results from real clients who chose our concrete assessment services.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
-            <TestimonialSlider />
+            <ConcreteTestimonialSlider />
 
             <div className="mt-12 text-center">
               <p className="text-white/70 mb-4">Join our satisfied clients across the United States</p>
@@ -881,186 +781,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-black to-teal-950/30"></div>
-            <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-1/4 left-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
-          </div>
-
-          <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="relative lg:order-last"
-              >
-                <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
-                  <Image
-                    src="/BDR.jpg?height=800&width=800"
-                    alt="Our team of engineers and robotics experts"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -top-10 -left-10 size-40 bg-teal-500/30 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-10 -right-10 size-40 bg-cyan-500/30 rounded-full blur-3xl"></div>
-
-                {/* Stats overlay */}
-                <div className="absolute -bottom-6 -right-6 p-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl shadow-xl">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-teal-200">
-                        10+
-                      </div>
-                      <div className="text-sm text-white/70">Years Experience</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-200">
-                        25+
-                      </div>
-                      <div className="text-sm text-white/70">Patents</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="space-y-4"
-              >
-                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm">
-                  <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
-                  About Us
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
-                  Founded in Brooklyn, Serving Nationwide
-                </h2>
-                <p className="text-white/70 md:text-xl/relaxed">
-                  Building Diagnostic Robotics (BDR) was founded in Brooklyn, NY by a team of robotics engineers and
-                  building professionals dedicated to transforming how inspections are performed.
-                </p>
-                <p className="text-white/70">
-                  Our mission is to help building owners and contractors save money, prevent damage, and extend building
-                  lifespans through advanced technology that makes inspections faster, safer, and more accurate.
-                </p>
-                <p className="text-white/70">
-                  We now serve clients across the United States, bringing our innovative inspection technology to
-                  commercial buildings, industrial facilities, and multi-family properties nationwide.
-                </p>
-
-                <div className="flex items-center space-x-2 mt-4">
-                  <MapPin className="h-5 w-5 text-teal-500" />
-                  <a
-                    href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-teal-400 transition-colors"
-                  >
-                    19 Morris Ave, Brooklyn, NY 11205
-                  </a>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Phone className="h-5 w-5 text-teal-500" />
-                  <a href="tel:5105149518" className="text-white hover:text-teal-400 transition-colors">
-                    (510) 514-9518
-                  </a>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Mail className="h-5 w-5 text-teal-500" />
-                  <a href="mailto:info@bdx-robotics.com" className="text-white hover:text-teal-400 transition-colors">
-                    info@bdx-robotics.com
-                  </a>
-                </div>
-
-                <div className="flex space-x-4 mt-6">
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-linkedin"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-facebook"
-                    >
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-instagram"
-                    >
-                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                    </svg>
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
+        {/* Get in Touch Section */}
         <section id="contact" className="relative w-full py-24 md:py-32 overflow-hidden">
-          {/* Background elements */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-teal-950/30 to-black"></div>
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] bg-center opacity-20"></div>
@@ -1082,19 +804,21 @@ export default function Home() {
                   Get in Touch
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
-                  Save 50%+ on Your Next Inspection
+                  Get Your Concrete Inspection Quote
                 </h2>
-                <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
-                  Contact us today to schedule your inspection or request a free quote.
-                </p>
-                <div className="flex items-center justify-center space-x-2 mt-2">
-                  <Phone className="h-5 w-5 text-teal-500" />
-                  <a
-                    href="tel:5105149518"
-                    className="text-xl font-bold text-white hover:text-teal-400 transition-colors"
-                  >
-                    (510) 514-9518
-                  </a>
+                <div className="flex flex-col items-center space-y-4">
+                  <p className="max-w-[1000px] text-white/70 md:text-xl/relaxed">
+                    Contact us today to schedule your non-destructive concrete inspection.
+                  </p>
+                  <div className="flex items-center justify-center space-x-2 mt-2">
+                    <Phone className="h-5 w-5 text-teal-500" />
+                    <a
+                      href="tel:5105149518"
+                      className="text-xl font-bold text-white hover:text-teal-400 transition-colors"
+                    >
+                      (510) 514-9518
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -1108,7 +832,6 @@ export default function Home() {
                 className="relative"
               >
                 <div className="relative md:h-[600px] overflow-hidden rounded-2xl border border-white/10 flex flex-col">
-                  {/* Google Map */}
                   <div className="relative w-full h-[400px] md:h-[450px]">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-73.97610232346314!3d40.69921837933205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25bcf2b72b95b%3A0xb927a5e23dc32f56!2sBuilding%20128%2C%2019%20Morris%20Ave%2C%20Brooklyn%2C%20NY%2011205!5e0!3m2!1sen!2sus!4v1709764426536!5m2!1sen!2sus"
@@ -1122,7 +845,6 @@ export default function Home() {
                     ></iframe>
                   </div>
 
-                  {/* Information overlay */}
                   <div className="p-8 bg-black/90">
                     <div className="space-y-4">
                       <div className="flex items-center space-x-2">
@@ -1167,17 +889,33 @@ export default function Home() {
               >
                 <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600">
                   <div className="bg-black rounded-xl p-8">
-                    <h3 className="text-2xl font-bold mb-6">Request a Free Quote</h3>
-                    <form onSubmit={onSubmit} className="space-y-4">
+                    <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
+                    <form
+                      onSubmit={async (e) => {
+                        e.preventDefault()
+                        const form = e.currentTarget
+                        const res = await fetch("/api/contactForm", {
+                          method: "POST",
+                          body: new FormData(form),
+                        })
+                        if (res.ok) {
+                          alert("Thank you! We'll be in touch soon.")
+                          form.reset()
+                        } else {
+                          alert("Oops—something went wrong.")
+                        }
+                      }}
+                      className="space-y-4"
+                    >
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label htmlFor="first-name" className="text-sm font-medium text-white/70">
                             First Name
                           </label>
-                          <Input
+                          <input
                             id="first-name"
                             name="first-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Jane"
                           />
                         </div>
@@ -1185,10 +923,10 @@ export default function Home() {
                           <label htmlFor="last-name" className="text-sm font-medium text-white/70">
                             Last Name
                           </label>
-                          <Input
+                          <input
                             id="last-name"
                             name="last-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Doe"
                           />
                         </div>
@@ -1197,11 +935,11 @@ export default function Home() {
                         <label htmlFor="email" className="text-sm font-medium text-white/70">
                           Email
                         </label>
-                        <Input
+                        <input
                           id="email"
                           name="email"
                           type="email"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="name@example.com"
                         />
                       </div>
@@ -1209,11 +947,11 @@ export default function Home() {
                         <label htmlFor="phone" className="text-sm font-medium text-white/70">
                           Phone
                         </label>
-                        <Input
+                        <input
                           id="phone"
                           name="phone"
                           type="tel"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="(123) 456-7890"
                         />
                       </div>
@@ -1233,7 +971,7 @@ export default function Home() {
                         type="submit"
                         className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full py-6"
                       >
-                        Get Your Free Quote
+                        Contact Us
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </form>
@@ -1344,8 +1082,8 @@ export default function Home() {
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="relative w-full border-t border-white/10 py-12 overflow-hidden">
-        {/* Background elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-teal-500/10 blur-3xl rounded-full"></div>
           <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
@@ -1365,75 +1103,6 @@ export default function Home() {
                 Building Diagnostic Robotics (BDR) provides advanced robotic inspection services that save clients 50%
                 or more compared to traditional methods while delivering superior accuracy.
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-white/70 hover:text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-linkedin"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a href="#" className="text-white/70 hover:text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-white/70 hover:text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-facebook"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-white/70 hover:text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-instagram"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                </a>
-              </div>
             </div>
 
             <div className="space-y-4">
@@ -1471,9 +1140,9 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#contact" className="text-white/70 hover:text-white text-sm">
+                  <button onClick={() => scrollToSection("contact")} className="text-white/70 hover:text-white text-sm">
                     Contact Us
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -1527,31 +1196,22 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Customer Type Modals */}
-      {selectedCustomerType && <CustomerTypeModal type={selectedCustomerType} onClose={closeCustomerTypeModal} />}
-
-      {/* Exit Intent Popup */}
-      {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
-
       {/* Quote Modal */}
       {showQuoteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
           <div className="relative max-w-lg w-full">
             <div className="relative">
-                <button
-                  className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
-                  onClick={() => setShowQuoteModal(false)}
-                >
-                  <X className="h-5 w-5" />
-                </button>
+              <button
+                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
+                onClick={() => setShowQuoteModal(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
               <QuoteForm />
             </div>
           </div>
         </div>
       )}
-
-      {/* Chat Bot */}
-      <ChatBot />
     </div>
   )
 }
