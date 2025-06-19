@@ -30,6 +30,7 @@ import {
   Download,
   Building2,
 } from "lucide-react"
+import SampleReportModal from "@/components/sample-report-modal"
 import { TechnologyProcess } from "@/components/technology-process"
 import { RoofTestimonialSlider } from "@/components/roof-testimonial-slider"
 
@@ -39,6 +40,7 @@ export default function RoofInspectionPage() {
   const [showExitPopup, setShowExitPopup] = useState(false)
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
+  const [showReportModal, setShowReportModal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1085,11 +1087,15 @@ export default function RoofInspectionPage() {
               </Button>
               <Button
                 variant="outline"
+                onClick={() => setShowReportModal(true)}
                 className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 backdrop-blur-sm"
               >
-                Download Brochure
+                Download Sample Report
                 <Download className="ml-2 h-4 w-4" />
               </Button>
+              {showReportModal && (
+                <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />
+              )}
             </div>
 
             </div>
@@ -1151,6 +1157,11 @@ export default function RoofInspectionPage() {
                   <Link href="/blogs" className="text-white/70 hover:text-white text-sm">
                     Blogs
                   </Link>
+                </li>
+                <li>
+                  <a href="/#partners" className="text-white/70 hover:text-white text-sm">
+                    Partners
+                  </a>
                 </li>
                 <li>
                   <a href="#contact" className="text-white/70 hover:text-white text-sm">

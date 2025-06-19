@@ -25,6 +25,7 @@ import {
 import { ConcreteTechnologyProcess } from "@/components/concrete-technology-process"
 import { ConcreteTestimonialSlider } from "@/components/concrete-testimonial-slider"
 import { QuoteForm } from "@/components/quote-form"
+import SampleReportModal from "@/components/sample-report-modal"
 
 export default function ConcreteInspectionPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,6 +33,7 @@ export default function ConcreteInspectionPage() {
   const [showExitPopup, setShowExitPopup] = useState(false)
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
+  const [showReportModal, setShowReportModal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -449,8 +451,8 @@ export default function ConcreteInspectionPage() {
                 <div className="relative h-[400px] md:h-[400px] lg:h-[600px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
                   <Image
-                    src="/placeholder.svg?height=600&width=900"
-                    alt="Ground penetrating radar inspection of concrete structure"
+                    src="/BDR_intro.gif?height=600&width=900"
+                    alt="Inspection robot in action on a flat commercial roof"
                     fill
                     className="object-cover"
                     priority
@@ -1073,10 +1075,14 @@ export default function ConcreteInspectionPage() {
               <Button
                 variant="outline"
                 className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 backdrop-blur-sm"
+                onClick={() => setShowReportModal(true)}
               >
-                Download Brochure
+                Download Sample Report
                 <Download className="ml-2 h-4 w-4" />
               </Button>
+              {showReportModal && (
+                <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />
+              )}
             </div>
           </div>
         </section>
@@ -1138,6 +1144,11 @@ export default function ConcreteInspectionPage() {
                   <Link href="/blogs" className="text-white/70 hover:text-white text-sm">
                     Blogs
                   </Link>
+                </li>
+                <li>
+                  <a href="/#partners" className="text-white/70 hover:text-white text-sm">
+                    Partners
+                  </a>
                 </li>
                 <li>
                   <button onClick={() => scrollToSection("contact")} className="text-white/70 hover:text-white text-sm">
@@ -1212,6 +1223,7 @@ export default function ConcreteInspectionPage() {
           </div>
         </div>
       )}
+      
     </div>
   )
 }

@@ -7,45 +7,21 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const testimonials = [
   {
     quote:
-      "BDR's concrete inspection technology identified critical structural issues in our parking garage that traditional methods completely missed. This prevented a potential catastrophic failure.",
-    author: "David Thompson",
-    role: "Structural Engineer",
-    location: "City Municipal Building",
+      "So there's huge money in rebar marking... We did a dental clinic, and they needed a ton of penetrations. 5,000 square feet was like $60,000",
+    author: "Justin P.",
+    role: "Truebeck Construction",
   },
   {
     quote:
-      "The non-destructive testing approach was perfect for our historic building. We got comprehensive structural data without any damage to the original concrete.",
-    author: "Jennifer Walsh",
-    role: "Historic Preservation Director",
-    location: "Heritage Foundation",
+      "You know they didn't know where it was. So they started, like, chipping the concrete... they cut through the radiant floor tubing. So it started leaking... And then they called me. They're like, is there a better way to find it?",
+    author: "Valerie T.",
+    role: "Skanska",
   },
   {
     quote:
-      "The detailed rebar mapping and corrosion analysis helped us prioritize our maintenance budget effectively. The ROI was immediate and substantial.",
-    author: "Robert Kim",
-    role: "Facilities Director",
-    location: "University Campus",
-  },
-  {
-    quote:
-      "Ground penetrating radar revealed voids in our foundation that could have led to major structural problems. BDR's technology saved us millions in potential repairs.",
-    author: "Maria Rodriguez",
-    role: "Building Owner",
-    location: "Commercial Complex",
-  },
-  {
-    quote:
-      "The speed and accuracy of BDR's concrete inspection is unmatched. We completed our entire building assessment in half the time with twice the detail.",
-    author: "James Chen",
-    role: "Construction Manager",
-    location: "Infrastructure Project",
-  },
-  {
-    quote:
-      "As a structural consultant, I trust BDR's data for critical decisions. Their concrete inspection reports are the most comprehensive I've seen.",
-    author: "Dr. Sarah Williams",
-    role: "Structural Consultant",
-    location: "Engineering Firm",
+      "We have so many teams saying that they were coring at risk because they couldn't get somebody to come out and quick do a scan",
+    author: "Trevor J.",
+    role: "XL Construction",
   },
 ]
 
@@ -104,7 +80,7 @@ export function ConcreteTestimonialSlider() {
               <div className="flex flex-col">
                 <span className="font-bold">{testimonials[index].author}</span>
                 <span className="text-white/70 text-sm">{testimonials[index].role}</span>
-                <span className="text-teal-400 text-sm">{testimonials[index].location}</span>
+                {/* <span className="text-teal-400 text-sm">{testimonials[index].location}</span> */}
               </div>
             </motion.div>
           ))}
