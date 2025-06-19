@@ -7,45 +7,39 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const testimonials = [
   {
     quote:
-      "The moisture mapping identified issues our previous inspections completely missed. Saved us over $200,000 in potential water damage to our retail location in Manhattan.",
-    author: "Michael T.",
-    role: "Commercial Property Manager",
-    location: "New York, NY",
+      "We have more than 4,000 buildings in the city. Roofus would help us bridge the gap that our department resources can't cover.",
+    author: "Kerem Y.",
+    role: "NYC DCAS",
   },
   {
     quote:
-      "As a roofing contractor, BDR's technology helps us win more projects. The detailed moisture scans give our clients confidence in our repair recommendations and have increased our close rate by 40%.",
-    author: "Sarah K.",
-    role: "Roofing Company Owner",
-    location: "Chicago, IL",
+      "Existing technology doesn't allow my team to scan more than one building a day, and BDR's solution would allow me to do that",
+    author: "Peter B.",
+    role: "IR Analyzers",
   },
   {
     quote:
-      "We used BDR for our 120,000 sq ft warehouse roof inspection. They completed in one day what would have taken a week with traditional methods, and at less than half the cost.",
-    author: "David L.",
-    role: "Facilities Director",
-    location: "Denver, CO",
+      "This technology would allow my team to significantly cut down mobilization costs for projects in distant areas such as Puerto Rico",
+    author: "Travis L.",
+    role: "SGH",
   },
   {
     quote:
-      "The detailed reports helped us prioritize repairs across our 15 properties. Their moisture mapping technology is far more accurate than any other method we've tried.",
-    author: "Jennifer R.",
-    role: "Real Estate Portfolio Manager",
-    location: "Boston, MA",
+      "So there's huge money in rebar marking... We did a dental clinic, and they needed a ton of penetrations. 5,000 square feet was like $60,000",
+    author: "Justin P.",
+    role: "Truebeck Construction",
   },
   {
     quote:
-      "After a major storm, BDR helped us document all the damage for our insurance claim. The detailed imagery and moisture data made the claim process much smoother.",
-    author: "Robert M.",
-    role: "Building Owner",
-    location: "Miami, FL",
+      "You know they didn't know where it was. So they started, like, chipping the concrete... they cut through the radiant floor tubing. So it started leaking... And then they called me. They're like, is there a better way to find it?",
+    author: "Valerie T.",
+    role: "Skanska",
   },
   {
     quote:
-      "As an engineering consultant, I rely on BDR's precision data for my structural assessments. Their technology provides insights that traditional methods simply can't match.",
-    author: "Thomas W.",
-    role: "Structural Engineer",
-    location: "Seattle, WA",
+      "We have so many teams saying that they were coring at risk because they couldn't get somebody to come out and quick do a scan",
+    author: "Trevor J.",
+    role: "XL Construction",
   },
 ]
 
@@ -104,7 +98,6 @@ export function TestimonialSlider() {
               <div className="flex flex-col">
                 <span className="font-bold">{testimonials[index].author}</span>
                 <span className="text-white/70 text-sm">{testimonials[index].role}</span>
-                <span className="text-teal-400 text-sm">{testimonials[index].location}</span>
               </div>
             </motion.div>
           ))}

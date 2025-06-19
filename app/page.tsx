@@ -33,6 +33,7 @@ import { USMap } from "@/components/us-map"
 import { QuoteForm } from "@/components/quote-form"
 import { useRouter } from "next/navigation"
 import { ChevronDown } from "lucide-react"
+import SampleReportModal from "@/components/sample-report-modal";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -40,6 +41,7 @@ export default function Home() {
   const [showExitPopup, setShowExitPopup] = useState(false)
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -357,195 +359,6 @@ export default function Home() {
       </div>
 
       <main className="flex-1">
-        <section ref={heroRef} className="relative w-full min-h-screen flex items-center pt-20 overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-teal-900/20 to-black/90"></div>
-            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-teal-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-cyan-500/10 blur-3xl rounded-full"></div>
-
-            {/* Grid pattern */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-
-            {/* Animated particles */}
-            <div className="absolute inset-0">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute rounded-full bg-white/10"
-                  style={{
-                    top: `${Math.random() * 100}%`,
-                    left: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 6 + 2}px`,
-                    height: `${Math.random() * 6 + 2}px`,
-                    animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-                    animationDelay: `${Math.random() * 5}s`,
-                  }}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          <div className="container px-4 md:px-6 z-10">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col justify-center space-y-4"
-              >
-                <div className="space-y-2">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm"
-                  >
-                    <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
-                    Serving Businesses Nationwide
-                  </motion.div>
-                  <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2"
-                  >
-                    Slash Roof Inspection Costs 50%+ with Smart Robots That See What Others Miss
-                  </motion.h1>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                    className="max-w-[600px] text-white/70 md:text-xl"
-                  >
-                    Our 90% accurate detection technology protects building value, maximizes insurance claims, delivers
-                    precise contractor estimates, prevents litigation headaches, and powers smarter engineering
-                    decisions—all in one scan.
-                  </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                    className="flex items-center space-x-2 mt-2"
-                  >
-                    <Phone className="h-5 w-5 text-teal-500" />
-                    <a
-                      href="tel:5105149518"
-                      className="text-xl font-bold text-white hover:text-teal-400 transition-colors"
-                    >
-                      (510) 514-9518
-                    </a>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="flex flex-col sm:flex-row gap-3"
-                >
-                  <Button
-                    onClick={() => setShowQuoteModal(true)}
-                    className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-                  >
-                    Get a Free Quote
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button
-                    onClick={() => scrollToSection("benefits")}
-                    variant="outline"
-                    className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-sm"
-                  >
-                    See Benefits
-                  </Button>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                  className="flex flex-col space-y-4 mt-8"
-                >
-                  <p className="text-lg font-medium">I am a:</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <Button
-                      onClick={() => openCustomerTypeModal("building-owner")}
-                      variant="outline"
-                      className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
-                    >
-                      Building Owner
-                    </Button>
-                    <Button
-                      onClick={() => openCustomerTypeModal("roofing-contractor")}
-                      variant="outline"
-                      className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
-                    >
-                      Roofing Contractor
-                    </Button>
-                    <Button
-                      onClick={() => openCustomerTypeModal("general-contractor")}
-                      variant="outline"
-                      className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
-                    >
-                      General Contractor
-                    </Button>
-                    <Button
-                      onClick={() => openCustomerTypeModal("engineering-consultant")}
-                      variant="outline"
-                      className="border-white/10 bg-white/5 text-white hover:bg-teal-500/20 hover:border-teal-500/50 rounded-lg py-4 h-auto"
-                    >
-                      Engineering Consultant
-                    </Button>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.7 }}
-                className="relative"
-              >
-                <div className="relative h-[400px] md:h-[400px] lg:h-[600px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
-                  <Image
-                    src="/BDR_intro.gif?height=600&width=900"
-                    alt="Roof inspection robot in action on a flat commercial roof"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-                  {/* Floating elements */}
-                  <div className="absolute bottom-6 left-6 right-6 p-4 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm text-white/70">Cost Savings</div>
-                        <div className="text-xl font-bold">50-65%</div>
-                      </div>
-                      <div className="h-10 w-px bg-white/10"></div>
-                      <div>
-                        <div className="text-sm text-white/70">Time Saved</div>
-                        <div className="text-xl font-bold">85%</div>
-                      </div>
-                      <div className="h-10 w-px bg-white/10"></div>
-                      <div>
-                        <div className="text-sm text-white/70">Accuracy</div>
-                        <div className="text-xl font-bold">90%</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -top-10 -right-10 size-40 bg-teal-500/30 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-10 -left-10 size-40 bg-cyan-500/30 rounded-full blur-3xl"></div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* NEW Our Solutions Section */}
         <section id="solutions" className="relative w-full py-24 md:py-32 overflow-hidden">
           {/* Background elements */}
@@ -1059,6 +872,53 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Our Partners Section */}
+        <section
+          id="partners"
+          className="relative w-full py-24 md:py-32 overflow-hidden"
+        >
+          {/* Background elements */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-black to-teal-950/30"></div>
+            <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-1/4 left-0 w-1/4 h-1/4 bg-cyan-500/10 blur-3xl rounded-full"></div>
+          </div>
+          <div className="container px-4 md:px-6 relative z-10">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm backdrop-blur-sm mb-4">
+                <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
+                Our Partners
+              </div>
+            </div>
+            <div className="max-w-7xl mx-auto text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 gap-y-16 mb-12">
+                <div>
+                  <img src="/nsf-logo.png" alt="NSF Logo" className="mx-auto h-48 object-contain" />
+                  <p className="mt-4 text-white font-medium">National Science Foundation (NSF)</p>
+                </div>
+                <div>
+                  <img src="/ai4ce-logo.png" alt="AI4CE Logo" className="mx-auto h-48 object-contain" />
+                  <p className="mt-4 text-white font-medium">NYU AI4CE Lab</p>
+                </div>
+                <div>
+                  <img src="/archdiocese-logo.png" alt="Archdiocese Logo" className="mx-auto h-48 object-contain" />
+                  <p className="mt-4 text-white font-medium">Archdiocese of New York</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 gap-y-16">
+                <div>
+                  <div className="flex items-center justify-center h-full">
+                    <img src="/skanska-logo.png" alt="Skanska Logo" className="mx-auto h-48 object-contain" />
+                  </div>
+                </div>
+                <div>
+                  <img src="/dcas-logo.png" alt="DCAS Logo" className="mx-auto h-48 object-contain" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="relative w-full py-24 md:py-32 overflow-hidden">
           {/* Background elements */}
           <div className="absolute inset-0 z-0">
@@ -1335,11 +1195,15 @@ export default function Home() {
               <Button
                 variant="outline"
                 className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 backdrop-blur-sm"
+                onClick={() => setShowReportModal(true)}
               >
-                Download Brochure
+                Download Sample Report
                 <Download className="ml-2 h-4 w-4" />
               </Button>
             </div>
+            {showReportModal && (
+              <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />
+            )}
           </div>
         </section>
       </main>
@@ -1366,7 +1230,7 @@ export default function Home() {
                 or more compared to traditional methods while delivering superior accuracy.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-white/70 hover:text-white">
+                <a href="https://www.linkedin.com/company/building-diagnostic-robotics/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -1385,21 +1249,11 @@ export default function Home() {
                   </svg>
                 </a>
                 <a href="#" className="text-white/70 hover:text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.94 3h2.74l4.46 6.37L18.76 3H22l-6.92 9.46L22 21h-3.36l-4.86-6.9L8.16 21H4.98l7.2-9.8L4 3z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-white/70 hover:text-white">
+                <a href="https://www.facebook.com/people/BDR/61575974576898/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -1415,7 +1269,7 @@ export default function Home() {
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
                 </a>
-                <a href="#" className="text-white/70 hover:text-white">
+                <a href="https://www.instagram.com/buildingdiagnosticrobotics?igsh=MTVkeDEyN3VtMXpqbQ==" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -1431,6 +1285,36 @@ export default function Home() {
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </a>
+                {/* Spotify */}
+                <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 168 168"
+                    fill="currentColor"
+                    className="text-white"
+                  >
+                    <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
+                  </svg>
+                </a>
+                {/* YouTube */}
+                <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z" />
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
                   </svg>
                 </a>
               </div>
@@ -1471,10 +1355,16 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
+                  <a href="#partners" className="text-white/70 hover:text-white text-sm">
+                    Partners
+                  </a>
+                </li>
+                <li>
                   <Link href="/#contact" className="text-white/70 hover:text-white text-sm">
                     Contact Us
                   </Link>
                 </li>
+                
               </ul>
             </div>
 

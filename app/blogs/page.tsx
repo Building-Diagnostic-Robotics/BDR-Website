@@ -556,6 +556,11 @@ export default function BlogsPage() {
                   </Link>
                 </li>
                 <li>
+                  <a href="/#partners" className="text-white/70 hover:text-white text-sm">
+                    Partners
+                  </a>
+                </li>
+                <li>
                   <Link href="/#contact" className="text-white/70 hover:text-white text-sm">
                     Contact Us
                   </Link>
