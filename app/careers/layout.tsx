@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BDR – Blogs",
+  title: "BDR – Careers",
   icons: "/BDR.jpg",
 };
 
-export default function BlogsLayout({
+export default function CareersLayout({
   children,
 }: {
   children: React.ReactNode;

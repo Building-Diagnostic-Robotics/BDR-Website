@@ -1,8 +1,6 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { X, ArrowRight, Phone } from "lucide-react"
@@ -12,7 +10,7 @@ type CustomerTypeModalProps = {
   onClose: () => void
 }
 
-export function CustomerTypeModal({ type, onClose }: CustomerTypeModalProps) {
+export function RoofCustomerTypeModal({ type, onClose }: CustomerTypeModalProps) {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
 
@@ -181,4 +179,3 @@ export function CustomerTypeModal({ type, onClose }: CustomerTypeModalProps) {
     </div>
   )
 }
-

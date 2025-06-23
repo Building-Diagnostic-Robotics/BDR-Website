@@ -29,8 +29,15 @@ import {
   Mail,
   Download,
   Building2,
+  LifeBuoy,
+  LifeBuoyIcon,
+  Building2Icon,
+  SquareActivityIcon,
+  BuildingIcon,
+  DropletIcon,
 } from "lucide-react"
 import SampleReportModal from "@/components/sample-report-modal"
+import { RoofCustomerTypeModal } from "@/components/roof-customer-type-modal";
 import { TechnologyProcess } from "@/components/technology-process"
 import { RoofTestimonialSlider } from "@/components/roof-testimonial-slider"
 
@@ -555,9 +562,12 @@ export default function RoofInspectionPage() {
                     Our robotic inspection systems find moisture and damage that traditional methods miss - at half the
                     cost.
                   </p>
-                  <p className="text-lg font-medium text-teal-400">
+                  <a
+                    href="tel:5105149518"
+                    className="text-lg font-medium text-teal-400 hover:underline"
+                  >
                     Call us today at (510) 514-9518 for a free consultation
-                  </p>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -567,70 +577,90 @@ export default function RoofInspectionPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
             >
-              {[
-                {
-                  icon: <Eye className="h-8 w-8" />,
-                  title: "Moisture Detection",
-                  description:
-                    "Identify hidden water damage and moisture with 90% accuracy before it causes expensive structural problems.",
-                  gradient: "from-teal-500 to-cyan-400",
-                  phone: "(510) 514-9518",
-                },
-                {
-                  icon: <Layers className="h-8 w-8" />,
-                  title: "Roof Mapping",
-                  description:
-                    "Create detailed 3D maps of your entire roof system using point cloud technology with precise measurements and condition reports.",
-                  gradient: "from-cyan-500 to-teal-500",
-                  phone: "(510) 514-9518",
-                },
-                {
-                  icon: <Cloud className="h-8 w-8" />,
-                  title: "Leak Prevention",
-                  description:
-                    "Detect potential leaks before they happen and extend your roof's lifespan by 5-20 years.",
-                  gradient: "from-teal-600 to-cyan-600",
-                  phone: "(510) 514-9518",
-                },
-              ].map((solution, index) => (
-                <motion.div
-                  key={index}
-                  variants={item}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1"
-                >
-                  <div className="relative z-10 flex flex-col h-full p-6 backdrop-blur-sm">
-                    <div className={`rounded-full bg-gradient-to-br ${solution.gradient} p-3 w-fit mb-6`}>
-                      {solution.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
-                    <p className="text-white/70 mb-6 flex-grow">{solution.description}</p>
-                    <div className="mt-auto space-y-3">
-                      <div className="flex items-center space-x-2">
-                        <Phone className="h-4 w-4 text-teal-500" />
-                        <a
-                          href={`tel:${solution.phone.replace(/\D/g, "")}`}
-                          className="text-white hover:text-teal-400 transition-colors"
-                        >
-                          {solution.phone}
-                        </a>
+              <div className="flex flex-wrap justify-center gap-8">
+                {[
+                  {
+                    icon: <Eye className="h-8 w-8" />,
+                    title: "Moisture Detection",
+                    description:
+                      "Identify hidden water damage and moisture with 90% accuracy before it causes expensive structural problems.",
+                    gradient: "from-teal-500 to-cyan-400",
+                    phone: "(510) 514-9518",
+                  },
+                  {
+                    icon: <Layers className="h-8 w-8" />,
+                    title: "Roof Estimation",
+                    description:
+                      "Get detailed estimates on the cost of renovating, replacing, or retrofitting your roof to improve capital efficiency by XX%",
+                    gradient: "from-cyan-500 to-teal-500",
+                    phone: "(510) 514-9518",
+                  },
+                  {
+                    icon: <DropletIcon className="h-8 w-8" />,
+                    title: "Leak Prevention",
+                    description:
+                      "Detect potential leaks before they happen and extend your roof's lifespan by 5-20 years.",
+                    gradient: "from-teal-600 to-cyan-600",
+                    phone: "(510) 514-9518",
+                  },
+                  {
+                    icon: <BuildingIcon className="h-8 w-8" />,
+                    title: "Roof As-built Generation",
+                    description:
+                      "Create detailed 3D maps and 2D CAD drawings of your entire roof system using patented BDR technology with precise measurements and condition reports.",
+                    gradient: "from-cyan-500 to-teal-500",
+                    phone: "(510) 514-9518",
+                  },
+                  {
+                    icon: <SquareActivityIcon className="h-8 w-8" />,
+                    title: "Roof's Remaining Life Prediction",
+                    description:
+                      "Understand the remaining roof life and the options to length roof life by another 20 years at XX% of the cost of replacement",
+                    gradient: "from-teal-600 to-cyan-600",
+                    phone: "(510) 514-9518",
+                  },
+                ].map((solution, index) => (
+                  <div
+                    key={index}
+                    className="w-full sm:w-[300px] md:w-[30%] max-w-sm flex"
+                  >
+                    <motion.div
+                      variants={item}
+                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm flex flex-col h-full w-full"
+                    >
+                      <div className={`rounded-full bg-gradient-to-br ${solution.gradient} p-3 w-fit mb-6`}>
+                        {solution.icon}
                       </div>
-                      <Button
-                        onClick={() => setShowQuoteModal(true)}
-                        variant="ghost"
-                        className="group/btn px-0 text-white hover:bg-transparent"
-                      >
-                        <span className="mr-2">Get a Quote</span>
-                        <span className="relative overflow-hidden inline-block">
-                          <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover/btn:translate-x-full" />
-                          <ArrowRight className="h-4 w-4 absolute top-0 -left-6 transform transition-transform duration-300 group-hover/btn:translate-x-6" />
-                        </span>
-                      </Button>
-                    </div>
+                      <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
+                      <p className="text-white/70 mb-6 flex-grow">{solution.description}</p>
+                      <div className="mt-auto space-y-3">
+                        <div className="flex items-center space-x-2">
+                          <Phone className="h-4 w-4 text-teal-500" />
+                          <a
+                            href={`tel:${solution.phone.replace(/\D/g, "")}`}
+                            className="text-white hover:text-teal-400 transition-colors"
+                          >
+                            {solution.phone}
+                          </a>
+                        </div>
+                        <Button
+                          onClick={() => setShowQuoteModal(true)}
+                          variant="ghost"
+                          className="group/btn px-0 text-white hover:bg-transparent"
+                        >
+                          <span className="mr-2">Get a Quote</span>
+                          <span className="relative overflow-hidden inline-block">
+                            <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover/btn:translate-x-full" />
+                            <ArrowRight className="h-4 w-4 absolute top-0 -left-6 transform transition-transform duration-300 group-hover/btn:translate-x-6" />
+                          </span>
+                        </Button>
+                      </div>
+                      <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-teal-500 to-cyan-600 group-hover:w-full transition-all duration-700"></div>
+                    </motion.div>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>
@@ -663,7 +693,12 @@ export default function RoofInspectionPage() {
                   <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
                     Our technology delivers measurable advantages over traditional roof inspection methods.
                   </p>
-                  <p className="text-lg font-medium text-teal-400">Questions? Call (510) 514-9518</p>
+                  <a
+                    href="tel:5105149518"
+                    className="text-lg font-medium text-teal-400 hover:underline"
+                  >
+                    Questions? Call (510) 514-9518 for a free consultation
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -678,7 +713,7 @@ export default function RoofInspectionPage() {
               {[
                 {
                   icon: <CheckCircle />,
-                  title: "Cost Savings",
+                  title: "50% Cost Savings",
                   description:
                     "Cut your inspection costs by 50%+ compared to traditional methods while getting more detailed and accurate results.",
                 },
@@ -695,10 +730,14 @@ export default function RoofInspectionPage() {
                     "Complete comprehensive roof inspections in hours instead of days or weeks, with detailed reports delivered within 24-48 hours.",
                 },
                 {
-                  icon: <Sun />,
-                  title: "Tax Incentives Available",
+                  icon: (
+                    <span className="text-base font-bold text-white w-10 h-10 flex items-center justify-center">
+                      90%
+                    </span>
+                  ),
+                  title: "Accuracy Rate",
                   description:
-                    "Access up to $5/sq.ft in tax credits and incentives for necessary repairs identified through our detailed inspection reports.",
+                    "Detect rebar location, corrosion, voids, and cracks with 90% accuracy using advanced Ground Penetrating Radar.",
                 },
                 {
                   icon: <FileText />,
@@ -718,15 +757,32 @@ export default function RoofInspectionPage() {
                   variants={item}
                   className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-6 backdrop-blur-sm hover:shadow-lg shadow-teal-500/5 transition-all duration-300"
                 >
+                  <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                  <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+                  <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 mb-4">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                   <p className="text-white/70">{feature.description}</p>
+
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-teal-500 to-cyan-600 group-hover:w-full transition-all duration-700"></div>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
+
+            <div className="mt-12 flex justify-center">
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+              >
+                Schedule Your Inspection
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div> 
         </section>
 
         {/* Technology Section */}
@@ -917,20 +973,37 @@ export default function RoofInspectionPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
+                className="relative"
               >
                 <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600">
                   <div className="bg-black rounded-xl p-8">
-                    <h3 className="text-2xl font-bold mb-6">Request a Free Quote</h3>
-                    <form onSubmit={onSubmit} className="space-y-4">
+                    <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
+                    <form
+                      onSubmit={async (e) => {
+                        e.preventDefault()
+                        const form = e.currentTarget
+                        const res = await fetch("/api/contactForm", {
+                          method: "POST",
+                          body: new FormData(form),
+                        })
+                        if (res.ok) {
+                          alert("Thank you! We'll be in touch soon.")
+                          form.reset()
+                        } else {
+                          alert("Oops—something went wrong.")
+                        }
+                      }}
+                      className="space-y-4"
+                    >
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label htmlFor="first-name" className="text-sm font-medium text-white/70">
                             First Name
                           </label>
-                          <Input
+                          <input
                             id="first-name"
                             name="first-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Jane"
                           />
                         </div>
@@ -938,10 +1011,10 @@ export default function RoofInspectionPage() {
                           <label htmlFor="last-name" className="text-sm font-medium text-white/70">
                             Last Name
                           </label>
-                          <Input
+                          <input
                             id="last-name"
                             name="last-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Doe"
                           />
                         </div>
@@ -950,11 +1023,11 @@ export default function RoofInspectionPage() {
                         <label htmlFor="email" className="text-sm font-medium text-white/70">
                           Email
                         </label>
-                        <Input
+                        <input
                           id="email"
                           name="email"
                           type="email"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="name@example.com"
                         />
                       </div>
@@ -962,11 +1035,11 @@ export default function RoofInspectionPage() {
                         <label htmlFor="phone" className="text-sm font-medium text-white/70">
                           Phone
                         </label>
-                        <Input
+                        <input
                           id="phone"
                           name="phone"
                           type="tel"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="(123) 456-7890"
                         />
                       </div>
@@ -979,14 +1052,14 @@ export default function RoofInspectionPage() {
                           name="additional-info"
                           rows={3}
                           className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
-                          placeholder="Tell us about your property and specific needs..."
+                          placeholder="Tell us about your specific needs."
                         ></textarea>
                       </div>
                       <Button
                         type="submit"
                         className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full py-6"
                       >
-                        Get Your Free Quote
+                        Submit
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </form>
@@ -1112,16 +1185,110 @@ export default function RoofInspectionPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-4">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="relative size-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center">
-                  <Building2 className="h-5 w-5 text-white absolute" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50"></div>
-                </div>
+                <img
+                  src="/BDR.jpg"
+                  alt="BDR Logo"
+                  className="h-6 w-6 rounded-lg object-cover"
+                />
                 <span className="font-bold text-lg">BDR</span>
               </Link>
               <p className="text-sm text-white/70">
                 Building Diagnostic Robotics (BDR) provides advanced robotic inspection services that save clients 50%
                 or more compared to traditional methods while delivering superior accuracy.
               </p>
+              <div className="flex space-x-4">
+                {/* Linkedin */}
+                <a href="https://www.linkedin.com/company/building-diagnostic-robotics/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-linkedin"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                {/* Twitter (X) */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.94 3h2.74l4.46 6.37L18.76 3H22l-6.92 9.46L22 21h-3.36l-4.86-6.9L8.16 21H4.98l7.2-9.8L4 3z"/>
+                  </svg>
+                </a> */}
+                {/* Facebook */}
+                <a href="https://www.facebook.com/people/BDR/61575974576898/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-facebook"
+                  >
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
+                </a>
+                {/* Instagram */}
+                <a href="https://www.instagram.com/buildingdiagnosticrobotics?igsh=MTVkeDEyN3VtMXpqbQ==" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-instagram"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </a>
+                {/* Spotify */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 168 168"
+                    fill="currentColor"
+                    className="text-white"
+                  >
+                    <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
+                  </svg>
+                </a> */}
+                {/* YouTube */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z" />
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                  </svg>
+                </a> */}
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -1235,6 +1402,13 @@ export default function RoofInspectionPage() {
           </div>
         </div>
       )}
-    </div>
+    {/* Customer Type Modal */}
+    {selectedCustomerType && (
+      <RoofCustomerTypeModal
+        type={selectedCustomerType}
+        onClose={closeCustomerTypeModal}
+      />
+    )}
+  </div>
   )
 }

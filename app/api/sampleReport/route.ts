@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { ConfidentialClientApplication } from '@azure/msal-node';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json();
@@ -11,37 +14,79 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+  const CLIENT_ID = process.env.MS_CLIENT_ID!;
+  const CLIENT_SECRET = process.env.MS_CLIENT_SECRET!;
+  const TENANT_ID = process.env.MS_TENANT_ID!;
+  const USER_ID = process.env.MS_USER_ID!;
+  const SCOPES = ["https://graph.microsoft.com/.default"];
+
+  const cca = new ConfidentialClientApplication({
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      clientId: CLIENT_ID,
+      authority: `https://login.microsoftonline.com/${TENANT_ID}`,
+      clientSecret: CLIENT_SECRET,
     },
   });
 
-  try {
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: email,
-      subject: 'Your Sample Report from BDR',
-      text: 'Attached is your sample report.',
-      attachments: [
-        {
-          filename: 'BDR-Sample-Report.pdf',
-          path: './public/sample-report.pdf',
-        },
-      ],
-    });
+  const result = await cca.acquireTokenByClientCredential({ scopes: SCOPES });
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
+  if (!result?.accessToken) {
+    return new Response(JSON.stringify({ success: false, error: "Token error" }), {
+      status: 500,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (error) {
-    console.error('Email send failed:', error);
+  }
+
+  // Read and encode the file
+  const filePath = path.resolve('./public/sample-report.pdf');
+  const fileBuffer = fs.readFileSync(filePath);
+  const fileBase64 = fileBuffer.toString('base64');
+
+  const mailPayload = {
+    message: {
+      subject: 'Your Sample Report from BDR',
+      body: {
+        contentType: 'Text',
+        content: 'Attached is your sample report.',
+      },
+      toRecipients: [
+        {
+          emailAddress: {
+            address: email,
+          },
+        },
+      ],
+      attachments: [
+        {
+          "@odata.type": "#microsoft.graph.fileAttachment",
+          name: "BDR-Sample-Report.pdf",
+          contentBytes: fileBase64,
+        },
+      ],
+    },
+    saveToSentItems: true,
+  };
+
+  const response = await fetch(`https://graph.microsoft.com/v1.0/users/${USER_ID}/sendMail`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${result.accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(mailPayload),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    console.error("Graph API error:", error);
     return new Response(JSON.stringify({ success: false, error: "Failed to send email" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }

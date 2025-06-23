@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import Head from 'next/head';
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -25,7 +26,6 @@ import {
   Timer,
   X,
 } from "lucide-react"
-import { CustomerTypeModal } from "@/components/customer-type-modal"
 import { ExitIntentPopup } from "@/components/exit-intent-popup"
 import { ChatBot } from "@/components/chat-bot"
 import { TestimonialSlider } from "@/components/testimonial-slider"
@@ -126,7 +126,7 @@ export default function Home() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
-    const res = await fetch("/api/quoteForm", {
+    const res = await fetch("/api/contactForm", {
       method: "POST",
       body: new FormData(form),
     })
@@ -155,7 +155,8 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <>
+      <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
       <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
         <div className="container flex justify-between items-center">
@@ -383,13 +384,16 @@ export default function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2">
                   Advanced Inspection Services
                 </h2>
-                <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
+                <p className="max-w-[1000px] text-white/70 md:text-xl/relaxed">
                   Choose from our cutting-edge robotic inspection solutions designed to save you time, money, and
                   provide unmatched accuracy.
                 </p>
-                <p className="text-lg font-medium text-teal-400">
-                  Call us today at (510) 514-9518 for a free consultation
-                </p>
+                <a
+                    href="tel:5105149518"
+                    className="mt-12 text-lg font-medium text-teal-400 hover:underline"
+                  >
+                    Call us today at (510) 514-9518 for a free consultation
+                  </a>
               </div>
             </motion.div>
 
@@ -517,7 +521,12 @@ export default function Home() {
                 <p className="max-w-[900px] text-white/70 md:text-xl/relaxed">
                   Our technology delivers measurable advantages over traditional inspection methods.
                 </p>
-                <p className="text-lg font-medium text-teal-400">Questions? Call (510) 514-9518</p>
+                <a
+                    href="tel:5105149518"
+                    className="mt-10 text-lg font-medium text-teal-400 hover:underline"
+                  >
+                    Questions? Call (510) 514-9518 for a free consultation
+                  </a>
               </div>
             </motion.div>
 
@@ -531,7 +540,7 @@ export default function Home() {
               {[
                 {
                   icon: <CheckCircle />,
-                  title: "50-65% Cost Savings",
+                  title: "50% Cost Savings",
                   description:
                     "Cut your inspection costs by more than half compared to traditional methods while getting more detailed and accurate results.",
                 },
@@ -543,15 +552,19 @@ export default function Home() {
                 },
                 {
                   icon: <Timer />,
-                  title: "85% Faster Results",
+                  title: "75% Faster Results",
                   description:
                     "Complete comprehensive inspections in hours instead of days or weeks, with detailed reports delivered within 24-48 hours.",
                 },
                 {
-                  icon: <Sun />,
-                  title: "Tax Incentives Available",
+                  icon: (
+                    <span className="text-base font-bold text-white w-10 h-10 flex items-center justify-center">
+                      90%
+                    </span>
+                  ),
+                  title: "Accuracy Rate",
                   description:
-                    "Access up to $5/sq.ft in tax credits and incentives for necessary repairs identified through our detailed inspection reports.",
+                    "Detect rebar location, corrosion, voids, and cracks with 90% accuracy using advanced Ground Penetrating Radar.",
                 },
                 {
                   icon: <FileText />,
@@ -798,75 +811,99 @@ export default function Home() {
                   </a>
                 </div>
 
-                <div className="flex space-x-4 mt-6">
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-linkedin"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-facebook"
-                    >
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-instagram"
-                    >
-                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-white/70 hover:text-white transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                    </svg>
-                  </a>
-                </div>
+                <div className="flex space-x-4">
+                {/* Linkedin */}
+                <a href="https://www.linkedin.com/company/building-diagnostic-robotics/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-linkedin"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                {/* Twitter (X) */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.94 3h2.74l4.46 6.37L18.76 3H22l-6.92 9.46L22 21h-3.36l-4.86-6.9L8.16 21H4.98l7.2-9.8L4 3z"/>
+                  </svg>
+                </a> */}
+                {/* Facebook */}
+                <a href="https://www.facebook.com/people/BDR/61575974576898/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-facebook"
+                  >
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
+                </a>
+                {/* Instagram */}
+                <a href="https://www.instagram.com/buildingdiagnosticrobotics?igsh=MTVkeDEyN3VtMXpqbQ==" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-instagram"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </a>
+                {/* Spotify */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 168 168"
+                    fill="currentColor"
+                    className="text-white"
+                  >
+                    <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
+                  </svg>
+                </a> */}
+                {/* YouTube */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z" />
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                  </svg>
+                </a> */}
+              </div>
               </motion.div>
             </div>
           </div>
@@ -1027,17 +1064,33 @@ export default function Home() {
               >
                 <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600">
                   <div className="bg-black rounded-xl p-8">
-                    <h3 className="text-2xl font-bold mb-6">Request a Free Quote</h3>
-                    <form onSubmit={onSubmit} className="space-y-4">
+                    <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
+                    <form
+                      onSubmit={async (e) => {
+                        e.preventDefault()
+                        const form = e.currentTarget
+                        const res = await fetch("/api/contactForm", {
+                          method: "POST",
+                          body: new FormData(form),
+                        })
+                        if (res.ok) {
+                          alert("Thank you! We'll be in touch soon.")
+                          form.reset()
+                        } else {
+                          alert("Oops—something went wrong.")
+                        }
+                      }}
+                      className="space-y-4"
+                    >
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label htmlFor="first-name" className="text-sm font-medium text-white/70">
                             First Name
                           </label>
-                          <Input
+                          <input
                             id="first-name"
                             name="first-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Jane"
                           />
                         </div>
@@ -1045,10 +1098,10 @@ export default function Home() {
                           <label htmlFor="last-name" className="text-sm font-medium text-white/70">
                             Last Name
                           </label>
-                          <Input
+                          <input
                             id="last-name"
                             name="last-name"
-                            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                             placeholder="Doe"
                           />
                         </div>
@@ -1057,11 +1110,11 @@ export default function Home() {
                         <label htmlFor="email" className="text-sm font-medium text-white/70">
                           Email
                         </label>
-                        <Input
+                        <input
                           id="email"
                           name="email"
                           type="email"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="name@example.com"
                         />
                       </div>
@@ -1069,11 +1122,11 @@ export default function Home() {
                         <label htmlFor="phone" className="text-sm font-medium text-white/70">
                           Phone
                         </label>
-                        <Input
+                        <input
                           id="phone"
                           name="phone"
                           type="tel"
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-teal-500"
+                          className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
                           placeholder="(123) 456-7890"
                         />
                       </div>
@@ -1086,14 +1139,14 @@ export default function Home() {
                           name="additional-info"
                           rows={3}
                           className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
-                          placeholder="Tell us about your property and specific needs..."
+                          placeholder="Tell us about your specific needs."
                         ></textarea>
                       </div>
                       <Button
                         type="submit"
                         className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full py-6"
                       >
-                        Get Your Free Quote
+                        Submit
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </form>
@@ -1219,10 +1272,11 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-4">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="relative size-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center">
-                  <Building2 className="h-5 w-5 text-white absolute" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50"></div>
-                </div>
+                <img
+                  src="/BDR.jpg"
+                  alt="BDR Logo"
+                  className="h-6 w-6 rounded-lg object-cover"
+                />
                 <span className="font-bold text-lg">BDR</span>
               </Link>
               <p className="text-sm text-white/70">
@@ -1230,6 +1284,7 @@ export default function Home() {
                 or more compared to traditional methods while delivering superior accuracy.
               </p>
               <div className="flex space-x-4">
+                {/* Linkedin */}
                 <a href="https://www.linkedin.com/company/building-diagnostic-robotics/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1248,11 +1303,13 @@ export default function Home() {
                     <circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
-                <a href="#" className="text-white/70 hover:text-white">
+                {/* Twitter (X) */}
+                {/* <a href="#" className="text-white/70 hover:text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.94 3h2.74l4.46 6.37L18.76 3H22l-6.92 9.46L22 21h-3.36l-4.86-6.9L8.16 21H4.98l7.2-9.8L4 3z"/>
                   </svg>
-                </a>
+                </a> */}
+                {/* Facebook */}
                 <a href="https://www.facebook.com/people/BDR/61575974576898/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1269,6 +1326,7 @@ export default function Home() {
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
                 </a>
+                {/* Instagram */}
                 <a href="https://www.instagram.com/buildingdiagnosticrobotics?igsh=MTVkeDEyN3VtMXpqbQ==" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1288,7 +1346,7 @@ export default function Home() {
                   </svg>
                 </a>
                 {/* Spotify */}
-                <a href="#" className="text-white/70 hover:text-white">
+                {/* <a href="#" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -1299,9 +1357,9 @@ export default function Home() {
                   >
                     <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
                   </svg>
-                </a>
+                </a> */}
                 {/* YouTube */}
-                <a href="#" className="text-white/70 hover:text-white">
+                {/* <a href="#" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -1316,7 +1374,7 @@ export default function Home() {
                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z" />
                     <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
 
@@ -1417,9 +1475,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Customer Type Modals */}
-      {selectedCustomerType && <CustomerTypeModal type={selectedCustomerType} onClose={closeCustomerTypeModal} />}
-
       {/* Exit Intent Popup */}
       {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
 
@@ -1443,5 +1498,6 @@ export default function Home() {
       {/* Chat Bot */}
       <ChatBot />
     </div>
+    </>
   )
 }

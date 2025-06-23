@@ -7,9 +7,10 @@ import type { Metadata } from "next"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "BDR - Save 50% on Flat Roof Inspections | Building Diagnostic Robotics",
+  title: "BDR - Home Page",
+  icons: '/BDR.jpg',
   description:
-    "Advanced robotic roof inspections that save 50-65% compared to traditional methods. Serving businesses nationwide with 99% accurate moisture detection.",
+    "Advanced robotic roof inspections that save 50-65% compared to traditional methods. Serving businesses nationwide with 90% accurate moisture detection.",
     generator: 'v0.dev'
 }
 
@@ -24,7 +25,5 @@ export default function RootLayout({
     </html>
   )
 }
-
-
 
 import './globals.css'
