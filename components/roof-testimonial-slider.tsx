@@ -9,20 +9,20 @@ const testimonials = [
   {
     quote:
       "We have more than 4,000 buildings in the city. Roofus would help us bridge the gap that our department resources can't cover.",
-    author: "Kerem Y.",
-    role: "NYC DCAS",
+    // author: "",
+    // role: "",
   },
   {
     quote:
       "Existing technology doesn't allow my team to scan more than one building a day, and BDR's solution would allow me to do that",
-    author: "Peter B.",
-    role: "IR Analyzers",
+    // author: "",
+    // role: "",
   },
   {
     quote:
       "This technology would allow my team to significantly cut down mobilization costs for projects in distant areas such as Puerto Rico",
-    author: "Travis L.",
-    role: "SGH",
+    // author: "",
+    // role: "",
   },
 ]
 
@@ -79,8 +79,8 @@ export function RoofTestimonialSlider() {
               <div className="mb-4 text-4xl text-teal-500">"</div>
               <p className="text-white/90 mb-6 italic">{testimonials[index].quote}</p>
               <div className="flex flex-col">
-                <span className="font-bold">{testimonials[index].author}</span>
-                <span className="text-white/70 text-sm">{testimonials[index].role}</span>
+                {/* <span className="font-bold">{testimonials[index].author}</span>
+                <span className="text-white/70 text-sm">{testimonials[index].role}</span> */}
               </div>
             </motion.div>
           ))}
