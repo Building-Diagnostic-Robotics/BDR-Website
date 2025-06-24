@@ -77,6 +77,12 @@ export function QuoteForm() {
           />
           <input
             type="text"
+            name="serviceType"
+            placeholder="Service Type (Roof or Concrete Inspection)"
+            className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"
+          />
+          <input
+            type="text"
             name="company"
             placeholder="Company Name"
             className="w-full rounded-md bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black p-3 text-sm"

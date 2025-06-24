@@ -9,7 +9,7 @@
       date: "May 8, 2025",
       readTime: "6 min read",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
-      image: "/blogs/trends/post1/image.jpg",
+      image: "/blogs/trends/post1/image.png",
       excerpt:
         "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan.",
     },
@@ -23,7 +23,7 @@
       date: "April 28, 2025",
       readTime: "9 min read",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
-      image: "/blogs/trends/post1/image.jpg",
+      image: "/blogs/case_study/post1/image.png",
       excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
     },
 
@@ -36,7 +36,7 @@
       date: "May 1, 2025",
       readTime: "9 min read",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
-      image: "/blogs/trends/post1/image.jpg",
+      image: "/blogs/owners/post1/image.png",
       excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
     },
 
@@ -49,7 +49,7 @@
       date: "May 5, 2025",
       readTime: "9 min read",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
-      image: "/blogs/trends/post1/image.jpg",
+      image: "/blogs/technology/post1/image.png",
       excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
     },
 

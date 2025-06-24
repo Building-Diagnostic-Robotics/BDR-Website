@@ -75,12 +75,16 @@ export default function BlogsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-2 md:px-4">
         <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
-            Save 50% or more compared to traditional roof inspections! Serving businesses nationwide.
+          <p className="text-[10px] md:text-base font-medium text-left pl-0 md:pl-0">
+            <span className="md:hidden">Save 50%+ on Roof/Concrete Inspections</span>
+            <span className="hidden md:inline">
+              Save 50%+ and get results in 48 hours instead of weeks compared to traditional roof/concrete inspections!
+              Serving businesses nationwide.
+            </span>
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
+          <a href="tel:5105149518" className="text-[10px] md:text-base text-white font-medium hover:underline whitespace-nowrap text-right ml-auto pr-0 md:pr-0">
             Call: (510) 514-9518
           </a>
         </div>
@@ -204,21 +208,7 @@ export default function BlogsPage() {
             }`}
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-              <div className="flex flex-col items-center space-y-4 mb-8">
-                <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-                  <Phone className="h-5 w-5" />
-                  <span>(510) 514-9518</span>
-                </a>
-                <a
-                  href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white text-xl"
-                >
-                  <MapPin className="h-5 w-5" />
-                  <span>19 Morris Ave, Brooklyn, NY</span>
-                </a>
-              </div>
+              
               <Link
                 href="/"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
@@ -226,37 +216,30 @@ export default function BlogsPage() {
               >
                 Home
               </Link>
-              {/* Mobile Solutions dropdown as disclosure */}
-              <div className="w-full flex flex-col items-center">
-                <button
-                  onClick={() => setShowMobileSolutions((v) => !v)}
-                  className="w-full flex items-center justify-between text-left text-2xl font-medium text-white/80 hover:text-white transition-colors mb-2 px-2"
-                  style={{ maxWidth: 400 }}
-                  aria-expanded={showMobileSolutions}
-                  aria-controls="mobile-solutions-dropdown"
+              {/* Mobile Solutions dropdown*/}
+              <div className="flex flex-col space-y-2 text-center">
+                <span className="text-2xl font-medium text-white">Solutions</span>
+                  <Link
+                  href="/solutions/roof"
+                  className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    document.body.style.overflow = "auto"
+                  }}
                 >
-                  <span>Solutions</span>
-                  <ChevronDown className={`ml-2 h-5 w-5 transform transition-transform ${showMobileSolutions ? "rotate-180" : ""}`} />
-                </button>
-                {showMobileSolutions && (
-                  <div id="mobile-solutions-dropdown" className="mt-1 space-y-2 pl-4 w-full max-w-xs">
-                    <Link
-                      href="/roof"
-                      className="block text-sm text-white/70 hover:text-white hover:bg-gradient-to-r hover:from-teal-500 hover:to-cyan-600 px-4 py-2 rounded"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Roof Inspections
-                    </Link>
-                    <Link
-                      href="/concrete"
-                      className="block text-sm text-white/70 hover:text-white hover:bg-gradient-to-r hover:from-teal-500 hover:to-cyan-600 px-4 py-2 rounded"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Concrete Inspections
-                    </Link>
-                  </div>
-                )}
-              </div>
+                  Roof Inspections
+                </Link>
+                <Link
+                  href="/solutions/concrete"
+                  className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    document.body.style.overflow = "auto"
+                  }}
+                >
+                  Concrete Inspections
+                </Link>
+            </div>
               <a
                 href="/#contact"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
