@@ -158,13 +158,16 @@ export default function Home() {
     <>
       <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-2 md:px-4">
         <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
-            Save 50% or more and get results in 48 hours instead of weeks compared to traditional roof inspections!
-            Serving businesses nationwide.
+          <p className="text-[10px] md:text-base font-medium text-left pl-0 md:pl-0">
+            <span className="md:hidden">Save 50%+ on Roof/Concrete Inspections</span>
+            <span className="hidden md:inline">
+              Save 50%+ and get results in 48 hours instead of weeks compared to traditional roof/concrete inspections!
+              Serving businesses nationwide.
+            </span>
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
+          <a href="tel:5105149518" className="text-[10px] md:text-base text-white font-medium hover:underline whitespace-nowrap text-right ml-auto pr-0 md:pr-0">
             Call: (510) 514-9518
           </a>
         </div>
@@ -285,41 +288,6 @@ export default function Home() {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a href="mailto:info@bdx-robotics.com" className="flex items-center space-x-2 text-white text-xl">
-              <Mail className="h-5 w-5" />
-              <span>info@bdx-robotics.com</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-white text-xl"
-            >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
-          </div>
-
-          {["benefits", "coverage", "testimonials", "about"].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </button>
-          ))}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-          >
-            Contact Us
-          </button>
           <div className="flex flex-col space-y-2 text-center">
             <span className="text-2xl font-medium text-white">Solutions</span>
             <Link
@@ -343,6 +311,23 @@ export default function Home() {
               Concrete Inspections
             </Link>
           </div>
+
+          {["benefits", "coverage", "testimonials", "about"].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item)}
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+          >
+            Contact Us
+          </button>
+          
           <Link href="/blogs" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
             Blogs
           </Link>
@@ -350,7 +335,7 @@ export default function Home() {
             Careers{" "}
           </Link>
           <Button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => setShowQuoteModal(true)}
             className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
           >
             Get a Quote
@@ -409,6 +394,7 @@ export default function Home() {
                 variants={item}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-300"
               >
+                <Link href="/solutions/roof">
                 <div className="relative z-10 flex flex-col h-full p-8 backdrop-blur-sm">
                   <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 p-4 w-fit mb-6">
                     <Eye className="h-10 w-10" />
@@ -430,16 +416,18 @@ export default function Home() {
                       </span>
                     </div>
                     <Button className="mt-10 w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-4 py-4 rounded-full text-sm group flex items-center justify-center" asChild>
-                      <Link href="/solutions/roof">
+                      {/* <Link href="/solutions/roof"> */}
                         <span className="flex items-center gap-2">
-                          Learn More About Roof Inspections
+                          <span className="md:hidden">Learn More</span>
+                          <span className="hidden md:inline">Learn More About Roof Inspections</span>
                           <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
                         </span>
-                      </Link>
+                      {/* </Link> */}
                     </Button>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Link>
               </motion.div>
 
               {/* Concrete Inspection Card */}
@@ -447,6 +435,7 @@ export default function Home() {
                 variants={item}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-300"
               >
+                <Link href="/solutions/concrete">
                 <div className="relative z-10 flex flex-col h-full p-8 backdrop-blur-sm">
                   <div className="rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 p-4 w-fit mb-6">
                     <Building2 className="h-10 w-10" />
@@ -469,26 +458,28 @@ export default function Home() {
                       </span>
                     </div>
                     <Button className="mt-10 w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-4 py-4 rounded-full text-sm group flex items-center justify-center" asChild>
-                      <Link href="/solutions/concrete">
+                      {/* <Link href="/solutions/concrete"> */}
                         <span className="flex items-center gap-2">
-                          Learn More About Concrete Inspections
+                          <span className="md:hidden">Learn More</span>
+                          <span className="hidden md:inline">Learn More About Concrete Inspections</span>
                           <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
                         </span>
-                      </Link>
+                      {/* </Link> */}
                     </Button>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-500/5 to-slate-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Link>
               </motion.div>
             </motion.div>
 
             <div className="mt-12 flex justify-center">
               <Button
                 onClick={() => setShowQuoteModal(true)}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
               >
                 Get a Free Quote for Any Service
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </div>
           </div>
@@ -603,7 +594,7 @@ export default function Home() {
             <div className="mt-12 flex justify-center">
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
               >
                 Schedule Your Inspection
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -649,7 +640,7 @@ export default function Home() {
               </p>
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
               >
                 Check Availability in Your Area
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -698,10 +689,9 @@ export default function Home() {
               <p className="text-white/70 mb-4">Join our satisfied clients across the United States</p>
               <a
                 href="tel:5105149518"
-                className="text-xl font-bold text-white hover:text-teal-400 transition-colors flex items-center justify-center"
+                className="text-lg font-medium text-teal-400 hover:underline"
               >
-                <Phone className="h-5 w-5 mr-2 text-teal-500" />
-                Call (510) 514-9518 for a consultation
+                Call us today at (510) 514-9518 for a free consultation
               </a>
             </div>
           </div>

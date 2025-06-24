@@ -36,6 +36,8 @@ export default function ConcreteInspectionPage() {
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
   const [showReportModal, setShowReportModal] = useState(false)
+  // Hydration-safe mounted state for mobile menu
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +49,7 @@ export default function ConcreteInspectionPage() {
     }
 
     window.addEventListener("scroll", handleScroll)
+    setMounted(true)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -94,13 +97,16 @@ export default function ConcreteInspectionPage() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-2 md:px-4">
         <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
-            Non-destructive concrete inspection with Ground Penetrating Radar - Identify structural issues without
-            damage! Serving businesses nationwide.
+          <p className="text-[10px] md:text-base font-medium text-left pl-0 md:pl-0">
+            <span className="md:hidden">Save 50%+ on Roof/Concrete Inspections</span>
+            <span className="hidden md:inline">
+              Save 50%+ and get results in 48 hours instead of weeks compared to traditional roof/concrete inspections!
+              Serving businesses nationwide.
+            </span>
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
+          <a href="tel:5105149518" className="text-[10px] md:text-base text-white font-medium hover:underline whitespace-nowrap text-right ml-auto pr-0 md:pr-0">
             Call: (510) 514-9518
           </a>
         </div>
@@ -215,109 +221,116 @@ export default function ConcreteInspectionPage() {
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-white text-xl"
-            >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <Link
-            href="/"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Home
-          </Link>
-          <div className="flex flex-col space-y-2 text-center">
-            <span className="text-2xl font-medium text-white">Solutions</span>
+      {mounted && (
+        <div
+          className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
+            typeof window === "undefined"
+              ? "translate-x-full"
+              : mobileMenuOpen
+                ? "translate-x-0"
+                : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
             <Link
-              href="/solutions/roof"
-              className="text-xl font-medium text-white/60 hover:text-white transition-colors"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Roof Inspections
-            </Link>
-            <Link
-              href="/solutions/concrete"
-              className="text-xl font-medium text-teal-400"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Concrete Inspections
-            </Link>
-          </div>
-          {["benefits", "technology", "testimonials"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item}`}
+              href="/"
               className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
               onClick={() => {
                 setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto"
+                }
               }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              Home
             </Link>
-          ))}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-          >
-            Contact Us
-          </button>
-          <Link
-            href="/blogs"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Blogs
-          </Link>
-          <Link
-            href="/careers"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Careers
-          </Link>
-          <Button
-            onClick={() => setShowQuoteModal(true)}
-            className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-white">Solutions</span>
+              <Link
+                href="/solutions/roof"
+                className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto"
+                  }
+                }}
+              >
+                Roof Inspections
+              </Link>
+              <Link
+                href="/solutions/concrete"
+                className="text-xl font-medium text-teal-400"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto"
+                  }
+                }}
+              >
+                Concrete Inspections
+              </Link>
+            </div>
+            {["benefits", "technology", "testimonials"].map((item) => (
+              <Link
+                key={item}
+                href={`#${item}`}
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto"
+                  }
+                }}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+            ))}
+            <button
+              onClick={() => {
+                scrollToSection("contact")
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto"
+                }
+              }}
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            >
+              Contact Us
+            </button>
+            <Link
+              href="/blogs"
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false)
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto"
+                }
+              }}
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/careers"
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false)
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto"
+                }
+              }}
+            >
+              Careers
+            </Link>
+            <Button
+              onClick={() => setShowQuoteModal(true)}
+              className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+            >
+              Get a Quote
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -348,38 +361,35 @@ export default function ConcreteInspectionPage() {
                     <span className="mr-2 h-2 w-2 rounded-full bg-teal-500"></span>
                     Advanced Concrete Inspection Technology
                   </motion.div>
-                  <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2"
-                  >
-                    Non-Destructive Concrete Inspections with Ground Penetrating Radar
-                  </motion.h1>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                    className="max-w-[600px] text-white/70 md:text-xl"
-                  >
-                    Our advanced robotic systems use Ground Penetrating Radar to identify rebar corrosion, voids, and
-                    structural weaknesses without damaging your building. Get comprehensive structural assessments with
-                    precision data.
-                  </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                    className="flex items-center space-x-2 mt-2"
-                  >
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  className="text-2xl md:text-6xl font-bold tracking-tight text-white"
+                >
+                  Non-Destructive Concrete Inspections with Ground Penetrating Radar
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="mt-6 text-sm md:text-lg leading-6 md:leading-8 text-gray-300"
+                >
+                  Our advanced robotic systems use Ground Penetrating Radar to identify rebar corrosion, voids, and
+                  structural weaknesses without damaging your building. Get comprehensive structural assessments with
+                  precision data.
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="flex items-center space-x-2 mt-2"
+                >
                     <Phone className="h-5 w-5 text-teal-500" />
-                    <a
-                      href="tel:5105149518"
-                      className="text-xl font-bold text-white hover:text-teal-400 transition-colors"
-                    >
+                    <span className="text-base md:text-xl font-bold text-white">
                       (510) 514-9518
-                    </a>
-                  </motion.div>
+                    </span>
+                </motion.div>
                 </div>
 
                 <motion.div
@@ -390,7 +400,7 @@ export default function ConcreteInspectionPage() {
                 >
                   <Button
                     onClick={() => setShowQuoteModal(true)}
-                    className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                    className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
                   >
                     Get a Free Concrete Inspection Quote
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -398,7 +408,7 @@ export default function ConcreteInspectionPage() {
                   <Button
                     onClick={() => scrollToSection("benefits")}
                     variant="outline"
-                    className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-sm"
+                    className="border-white/30 text-white hover:text-white hover:border-white text-base md:text-lg rounded-full px-6 py-4 md:px-8 md:py-6"
                   >
                     See Benefits
                   </Button>
@@ -714,7 +724,7 @@ export default function ConcreteInspectionPage() {
             <div className="mt-12 flex justify-center">
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
               >
                 Schedule Your Inspection
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -798,10 +808,9 @@ export default function ConcreteInspectionPage() {
               <p className="text-white/70 mb-4">Join our satisfied clients across the United States</p>
               <a
                 href="tel:5105149518"
-                className="text-xl font-bold text-white hover:text-teal-400 transition-colors flex items-center justify-center"
+                className="text-lg font-medium text-teal-400 hover:underline"
               >
-                <Phone className="h-5 w-5 mr-2 text-teal-500" />
-                Call (510) 514-9518 for a consultation
+                Call us today at (510) 514-9518 for a free consultation
               </a>
             </div>
           </div>

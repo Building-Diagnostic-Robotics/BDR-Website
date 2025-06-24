@@ -48,6 +48,8 @@ export default function RoofInspectionPage() {
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
   const [showReportModal, setShowReportModal] = useState(false)
+  // Add mounted state for mobile menu rendering
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +61,8 @@ export default function RoofInspectionPage() {
     }
 
     window.addEventListener("scroll", handleScroll)
+    // Set mounted to true after mount for mobile menu transitions
+    setMounted(true)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -139,13 +143,16 @@ export default function RoofInspectionPage() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-2 md:px-4">
         <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
-            Save 50% or more and get results in 48 hours instead of weeks compared to traditional roof inspections!
-            Serving businesses nationwide.
+          <p className="text-[10px] md:text-base font-medium text-left pl-0 md:pl-0">
+            <span className="md:hidden">Save 50%+ on Roof/Concrete Inspections</span>
+            <span className="hidden md:inline">
+              Save 50%+ and get results in 48 hours instead of weeks compared to traditional roof/concrete inspections!
+              Serving businesses nationwide.
+            </span>
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
+          <a href="tel:5105149518" className="text-[10px] md:text-base text-white font-medium hover:underline whitespace-nowrap text-right ml-auto pr-0 md:pr-0">
             Call: (510) 514-9518
           </a>
         </div>
@@ -260,109 +267,116 @@ export default function RoofInspectionPage() {
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-white text-xl"
-            >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <Link
-            href="/"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Home
-          </Link>
-          <div className="flex flex-col space-y-2 text-center">
-            <span className="text-2xl font-medium text-white">Solutions</span>
+      {mounted && (
+        <div
+          className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
+            typeof window === "undefined"
+              ? "translate-x-full"
+              : mobileMenuOpen
+                ? "translate-x-0"
+                : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
             <Link
-              href="/solutions/roof"
-              className="text-xl font-medium text-teal-400"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Roof Inspections
-            </Link>
-            <Link
-              href="/solutions/concrete"
-              className="text-xl font-medium text-white/60 hover:text-white transition-colors"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Concrete Inspections
-            </Link>
-          </div>
-          {["benefits", "technology", "testimonials"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item}`}
+              href="/"
               className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
               onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
+                setMobileMenuOpen(false);
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto";
+                }
               }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              Home
             </Link>
-          ))}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-          >
-            Contact Us
-          </button>
-          <Link
-            href="/blogs"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Blogs
-          </Link>
-          <Link
-            href="/careers"
-            className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Careers
-          </Link>
-          <Button
-            onClick={() => scrollToSection("contact")}
-            className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-white">Solutions</span>
+              <Link
+                href="/solutions/roof"
+                className="text-xl font-medium text-teal-400"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto";
+                  }
+                }}
+              >
+                Roof Inspections
+              </Link>
+              <Link
+                href="/solutions/concrete"
+                className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto";
+                  }
+                }}
+              >
+                Concrete Inspections
+              </Link>
+            </div>
+            {["benefits", "technology", "testimonials"].map((item) => (
+              <Link
+                key={item}
+                href={`#${item}`}
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (typeof window !== "undefined") {
+                    document.body.style.overflow = "auto";
+                  }
+                }}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+            ))}
+            <button
+              onClick={() => {
+                scrollToSection("contact");
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto";
+                }
+              }}
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+            >
+              Contact Us
+            </button>
+            <Link
+              href="/blogs"
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto";
+                }
+              }}
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/careers"
+              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (typeof window !== "undefined") {
+                  document.body.style.overflow = "auto";
+                }
+              }}
+            >
+              Careers
+            </Link>
+            <Button
+              onClick={() => setShowQuoteModal(true)}
+              className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+            >
+              Get a Quote
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -397,7 +411,7 @@ export default function RoofInspectionPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 pb-2"
+                    className="text-2xl md:text-6xl font-bold tracking-tight text-white"
                   >
                     Revolutionary Flat Roof Inspections That Save 50%+ in Costs
                   </motion.h1>
@@ -405,7 +419,7 @@ export default function RoofInspectionPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="max-w-[600px] text-white/70 md:text-xl"
+                    className="mt-6 text-sm md:text-lg leading-6 md:leading-8 text-gray-300"
                   >
                     Our robotic inspection systems detect moisture, damage, and structural issues with 90% accuracy. Get
                     detailed 3D mapping, comprehensive reports, and prevent costly damage before it happens.
@@ -417,12 +431,9 @@ export default function RoofInspectionPage() {
                     className="flex items-center space-x-2 mt-2"
                   >
                     <Phone className="h-5 w-5 text-teal-500" />
-                    <a
-                      href="tel:5105149518"
-                      className="text-xl font-bold text-white hover:text-teal-400 transition-colors"
-                    >
+                    <span className="text-base md:text-xl font-bold text-white">
                       (510) 514-9518
-                    </a>
+                    </span>
                   </motion.div>
                 </div>
 
@@ -434,7 +445,7 @@ export default function RoofInspectionPage() {
                 >
                   <Button
                     onClick={() => setShowQuoteModal(true)}
-                    className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                    className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
                   >
                     Get a Free Roof Inspection Quote
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -442,7 +453,7 @@ export default function RoofInspectionPage() {
                   <Button
                     onClick={() => scrollToSection("benefits")}
                     variant="outline"
-                    className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-sm"
+                    className="border-white/30 text-white hover:text-white hover:border-white text-base md:text-lg rounded-full px-6 py-4 md:px-8 md:py-6"
                   >
                     See Benefits
                   </Button>
@@ -592,7 +603,7 @@ export default function RoofInspectionPage() {
                     icon: <Layers className="h-8 w-8" />,
                     title: "Roof Estimation",
                     description:
-                      "Get detailed estimates on the cost of renovating, replacing, or retrofitting your roof to improve capital efficiency by XX%",
+                      "Get detailed estimates on the cost of renovating, replacing, or retrofitting your roof to improve capital efficiency by 30%",
                     gradient: "from-cyan-500 to-teal-500",
                     phone: "(510) 514-9518",
                   },
@@ -616,7 +627,7 @@ export default function RoofInspectionPage() {
                     icon: <SquareActivityIcon className="h-8 w-8" />,
                     title: "Roof's Remaining Life Prediction",
                     description:
-                      "Understand the remaining roof life and the options to length roof life by another 20 years at XX% of the cost of replacement",
+                      "Understand the remaining roof life and the options to length roof life by another 20 years at as little as 25% of the cost of replacement",
                     gradient: "from-teal-600 to-cyan-600",
                     phone: "(510) 514-9518",
                   },
@@ -776,7 +787,7 @@ export default function RoofInspectionPage() {
             <div className="mt-12 flex justify-center">
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-6 py-4 text-base md:px-8 md:py-6 md:text-lg"
               >
                 Schedule Your Inspection
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -859,10 +870,9 @@ export default function RoofInspectionPage() {
               <p className="text-white/70 mb-4">Join our satisfied clients across the United States</p>
               <a
                 href="tel:5105149518"
-                className="text-xl font-bold text-white hover:text-teal-400 transition-colors flex items-center justify-center"
+                className="text-lg font-medium text-teal-400 hover:underline"
               >
-                <Phone className="h-5 w-5 mr-2 text-teal-500" />
-                Call (510) 514-9518 for a consultation
+                Call us today at (510) 514-9518 for a free consultation
               </a>
             </div>
           </div>

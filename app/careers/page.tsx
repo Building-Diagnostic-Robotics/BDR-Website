@@ -218,12 +218,16 @@ export default function CareersPage() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-2 px-2 md:px-4">
         <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
-            Save 50% or more compared to traditional roof inspections! Serving businesses nationwide.
+          <p className="text-[10px] md:text-base font-medium text-left pl-0 md:pl-0">
+            <span className="md:hidden">Save 50%+ on Roof/Concrete Inspections</span>
+            <span className="hidden md:inline">
+              Save 50%+ and get results in 48 hours instead of weeks compared to traditional roof/concrete inspections!
+              Serving businesses nationwide.
+            </span>
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
+          <a href="tel:5105149518" className="text-[10px] md:text-base text-white font-medium hover:underline whitespace-nowrap text-right ml-auto pr-0 md:pr-0">
             Call: (510) 514-9518
           </a>
         </div>
@@ -353,59 +357,89 @@ export default function CareersPage() {
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-white text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            {/* <a href="mailto:info@bdx-robotics.com" className="flex items-center space-x-2 text-white text-xl">
-              <Mail className="h-5 w-5" />
-              <span>info@bdx-robotics.com</span>
-            </a> */}
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-white text-xl"
-            >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
+      {(() => {
+        const [showMobileSolutions, setShowMobileSolutions] = useState(false);
+        return (
+          <div
+            className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg transform transition-transform duration-300 lg:hidden ${
+              mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
+              
+              <Link
+                href="/"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              {/* Mobile Solutions dropdown*/}
+              <div className="flex flex-col space-y-2 text-center">
+                <span className="text-2xl font-medium text-white">Solutions</span>
+                  <Link
+                  href="/solutions/roof"
+                  className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    document.body.style.overflow = "auto"
+                  }}
+                >
+                  Roof Inspections
+                </Link>
+                <Link
+                  href="/solutions/concrete"
+                  className="text-xl font-medium text-white/60 hover:text-white transition-colors"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    document.body.style.overflow = "auto"
+                  }}
+                >
+                  Concrete Inspections
+                </Link>
+            </div>
+              <a
+                href="/#contact"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us
+              </a>
+              <a
+                href="/#about"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <Link
+                href="/careers"
+                className="text-2xl font-medium text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Careers
+              </Link>
+              <Link
+                href="/blogs"
+                className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blogs
+              </Link>
+              <Button
+                onClick={() => {
+                  setShowQuoteModal(true)
+                  setMobileMenuOpen(false)
+                }}
+                className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
+              >
+                Get a Quote
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
           </div>
-
-          {["solutions", "benefits", "coverage", "technology", "about", "careers"].map((item) => (
-            <a
-              key={item}
-              href={item === "careers" ? "/careers" : `/#${item}`}
-              onClick={item !== "careers" ? () => toggleMobileMenu() : undefined}
-              className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </a>
-          ))}
-          <Link
-            href="/blogs"
-            className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-          >
-            Blogs
-            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Button
-            onClick={() => setShowQuoteModal(true)}
-            className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
-      </div>
-
+        );
+      })()}
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative w-full py-24 md:py-32 overflow-hidden">
