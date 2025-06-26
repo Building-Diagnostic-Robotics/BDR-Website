@@ -11,6 +11,13 @@
   #  to = "/index.html"
   #  status = 200
 
+  # --- Allow Netlify to serve Let's Encrypt HTTP-01 tokens ---
+[[redirects]]
+  from = "/.well-known/*"
+  to   = "/.well-known/:splat"
+  status = 200
+  force  = true
+
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
   #[dev]
