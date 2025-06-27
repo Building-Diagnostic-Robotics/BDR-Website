@@ -173,113 +173,116 @@ export default function Home() {
         </div>
       </div>
 
-      <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
-        }`}
-      >
-        <div className="container flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 z-50">
-            <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50 z-0"></div>
+      {/* Main Navbar: hide when mobileMenuOpen */}
+      {!mobileMenuOpen && (
+        <header
+          className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+            isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
+          }`}
+        >
+          <div className="container flex h-20 items-center justify-between">
+            <Link href="/" className="flex items-center space-x-2 z-50">
+              <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50 z-0"></div>
 
-              <img src="/BDR.jpg" alt="Placeholder" className="h-16 w-16 rounded-lg z-10" />
-            </div>
-          </Link>
-
-          {/* Contact Points in Header */}
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a
-              href="tel:5105149518"
-              className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
-            >
-              <MapPin className="h-4 w-4" />
-              <span>Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <nav className="hidden lg:flex items-center space-x-8">
-            {/* Solutions dropdown moved to first */}
-            <div className="relative group">
-              <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
-                Solutions
-                <ChevronDown className="ml-1 h-4 w-4" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <Link
-                  href="/solutions/roof"
-                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
-                >
-                  Roof Inspections
-                </Link>
-                <Link
-                  href="/solutions/concrete"
-                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
-                >
-                  Concrete Inspections
-                </Link>
+                <img src="/BDR.jpg" alt="Placeholder" className="h-16 w-16 rounded-lg z-10" />
               </div>
+            </Link>
+
+            {/* Contact Points in Header */}
+            <div className="hidden md:flex items-center space-x-6 text-sm">
+              <a
+                href="tel:5105149518"
+                className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                <span>(510) 514-9518</span>
+              </a>
+              <a
+                href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
+              >
+                <MapPin className="h-4 w-4" />
+                <span>Brooklyn, NY</span>
+              </a>
             </div>
-            {/* Update order: Benefits, Coverage, Testimonials, About */}
-            {["benefits", "coverage", "testimonials", "about"].map((item) => (
+
+            <nav className="hidden lg:flex items-center space-x-8">
+              {/* Solutions dropdown moved to first */}
+              <div className="relative group">
+                <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
+                  Solutions
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link
+                    href="/solutions/roof"
+                    className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
+                  >
+                    Roof Inspections
+                  </Link>
+                  <Link
+                    href="/solutions/concrete"
+                    className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
+                  >
+                    Concrete Inspections
+                  </Link>
+                </div>
+              </div>
+              {/* Update order: Benefits, Coverage, Testimonials, About */}
+              {["benefits", "coverage", "testimonials", "about"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              ))}
+              {/* Contact Us Button */}
               <button
-                key={item}
-                onClick={() => scrollToSection(item)}
+                onClick={() => scrollToSection("contact")}
                 className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                Contact Us
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
-            ))}
-            {/* Contact Us Button */}
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Contact Us
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </button>
-            <Link
-              href="/careers"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Careers
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/blogs"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Blogs
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          </nav>
+              <Link
+                href="/careers"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                Careers
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
+                href="/blogs"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                Blogs
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </nav>
 
-          <div className="flex items-center gap-4 z-50">
-            <Button
-              onClick={() => setShowQuoteModal(true)}
-              className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
-            >
-              Get a Quote
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="flex items-center gap-4 z-50">
+              <Button
+                onClick={() => setShowQuoteModal(true)}
+                className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
+              >
+                Get a Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
 
-            <button onClick={toggleMobileMenu} className="lg:hidden text-white p-2" aria-label="Toggle menu">
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+              <button onClick={toggleMobileMenu} className="lg:hidden text-white p-2" aria-label="Toggle menu">
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      )}
 
       {/* Mobile menu */}
       <div
@@ -287,7 +290,19 @@ export default function Home() {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
+        {/* Close button */}
+        <button
+          className="absolute top-4 right-4 text-white text-3xl z-50"
+          onClick={() => {
+            setMobileMenuOpen(false);
+            if (typeof window !== "undefined") {
+              document.body.style.overflow = "auto";
+            }
+          }}
+        >
+          &times;
+        </button>
+        <div className="flex flex-col items-center justify-center h-full space-y-8 px-8 pt-8 pb-8">
           <div className="flex flex-col space-y-2 text-center">
             <span className="text-2xl font-medium text-white">Solutions</span>
             <Link
@@ -328,12 +343,14 @@ export default function Home() {
             Contact Us
           </button>
           
-          <Link href="/blogs" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
-            Blogs
-          </Link>
           <Link href="/careers" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
             Careers{" "}
           </Link>
+          
+          <Link href="/blogs" className="text-2xl font-medium text-white/80 hover:text-white transition-colors">
+            Blogs
+          </Link>
+          
           <Button
             onClick={() => setShowQuoteModal(true)}
             className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg"
@@ -740,9 +757,9 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-200">
-                        25+
+                        2M+
                       </div>
-                      <div className="text-sm text-white/70">Patents</div>
+                      <div className="text-sm text-white/70">Sq. ft of Roofs Inspected</div>
                     </div>
                   </div>
                 </div>

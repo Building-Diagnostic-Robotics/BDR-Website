@@ -90,113 +90,115 @@ export default function BlogsPage() {
         </div>
       </div>
 
-      <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
-        }`}
-      >
-        <div className="container flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 z-50">
-            <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50 z-0"></div>
-              <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-            </div>
-          </Link>
-
-          {/* Contact Points in Header */}
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a
-              href="tel:5105149518"
-              className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
-            >
-              <MapPin className="h-4 w-4" />
-              <span>Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link
-              href="/"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            {/* Solutions dropdown moved to first */}
-            <div className="relative group">
-              <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
-                Solutions
-                <ChevronDown className="ml-1 h-4 w-4" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <Link
-                  href="/solutions/roof"
-                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
-                >
-                  Roof Inspections
-                </Link>
-                <Link
-                  href="/solutions/concrete"
-                  className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
-                >
-                  Concrete Inspections
-                </Link>
+      {!mobileMenuOpen && (
+        <header
+          className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+            isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
+          }`}
+        >
+          <div className="container flex h-20 items-center justify-between">
+            <Link href="/" className="flex items-center space-x-2 z-50">
+              <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg blur-lg opacity-50 z-0"></div>
+                <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
               </div>
-            </div>
-            <a
-              href="/#contact"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Contact Us
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="/#about"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              About
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <Link
-              href="/careers"
-              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
-            >
-              Careers
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link
-              href="/blogs"
-              className="relative text-sm font-medium text-white hover:text-white transition-colors group"
-            >
-              Blogs
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600"></span>
-            </Link>
-          </nav>
 
-          <div className="flex items-center gap-4 z-50">
-            <Button
-              onClick={() => setShowQuoteModal(true)}
-              className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
-            >
-              Get a Quote
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <button onClick={toggleMobileMenu} className="lg:hidden text-white p-2" aria-label="Toggle menu">
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            {/* Contact Points in Header */}
+            <div className="hidden md:flex items-center space-x-6 text-sm">
+              <a
+                href="tel:5105149518"
+                className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                <span>(510) 514-9518</span>
+              </a>
+              <a
+                href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 text-white hover:text-teal-400 transition-colors"
+              >
+                <MapPin className="h-4 w-4" />
+                <span>Brooklyn, NY</span>
+              </a>
+            </div>
+
+            <nav className="hidden lg:flex items-center space-x-8">
+              <Link
+                href="/"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                Home
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              {/* Solutions dropdown moved to first */}
+              <div className="relative group">
+                <button className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group flex items-center">
+                  Solutions
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 border border-white/10 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link
+                    href="/solutions/roof"
+                    className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-t-lg"
+                  >
+                    Roof Inspections
+                  </Link>
+                  <Link
+                    href="/solutions/concrete"
+                    className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
+                  >
+                    Concrete Inspections
+                  </Link>
+                </div>
+              </div>
+              <a
+                href="/#contact"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                Contact Us
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a
+                href="/#about"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                About
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <Link
+                href="/careers"
+                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                Careers
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
+                href="/blogs"
+                className="relative text-sm font-medium text-white hover:text-white transition-colors group"
+              >
+                Blogs
+                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-teal-500 to-cyan-600"></span>
+              </Link>
+            </nav>
+
+            <div className="flex items-center gap-4 z-50">
+              <Button
+                onClick={() => setShowQuoteModal(true)}
+                className="hidden md:flex bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full"
+              >
+                Get a Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <button onClick={toggleMobileMenu} className="lg:hidden text-white p-2" aria-label="Toggle menu">
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      )}
 
       {/* Mobile menu */}
       {(() => {
@@ -207,8 +209,18 @@ export default function BlogsPage() {
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-              
+            <div className="relative flex flex-col items-center justify-center h-full space-y-8 p-8">
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  document.body.style.overflow = "auto"
+                }}
+                className="absolute top-4 right-4 z-50 text-white bg-white/10 hover:bg-white/20 rounded-full p-2"
+                aria-label="Close menu"
+              >
+                <X className="h-6 w-6" />
+              </button>
               <Link
                 href="/"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
@@ -239,7 +251,7 @@ export default function BlogsPage() {
                 >
                   Concrete Inspections
                 </Link>
-            </div>
+              </div>
               <a
                 href="/#contact"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
