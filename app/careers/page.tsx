@@ -233,11 +233,12 @@ export default function CareersPage() {
         </div>
       </div>
 
-      <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
-        }`}
-      >
+      {!mobileMenuOpen && (
+        <header
+          className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+            isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-black/50 backdrop-blur-sm"
+          }`}
+        >
         <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 z-50">
         <div className="relative bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center w-16 h-16">
@@ -355,6 +356,7 @@ export default function CareersPage() {
           </div>
         </div>
       </header>
+      )}
 
       {/* Mobile menu */}
       {(() => {
@@ -365,8 +367,18 @@ export default function CareersPage() {
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-              
+            <div className="relative flex flex-col items-center justify-center h-full space-y-8 p-8">
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  document.body.style.overflow = "auto"
+                }}
+                className="absolute top-4 right-4 z-50 text-white bg-white/10 hover:bg-white/20 rounded-full p-2"
+                aria-label="Close menu"
+              >
+                <X className="h-6 w-6" />
+              </button>
               <Link
                 href="/"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
@@ -397,7 +409,7 @@ export default function CareersPage() {
                 >
                   Concrete Inspections
                 </Link>
-            </div>
+              </div>
               <a
                 href="/#contact"
                 className="text-2xl font-medium text-white/80 hover:text-white transition-colors"

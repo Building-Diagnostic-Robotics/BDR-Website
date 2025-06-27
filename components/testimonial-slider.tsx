@@ -8,37 +8,37 @@ const testimonials = [
   {
     quote:
       "We have more than 4,000 buildings in the city. Roofus would help us bridge the gap that our department resources can't cover.",
-    // author: "",
+    author: "Kerem Y.",
     // role: "",
   },
   {
     quote:
       "Existing technology doesn't allow my team to scan more than one building a day, and BDR's solution would allow me to do that",
-    // author: "",
+    author: "Peter B.",
     // role: "",
   },
   {
     quote:
       "This technology would allow my team to significantly cut down mobilization costs for projects in distant areas such as Puerto Rico",
-    // author: "",
+    author: "Travis L.",
     // role: "",
   },
   {
     quote:
       "So there's huge money in rebar marking... We did a dental clinic, and they needed a ton of penetrations. 5,000 square feet was like $60,000",
-    // author: "",
+    author: "Justin P.",
     // role: "",
   },
   {
     quote:
       "You know they didn't know where it was. So they started, like, chipping the concrete... they cut through the radiant floor tubing. So it started leaking... And then they called me. They're like, is there a better way to find it?",
-    // author: "",
+    author: "Valerie T.",
     // role: "",
   },
   {
     quote:
       "We have so many teams saying that they were coring at risk because they couldn't get somebody to come out and quick do a scan",
-    // author: "",
+    author: "Trevor J.",
     // role: "",
   },
 ]
@@ -96,8 +96,8 @@ export function TestimonialSlider() {
               <div className="mb-4 text-4xl text-teal-500">"</div>
               <p className="text-white/90 mb-6 italic">{testimonials[index].quote}</p>
               <div className="flex flex-col">
-                {/* <span className="font-bold">{testimonials[index].author}</span>
-                <span className="text-white/70 text-sm">{testimonials[index].role}</span> */}
+                <span className="font-bold">{testimonials[index].author}</span>
+                {/* <span className="text-white/70 text-sm">{testimonials[index].role}</span> */}
               </div>
             </motion.div>
           ))}

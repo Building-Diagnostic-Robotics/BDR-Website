@@ -8,19 +8,19 @@ const testimonials = [
   {
     quote:
       "So there's huge money in rebar marking... We did a dental clinic, and they needed a ton of penetrations. 5,000 square feet was like $60,000",
-    // author: "",
+    author: "Justin P.",
     // role: "",
   },
   {
     quote:
       "You know they didn't know where it was. So they started, like, chipping the concrete... they cut through the radiant floor tubing. So it started leaking... And then they called me. They're like, is there a better way to find it?",
-    // author: "",
+    author: "Valerie T.",
     // role: "",
   },
   {
     quote:
       "We have so many teams saying that they were coring at risk because they couldn't get somebody to come out and quick do a scan",
-    // author: "",
+    author: "Trevor J.",
     // role: "",
   },
 ]
@@ -78,8 +78,8 @@ export function ConcreteTestimonialSlider() {
               <div className="mb-4 text-4xl text-teal-500">"</div>
               <p className="text-white/90 mb-6 italic">{testimonials[index].quote}</p>
               <div className="flex flex-col">
-                {/* <span className="font-bold">{testimonials[index].author}</span>
-                <span className="text-white/70 text-sm">{testimonials[index].role}</span> */}
+                <span className="font-bold">{testimonials[index].author}</span>
+                {/* <span className="text-white/70 text-sm">{testimonials[index].role}</span> */}
                 {/* <span className="text-teal-400 text-sm">{testimonials[index].location}</span> */}
               </div>
             </motion.div>
