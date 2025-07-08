@@ -1,3 +1,4 @@
+// components/BlogPostPage.tsx
 import fs from "fs"
 import path from "path"
 import { notFound } from "next/navigation"
@@ -7,6 +8,8 @@ import Link from "next/link"
 import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
+import remarkGfm from "remark-gfm"
+import remarkBreaks from "remark-breaks"
 
 interface Props {
   category: string
@@ -28,27 +31,19 @@ interface BlogMeta {
 export default async function BlogPostPage({ category, slug }: Props) {
   console.log("BlogPostPage called with:", { category, slug })
 
-  // Try multiple possible file paths
-  const possiblePaths = [
-    path.join(process.cwd(), "app/blogs", category, slug, "post.mdx"),
-    path.join(process.cwd(), "app/blogs", category, `${slug}.mdx`),
-  ]
-
-  let filePath: string | null = null
-  let fileExists = false
-
-  for (const possiblePath of possiblePaths) {
-    console.log("Checking path:", possiblePath)
-    if (fs.existsSync(possiblePath)) {
-      filePath = possiblePath
-      fileExists = true
-      console.log("Found file at:", possiblePath)
-      break
-    }
+  // Validate parameters
+  if (!category || !slug) {
+    console.error("Missing category or slug:", { category, slug })
+    notFound()
   }
 
-  if (!fileExists || !filePath) {
-    console.log("File not found, calling notFound()")
+  // path pattern: app/blogs/{category}/{slug}/post.mdx
+  const filePath = path.join(process.cwd(), "app/blogs", category, slug, "post.mdx")
+
+  console.log("Looking for file at:", filePath)
+
+  if (!fs.existsSync(filePath)) {
+    console.log("File not found at:", filePath)
     notFound()
   }
 
@@ -57,8 +52,12 @@ export default async function BlogPostPage({ category, slug }: Props) {
     const { data, content } = matter(file)
     const frontmatter = data as BlogMeta
 
-    // Convert markdown to HTML using remark
-    const processedContent = await remark().use(html).process(content)
+    // Convert markdown to HTML using remark with plugins
+    const processedContent = await remark()
+      .use(remarkGfm) // GitHub Flavored Markdown
+      .use(remarkBreaks) // Convert line breaks to <br>
+      .use(html)
+      .process(content)
     const contentHtml = processedContent.toString()
 
     console.log("Successfully loaded post:", frontmatter.title)
@@ -91,11 +90,11 @@ export default async function BlogPostPage({ category, slug }: Props) {
             </div>
           )}
 
-          <div className="mb-6">
+          <div className="mb-8">
             <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400 mb-4">
               {category}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">{frontmatter.title}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">{frontmatter.title}</h1>
             <div className="flex items-center gap-4 text-sm text-white/60 mb-6">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
@@ -121,9 +120,25 @@ export default async function BlogPostPage({ category, slug }: Props) {
             </div>
           )}
 
-          {/* Render the HTML content */}
+          {/* Enhanced content formatting */}
           <div
-            className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-white/90 prose-a:text-teal-400 prose-strong:text-white prose-code:text-teal-400 prose-code:bg-white/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-ul:text-white/90 prose-ol:text-white/90 prose-li:text-white/90"
+            className="blog-content prose prose-invert prose-lg max-w-none
+              prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
+              prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12 prose-h1:leading-tight
+              prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10 prose-h2:leading-tight prose-h2:border-b prose-h2:border-white/20 prose-h2:pb-3
+              prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8 prose-h3:leading-tight
+              prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
+              prose-p:text-white/90 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
+              prose-ul:my-6 prose-ul:space-y-2
+              prose-ol:my-6 prose-ol:space-y-2
+              prose-li:text-white/90 prose-li:leading-relaxed prose-li:text-lg
+              prose-li:marker:text-teal-400 prose-li:marker:font-bold
+              prose-a:text-teal-400 prose-a:no-underline hover:prose-a:text-teal-300 hover:prose-a:underline
+              prose-strong:text-white prose-strong:font-semibold
+              prose-em:text-white/80 prose-em:italic
+              prose-code:text-teal-400 prose-code:bg-white/10 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
+              prose-blockquote:border-l-4 prose-blockquote:border-teal-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-white/80 prose-blockquote:bg-white/5 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:my-8
+              prose-hr:border-white/20 prose-hr:my-12"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
 

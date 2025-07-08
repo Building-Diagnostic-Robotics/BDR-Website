@@ -1,3 +1,4 @@
+// app/blogs/trends/[slug]/page.tsx
 import BlogPostPage from "@/components/BlogPostPage"
 
 interface Props {

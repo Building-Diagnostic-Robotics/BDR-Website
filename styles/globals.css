@@ -48,6 +48,7 @@ body {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -90,5 +91,138 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Blog Content Specific Styles */
+.blog-content {
+  /* Enhanced list styling */
+  ul li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  ul li::before {
+    content: "▸";
+    color: rgb(20, 184, 166);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  ol li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  /* Better spacing for nested lists */
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Enhanced heading spacing */
+  h1:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  h2:not(:first-child) {
+    margin-top: 2.5rem;
+  }
+
+  h3:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  h4:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  /* Better paragraph spacing */
+  p + p {
+    margin-top: 1.5rem;
+  }
+
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4 {
+    margin-top: 2rem;
+  }
+
+  /* Enhanced blockquote */
+  blockquote {
+    position: relative;
+    margin: 2rem 0;
+  }
+
+  blockquote::before {
+    content: '"';
+    font-size: 3rem;
+    color: rgb(20, 184, 166);
+    position: absolute;
+    left: -1rem;
+    top: -0.5rem;
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  /* Code block improvements */
+  pre {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  /* Link styling */
+  a {
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  /* Table styling */
+  table {
+    margin: 2rem 0;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  th {
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+  }
+
+  /* Image styling */
+  img {
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Horizontal rule */
+  hr {
+    margin: 3rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
   }
 }

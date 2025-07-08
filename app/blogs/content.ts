@@ -1,5 +1,6 @@
 // app/blogs/content.ts
   export const allBlogs = [
+    // Trends 
     {
       slug: "post1",
       category: "trends",
@@ -7,13 +8,52 @@
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "May 8, 2025",
-      readTime: "6 min read",
+      readTime: "9 min read",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
       image: "/blogs/trends/post1/image.png",
       excerpt:
         "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan.",
     },
-    // Add more posts here
+    {
+      slug: "post2",
+      category: "trends",
+      title: "Smart Roofing Materials: Transforming the Future of Buildings",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 9, 2025",
+      readTime: "13 min read",
+      tags: [ "Smart Materials", "Self-Healing Roofing", "Nanotechnology", "Adaptive Roofing", "Building Innovation"],
+      image: "/blogs/trends/post2/image.png",
+      excerpt:
+        "Self-healing polymers, adaptive coatings, and nanotech are revolutionizing roofing. Discover how smart materials are making buildings more resilient, efficient, and even self-aware.",
+    },
+    {
+      slug: "post3",
+      category: "trends",
+      title: "The Drone Roof Inspection Revolution: Why Drones Are Redefining Building Intelligence",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 9, 2025",
+      readTime: "16 min read",
+      tags: ["Drone Inspection", "Building Intelligence", "AI in Roofing", "Thermal Imaging", "Smart Maintenance"],
+      image: "/blogs/trends/post3/image.png",
+      excerpt:
+        "Drones are transforming roof inspections from risky manual surveys to precise, AI-powered diagnostics. Learn how platforms, sensors, and deep learning are redefining how buildings are assessed and maintained.",
+    },
+    {
+      slug: "post4",
+      category: "trends",
+      title: "Rethinking Roofs: Building Climate Resilience from the Top Down",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 10, 2025",
+      readTime: "10 min read",
+      tags: [ "Climate Resilience", "Roofing Strategy", "Building Codes", "Green Roofs", "Energy Modeling"],
+      image: "/blogs/trends/post4/image.png",
+      excerpt:
+        "Roofs are no longer just building tops—they’re climate shields. This deep dive explores how data-driven models, resilient materials, and evolving codes are transforming roofing into the first line of defense in a warming world.",
+    },
+    // Case Study
     {
       slug: "post1",
       category: "case_study",
@@ -21,12 +61,50 @@
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "April 28, 2025",
-      readTime: "9 min read",
-      tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
+      readTime: "10 min read",
+      tags: ["Water Intrusion", "Forensic Testing", "NDT", "Moisture Detection", "Building Envelopes"],
       image: "/blogs/case_study/post1/image.png",
-      excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
+      excerpt: "Behind-the-scenes water damage can silently destroy buildings. This case study explores modern tools and forensic protocols to locate, understand, and prevent hidden water intrusion.",
     },
-
+    {
+      slug: "post2",
+      category: "case_study",
+      title: "How to Make Your Roof Outlive Your Expectations: The Real Playbook for Extended Roof Life",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "May 21, 2025",
+      readTime: "8 min read",
+      tags: ["Roof Longevity", "Maintenance Strategy", "Building Owners", "Lifecycle Planning"],
+      image: "/blogs/case_study/post2/image.png",
+      excerpt: "Explore real-world lessons from buildings that pushed roof life well beyond industry expectations. Learn the key strategies that turn 20-year roofs into 30-year performers without luck or wishful thinking.",
+    },
+    {
+      slug: "post3",
+      category: "case_study",
+      title: "Solving Recurring Ponding on Roofs: What Actually Works",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 8, 2025",
+      readTime: "8 min read",
+      tags: ["Ponding", "Roof Drainage", "Tapered Insulation", "Structural Framing", "Roofing Maintenance"],
+      image: "/blogs/case_study/post3/image.png",
+      excerpt:
+        "A tactical guide to eliminating roof ponding—covering slope engineering, drainage, tapered insulation, structural framing, and smart maintenance. Learn how to fix the root cause, not the symptoms.",
+    },
+    {
+      slug: "post4",
+      category: "case_study",
+      title: "Emergency Response: Thinking in Systems, Not Just Checklists",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 8, 2025",
+      readTime: "7 min read",
+      tags: ["Emergency Planning", "Disaster Response", "System Thinking", "Roofing Failures", "Building Resilience"],
+      image: "/blogs/case_study/post4/image.png",
+      excerpt:
+        "Why most emergency response plans fail—and how to build system-level strategies that actually work. Move beyond checklists and into resilient roofing operations.",
+    },
+    // Owners
     {
       slug: "post1",
       category: "owners",
@@ -34,12 +112,48 @@
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "May 1, 2025",
-      readTime: "9 min read",
-      tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
+      readTime: "8 min read",
+      tags: ["Deferred Maintenance", "Lifecycle Costing", "Roofing ROI", "Building Owners"],
       image: "/blogs/owners/post1/image.png",
-      excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
+      excerpt: "Delaying routine maintenance seems like a cost-saving move—until it isn't. This post unpacks the true cost of deferral, from ballooning repair bills to catastrophic business interruption.",
     },
-
+    {
+      slug: "post2",
+      category: "owners",
+      title: "Think Before You Tear Off: Five Non-Negotiable Questions Before Replacing Your Commercial Roof",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "May 11, 2025",
+      readTime: "8 min read",
+      tags: ["Commercial Roofing", "Roof Replacement", "Facility Management", "Maintenance Planning"],
+      image: "/blogs/owners/post2/image.png",
+      excerpt: "Before replacing your commercial roof, ask these five strategic questions to avoid unnecessary costs, risk exposure, and premature failures.",
+    },
+    {
+      slug: "post3",
+      category: "owners",
+      title: "Understanding Your Roof Warranty: Cutting Through the Fine Print Like a Pro",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "May 15, 2025",
+      readTime: "10 min read",
+      tags: ["Roof Warranties", "Commercial Roofing", "Maintenance", "Risk Management"],
+      image: "/blogs/owners/post3/image.png",
+      excerpt: "Roof warranties aren't just paperwork—they’re legal frameworks filled with fine print that can either protect you or leave you hanging. Learn how to navigate the options, spot exclusions, and keep your warranty valid before you need it most.",
+    },
+    {
+      slug: "post4",
+      category: "owners",
+      title: "The Building Owner’s Guide to Roof Inspections: Build Discipline, Not Disaster",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "May 18, 2025",
+      readTime: "11 min read",
+      tags: ["Roof Inspections", "Preventive Maintenance", "Commercial Roofing", "Asset Management"],
+      image: "/blogs/owners/post4/image.png",
+      excerpt: "Stop managing your roof by accident. Discover how disciplined, routine inspections protect your building, boost ROI, and turn you into the kind of owner who never gets blindsided by leaks, claims, or costly emergencies.",
+    },
+    // Technology
     {
       slug: "post1",
       category: "technology",
@@ -48,9 +162,48 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 5, 2025",
       readTime: "9 min read",
-      tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
+      tags: ["TPO", "EPDM", "Roofing Science", "Membrane Chemistry", "UV Degradation"],
       image: "/blogs/technology/post1/image.png",
-      excerpt: "How predictive analytics, sensors, and machine learning are transforming commercial roof maintenance from reactive to proactive — saving cost and extending lifespan."
+      excerpt: "Explore how TPO and EPDM membranes age under real-world conditions, what drives degradation, and how chemistry and installation techniques determine long-term durability.",
+    },
+    {
+      slug: "post2",
+      category: "technology",
+      title: "Vapor Drive Simplified: How Moisture Moves and Why the Details Matter",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 8, 2025",
+      readTime: "8 min read",
+      tags: ["Vapor Drive", "Building Science", "Moisture Control", "Perm Ratings", "Wall Assemblies"],
+      image: "/blogs/technology/post2/image.png",
+      excerpt:
+        "Most people treat vapor drive as a line item. In reality, it’s the hidden force behind mold, decay, and wall failure. Learn how to predict and control it using physics, climate data, and smarter assemblies.",
+    },
+    {
+      slug: "post3",
+      category: "technology",
+      title: "The Real Game of Wind Uplift Resistance in Roofing Systems",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 8, 2025",
+      readTime: "10 min read",
+      tags: ["Wind Uplift", "Roofing Systems", "Fasteners", "FM Standards", "Structural Integrity"],
+      image: "/blogs/technology/post3/image.png",
+      excerpt:
+        "Wind uplift resistance is where theory meets the storm. Learn how standards, fasteners, substrates, and building conditions determine whether your roof holds or fails under real wind pressure.",
+    },
+    {
+      slug: "post4",
+      category: "technology",
+      title: "The Invisible Leaks: Mastering Thermal Bridging with Precision",
+      author: "Bilal S.",
+      authorRole: "Founder & CEO - BDR",
+      date: "July 9, 2025",
+      readTime: "10 min read",
+      tags: ["Thermal Bridging", "Energy Efficiency", "Infrared Thermography", "Building Science", "Roofing"],
+      image: "/blogs/technology/post4/image.png",
+      excerpt:
+        "Thermal bridging quietly sabotages building efficiency. Learn how to spot it with thermal imaging, fix it with smart design, and model your way to airtight, energy-smart buildings.",
     },
 
   ]
