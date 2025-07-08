@@ -376,59 +376,63 @@ export default function BlogsPage() {
             {filteredBlogs.length > 0 ? (
               <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {filteredBlogs.map((blog, index) => (
-                  <motion.div
+                  <Link
+                    href={`/blogs/${blog.category}/${blog.slug}`}
                     key={`${blog.category}-${blog.slug}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="group flex flex-col h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                    className="group"
                   >
-                    <div className="relative h-60 overflow-hidden">
-                      <Image
-                        src={blog.image || "/placeholder.svg?height=240&width=400"}
-                        alt={blog.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-4 left-4">
-                        <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/80 text-white backdrop-blur-sm">
-                          {blog.category}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      className="flex flex-col h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                    >
+                      <div className="relative h-60 overflow-hidden">
+                        <Image
+                          src={blog.image || "/placeholder.svg?height=240&width=400"}
+                          alt={blog.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        <div className="absolute bottom-4 left-4">
+                          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/80 text-white backdrop-blur-sm">
+                            {blog.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col flex-grow p-6">
+                        <div className="flex items-center gap-2 text-sm text-white/60 mb-3">
+                          <Calendar className="h-4 w-4" />
+                          <span>{blog.date}</span>
+                          <span className="mx-2">•</span>
+                          <Clock className="h-4 w-4" />
+                          <span>{blog.readTime}</span>
+                        </div>
+
+                        <h2 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h2>
+                        <p className="text-white/70 mb-4 line-clamp-3">{blog.excerpt}</p>
+
+                        <div className="flex items-center gap-3 mt-auto">
+                          <div className="size-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                            <User className="h-5 w-5 text-teal-400" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium">{blog.author}</p>
+                            <p className="text-xs text-white/60">{blog.authorRole}</p>
+                          </div>
+                        </div>
+
+                        <span
+                          className="mt-6 inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors"
+                        >
+                          Read Article
+                          <ChevronRight className="ml-1 h-4 w-4" />
                         </span>
                       </div>
-                    </div>
-
-                    <div className="flex flex-col flex-grow p-6">
-                      <div className="flex items-center gap-2 text-sm text-white/60 mb-3">
-                        <Calendar className="h-4 w-4" />
-                        <span>{blog.date}</span>
-                        <span className="mx-2">•</span>
-                        <Clock className="h-4 w-4" />
-                        <span>{blog.readTime}</span>
-                      </div>
-
-                      <h2 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h2>
-                      <p className="text-white/70 mb-4 line-clamp-3">{blog.excerpt}</p>
-
-                      <div className="flex items-center gap-3 mt-auto">
-                        <div className="size-10 rounded-full bg-teal-500/20 flex items-center justify-center">
-                          <User className="h-5 w-5 text-teal-400" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium">{blog.author}</p>
-                          <p className="text-xs text-white/60">{blog.authorRole}</p>
-                        </div>
-                      </div>
-
-                      <Link
-                        href={`/blogs/${blog.category}/${blog.slug}`}
-                        className="mt-6 inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors"
-                      >
-                        Read Article
-                        <ChevronRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             ) : (
