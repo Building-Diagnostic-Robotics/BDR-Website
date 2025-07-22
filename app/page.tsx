@@ -949,7 +949,7 @@ export default function Home() {
                   <p className="mt-4 text-white font-medium">Archdiocese of New York</p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 gap-y-16">
+              {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 gap-y-16">
                 <div>
                   <div className="flex items-center justify-center h-full">
                     <img src="/skanska-logo.png" alt="Skanska Logo" className="mx-auto h-48 object-contain" />
@@ -957,6 +957,13 @@ export default function Home() {
                 </div>
                 <div>
                   <img src="/dcas-logo.png" alt="DCAS Logo" className="mx-auto h-48 object-contain" />
+                </div>
+              </div> */}
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-12 gap-y-16">
+                <div>
+                  <div className="flex items-center justify-center h-full">
+                    <img src="/skanska-logo.png" alt="Skanska Logo" className="mx-auto h-24 object-contain" />
+                  </div>
                 </div>
               </div>
             </div>

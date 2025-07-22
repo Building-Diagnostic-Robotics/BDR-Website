@@ -519,7 +519,7 @@ export default function RoofInspectionPage() {
                 <div className="relative h-[400px] md:h-[400px] lg:h-[600px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-cyan-600/20 mix-blend-overlay"></div>
                   <Image
-                    src="/BDR_intro.gif?height=600&width=900"
+                    src="/BDR_intro_no_logo.gif?height=600&width=900"
                     alt="Roof inspection robot in action on a flat commercial roof"
                     fill
                     className="object-cover"

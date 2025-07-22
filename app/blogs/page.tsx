@@ -33,7 +33,9 @@ import { allBlogs } from "./content"
 const categories = ["All", "trends", "case_study", "owners", "technology"]
 
 export default function BlogsPage() {
-  const blogs = allBlogs
+  
+  // Sort blogs by date (newest first)
+  const blogs = [...allBlogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())  
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
