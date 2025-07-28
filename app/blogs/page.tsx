@@ -30,7 +30,7 @@ import { QuoteForm } from "@/components/quote-form"
 import { allBlogs } from "./content"
 
 // Categories for filtering
-const categories = ["All", "trends", "case_study", "owners", "technology"]
+const categories = ["All", "trend_tracker", "project_profiles", "owners_edge", "tech_talk"]
 
 export default function BlogsPage() {
   
@@ -361,10 +361,14 @@ export default function BlogsPage() {
                         : "bg-white/10 text-white/70 hover:bg-white/20"
                     }`}
                   >
-                    {category === "case_study"
-                      ? "Case Study"
-                      : category === "technology"
-                        ? "Technology"
+                    {category === "project_profiles"
+                      ? "Project Profiles"
+                      : category === "tech_talk"
+                        ? "Tech Talk"
+                        : category === "owners_edge"
+                        ? "Owner's Edge"
+                        : category === "trend_tracker"
+                        ? "Trend Tracker"
                         : category.charAt(0).toUpperCase() + category.slice(1)}
                   </button>
                 ))}
