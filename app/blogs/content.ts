@@ -9,6 +9,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "April 1, 2025",
       readTime: "9 min read",
+      spotifyUrl: "https://open.spotify.com/episode/7omuwjLR8wtJL7ucoZjzzs?si=ef5a1c6ccb294c70",
       tags: ["Predictive Analytics", "Smart Buildings", "Maintenance"],
       image: "/blogs/trend_tracker/post1/image.png",
       excerpt:
@@ -22,6 +23,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "April 29, 2025",
       readTime: "13 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: [ "Smart Materials", "Self-Healing Roofing", "Nanotechnology", "Adaptive Roofing", "Building Innovation"],
       image: "/blogs/trend_tracker/post2/image.png",
       excerpt:
@@ -35,6 +37,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 27, 2025",
       readTime: "16 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Drone Inspection", "Building Intelligence", "AI in Roofing", "Thermal Imaging", "Smart Maintenance"],
       image: "/blogs/trend_tracker/post3/image.png",
       excerpt:
@@ -48,6 +51,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "June 24, 2025",
       readTime: "10 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: [ "Climate Resilience", "Roofing Strategy", "Building Codes", "Green Roofs", "Energy Modeling"],
       image: "/blogs/trend_tracker/post4/image.png",
       excerpt:
@@ -62,6 +66,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "April 8, 2025",
       readTime: "10 min read",
+      spotifyUrl: "https://open.spotify.com/episode/09KWa0RVHJveOzRoFHJNPY?si=d81b4490a90c4a1e",
       tags: ["Water Intrusion", "Forensic Testing", "NDT", "Moisture Detection", "Building Envelopes"],
       image: "/blogs/project_profiles/post1/image.png",
       excerpt: "Behind-the-scenes water damage can silently destroy buildings. This case study explores modern tools and forensic protocols to locate, understand, and prevent hidden water intrusion.",
@@ -74,6 +79,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 6, 2025",
       readTime: "8 min read",
+      spotifyUrl: "https://open.spotify.com/episode/0YUmMvTT54TAbRTfut491a?si=b3a71cbd3b754294",
       tags: ["Roof Longevity", "Maintenance Strategy", "Building Owners", "Lifecycle Planning"],
       image: "/blogs/project_profiles/post2/image.png",
       excerpt: "Explore real-world lessons from buildings that pushed roof life well beyond industry expectations. Learn the key strategies that turn 20-year roofs into 30-year performers without luck or wishful thinking.",
@@ -86,6 +92,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "June 3, 2025",
       readTime: "8 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Ponding", "Roof Drainage", "Tapered Insulation", "Structural Framing", "Roofing Maintenance"],
       image: "/blogs/project_profiles/post3/image.png",
       excerpt:
@@ -99,6 +106,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "July 1, 2025",
       readTime: "7 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Emergency Planning", "Disaster Response", "System Thinking", "Roofing Failures", "Building Resilience"],
       image: "/blogs/project_profiles/post4/image.png",
       excerpt:
@@ -113,6 +121,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "April 15, 2025",
       readTime: "8 min read",
+      spotifyUrl: "https://open.spotify.com/episode/3HtFEM2oIptMY9rU7jrzVg?si=cd1f97175aae4572",
       tags: ["Deferred Maintenance", "Lifecycle Costing", "Roofing ROI", "Building Owners"],
       image: "/blogs/owners_edge/post1/image.png",
       excerpt: "Delaying routine maintenance seems like a cost-saving move—until it isn't. This post unpacks the true cost of deferral, from ballooning repair bills to catastrophic business interruption.",
@@ -125,6 +134,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 13, 2025",
       readTime: "8 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Commercial Roofing", "Roof Replacement", "Facility Management", "Maintenance Planning"],
       image: "/blogs/owners_edge/post2/image.png",
       excerpt: "Before replacing your commercial roof, ask these five strategic questions to avoid unnecessary costs, risk exposure, and premature failures.",
@@ -137,6 +147,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "June 10, 2025",
       readTime: "10 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Roof Warranties", "Commercial Roofing", "Maintenance", "Risk Management"],
       image: "/blogs/owners_edge/post3/image.png",
       excerpt: "Roof warranties aren't just paperwork—they’re legal frameworks filled with fine print that can either protect you or leave you hanging. Learn how to navigate the options, spot exclusions, and keep your warranty valid before you need it most.",
@@ -149,6 +160,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "July 8, 2025",
       readTime: "11 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Roof Inspections", "Preventive Maintenance", "Commercial Roofing", "Asset Management"],
       image: "/blogs/owners_edge/post4/image.png",
       excerpt: "Stop managing your roof by accident. Discover how disciplined, routine inspections protect your building, boost ROI, and turn you into the kind of owner who never gets blindsided by leaks, claims, or costly emergencies.",
@@ -162,6 +174,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "April 22, 2025",
       readTime: "9 min read",
+      spotifyUrl: "https://open.spotify.com/episode/3BDpaaK4i6rKF6oVz4Mk3U?si=f44434ccbd6243ce",
       tags: ["TPO", "EPDM", "Roofing Science", "Membrane Chemistry", "UV Degradation"],
       image: "/blogs/tech_talk/post1/image.png",
       excerpt: "Explore how TPO and EPDM membranes age under real-world conditions, what drives degradation, and how chemistry and installation techniques determine long-term durability.",
@@ -174,6 +187,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 20, 2025",
       readTime: "8 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Vapor Drive", "Building Science", "Moisture Control", "Perm Ratings", "Wall Assemblies"],
       image: "/blogs/tech_talk/post2/image.png",
       excerpt:
@@ -187,6 +201,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "June 17, 2025",
       readTime: "10 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Wind Uplift", "Roofing Systems", "Fasteners", "FM Standards", "Structural Integrity"],
       image: "/blogs/tech_talk/post3/image.png",
       excerpt:
@@ -200,6 +215,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "July 15, 2025",
       readTime: "10 min read",
+      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
       tags: ["Thermal Bridging", "Energy Efficiency", "Infrared Thermography", "Building Science", "Roofing"],
       image: "/blogs/tech_talk/post4/image.png",
       excerpt:

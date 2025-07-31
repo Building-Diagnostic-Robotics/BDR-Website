@@ -859,18 +859,18 @@ export default function CareersPage() {
                   </svg>
                 </a>
                 {/* Spotify */}
-                {/* <a href="#" className="text-white/70 hover:text-white">
+                <a href="https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=94f081623ab74bba" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     viewBox="0 0 168 168"
                     fill="currentColor"
-                    className="text-white"
+                    className="lucide lucide-spotify"
                   >
                     <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
                   </svg>
-                </a> */}
+                </a>
                 {/* YouTube */}
                 {/* <a href="#" className="text-white/70 hover:text-white">
                   <svg
