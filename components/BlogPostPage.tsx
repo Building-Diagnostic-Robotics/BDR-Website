@@ -4,6 +4,7 @@ import path from "path"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import { User, Calendar, Clock, ArrowLeft } from "lucide-react"
+import BlogPostToolbar from "./BlogPostToolbar"
 import Link from "next/link"
 import matter from "gray-matter"
 import { remark } from "remark"
@@ -92,20 +93,22 @@ export default async function BlogPostPage({ category, slug }: Props) {
 
           <div className="mb-8">
             <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/20 text-teal-400 mb-4">
-              {category}
+              {category === "project_profiles"
+                ? "Project Profiles"
+                : category === "tech_talk"
+                ? "Tech Talk"
+                : category === "owners_edge"
+                ? "Owner's Edge"
+                : category === "trend_tracker"
+                ? "Trend Tracker"
+                : category.charAt(0).toUpperCase() + category.slice(1)}
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">{frontmatter.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-white/60 mb-6">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>{frontmatter.date}</span>
-              </div>
-              <span>•</span>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{frontmatter.readTime}</span>
-              </div>
-            </div>
+            <BlogPostToolbar
+              date={frontmatter.date}
+              readTime={frontmatter.readTime}
+              spotifyUrl={(frontmatter as any).spotifyUrl}
+            />
           </div>
 
           {frontmatter.author && (

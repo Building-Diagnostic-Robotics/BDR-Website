@@ -383,8 +383,7 @@ export default function BlogsPage() {
             {filteredBlogs.length > 0 ? (
               <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {filteredBlogs.map((blog, index) => (
-                  <Link
-                    href={`/blogs/${blog.category}/${blog.slug}`}
+                  <div
                     key={`${blog.category}-${blog.slug}`}
                     className="group"
                   >
@@ -394,52 +393,80 @@ export default function BlogsPage() {
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       className="flex flex-col h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
                     >
-                      <div className="relative h-60 overflow-hidden">
-                        <Image
-                          src={blog.image || "/placeholder.svg?height=240&width=400"}
-                          alt={blog.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-4 left-4">
-                          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/80 text-white backdrop-blur-sm">
-                            {blog.category}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col flex-grow p-6">
-                        <div className="flex items-center gap-2 text-sm text-white/60 mb-3">
-                          <Calendar className="h-4 w-4" />
-                          <span>{blog.date}</span>
-                          <span className="mx-2">•</span>
-                          <Clock className="h-4 w-4" />
-                          <span>{blog.readTime}</span>
-                        </div>
-
-                        <h2 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h2>
-                        <p className="text-white/70 mb-4 line-clamp-3">{blog.excerpt}</p>
-
-                        <div className="flex items-center gap-3 mt-auto">
-                          <div className="size-10 rounded-full bg-teal-500/20 flex items-center justify-center">
-                            <User className="h-5 w-5 text-teal-400" />
-                          </div>
-                          <div>
-                            <p className="text-sm font-medium">{blog.author}</p>
-                            <p className="text-xs text-white/60">{blog.authorRole}</p>
+                      <Link href={`/blogs/${blog.category}/${blog.slug}`} className="block h-full">
+                        <div className="relative h-60 overflow-hidden">
+                          <Image
+                            src={blog.image || "/placeholder.svg?height=240&width=400"}
+                            alt={blog.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                          <div className="absolute bottom-4 left-4">
+                            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-teal-500/80 text-white backdrop-blur-sm">
+                              {blog.category === "project_profiles"
+                                  ? "Project Profiles"
+                                  : blog.category === "tech_talk"
+                                  ? "Tech Talk"
+                                  : blog.category === "owners_edge"
+                                  ? "Owner's Edge"
+                                  : blog.category === "trend_tracker"
+                                  ? "Trend Tracker"
+                                  : blog.category.charAt(0).toUpperCase() + blog.category.slice(1)}
+                            </span>
                           </div>
                         </div>
 
-                        <span
-                          className="mt-6 inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors"
-                        >
-                          Read Article
-                          <ChevronRight className="ml-1 h-4 w-4" />
-                        </span>
-                      </div>
+                        <div className="flex flex-col flex-grow p-6">
+                          <div className="flex items-center gap-2 text-sm text-white/60 mb-3">
+                            <Calendar className="h-4 w-4" />
+                            <span>{blog.date}</span>
+                            <span className="mx-2">•</span>
+                            <Clock className="h-4 w-4" />
+                            <span>{blog.readTime}</span>
+                          </div>
+
+                          <h2 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h2>
+                          <p className="text-white/70 mb-4 line-clamp-3">{blog.excerpt}</p>
+
+                          <div className="flex items-center gap-3 mt-auto">
+                            <div className="size-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                              <User className="h-5 w-5 text-teal-400" />
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium">{blog.author}</p>
+                              <p className="text-xs text-white/60">{blog.authorRole}</p>
+                            </div>
+                          </div>
+
+                          <div className="mt-6 flex justify-between items-center">
+                            <span className="inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors">
+                              Read Article
+                              <ChevronRight className="ml-1 h-4 w-4" />
+                            </span>
+                            {blog.spotifyUrl && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
+                                  window.open(blog.spotifyUrl, "_blank", "noopener,noreferrer");
+                                }}
+                                className="text-sm text-white/70 hover:text-green-400 flex items-center space-x-2"
+                              >
+                                <span>Listen on Spotify</span>
+                                <svg className="w-4 h-4 fill-current text-white-400" viewBox="0 0 168 168">
+                                  <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
+                                </svg>
+                               
+                  
+                    
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
                     </motion.div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             ) : (
@@ -590,18 +617,18 @@ export default function BlogsPage() {
                   </svg>
                 </a>
                 {/* Spotify */}
-                {/* <a href="#" className="text-white/70 hover:text-white">
+                <a href="https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=94f081623ab74bba" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     viewBox="0 0 168 168"
                     fill="currentColor"
-                    className="text-white"
+                    className="lucide lucide-spotify"
                   >
                     <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z"/>
                   </svg>
-                </a> */}
+                </a>
                 {/* YouTube */}
                 {/* <a href="#" className="text-white/70 hover:text-white">
                   <svg
