@@ -4,7 +4,7 @@
     {
       slug: "post1",
       category: "trend_tracker",
-      title: "Predictive Analytics in Roof Maintenance: Unlocking Smarter, Safer, and More Sustainable Buildings",
+      title: "Roof Whisperers: Predicting Problems Before They Pour",
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "April 1, 2025",
@@ -61,7 +61,7 @@
     {
       slug: "post1",
       category: "project_profiles",
-      title: "The Unseen Enemy: Mastering Hidden Water Intrusion in Buildings",
+      title: "Behind the Walls: Battling Hidden Water Intrusion",
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "April 8, 2025",
@@ -74,7 +74,7 @@
     {
       slug: "post2",
       category: "project_profiles",
-      title: "How to Make Your Roof Outlive Your Expectations: The Real Playbook for Extended Roof Life",
+      title: "Raising the Roof: Secrets to Making Your Roof Last Decades Longer",
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "May 6, 2025",
@@ -116,7 +116,7 @@
     {
       slug: "post1",
       category: "owners_edge",
-      title: "The Real Math Behind Deferred Maintenance: Why “Saving Now” Destroys Value Later",
+      title: "The Hidden Cost Bomb: Why Deferred Maintenance Isn't Saving You Money",
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "April 15, 2025",
@@ -169,7 +169,7 @@
     {
       slug: "post1",
       category: "tech_talk",
-      title: "The Science of Membrane Aging: Why Some Roofs Survive and Others Fail",
+      title: "Roof Longevity Secrets: Why Some Roofs Thrive and Others Barely Survive",
       author: "Bilal S.",
       authorRole: "Founder & CEO - BDR",
       date: "April 22, 2025",
