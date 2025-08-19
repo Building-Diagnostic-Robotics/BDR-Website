@@ -134,7 +134,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 13, 2025",
       readTime: "8 min read",
-      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
+      spotifyUrl: "https://open.spotify.com/episode/4gEccnB89xIW13bAX7t74A?si=0d84f9f963fb479b",
       tags: ["Commercial Roofing", "Roof Replacement", "Facility Management", "Maintenance Planning"],
       image: "/blogs/owners_edge/post2/image.png",
       excerpt: "Before replacing your commercial roof, ask these five strategic questions to avoid unnecessary costs, risk exposure, and premature failures.",
@@ -187,7 +187,7 @@
       authorRole: "Founder & CEO - BDR",
       date: "May 20, 2025",
       readTime: "8 min read",
-      spotifyUrl: "https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=ec74a20bcca44ac5",
+      spotifyUrl: "https://open.spotify.com/episode/6dKqpGejYVwNISmPjpoaE7?si=5cabad1ee0b24c90",
       tags: ["Vapor Drive", "Building Science", "Moisture Control", "Perm Ratings", "Wall Assemblies"],
       image: "/blogs/tech_talk/post2/image.png",
       excerpt:
