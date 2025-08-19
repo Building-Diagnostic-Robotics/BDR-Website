@@ -4,6 +4,7 @@ import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import type { Metadata } from "next"
 import { Toaster } from "react-hot-toast"
+import 'katex/dist/katex.min.css'
 
 const inter = Inter({ subsets: ["latin"] })
 
