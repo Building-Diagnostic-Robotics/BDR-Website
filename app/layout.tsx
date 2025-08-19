@@ -5,6 +5,7 @@ import { Inter } from "next/font/google"
 import type { Metadata } from "next"
 import { Toaster } from "react-hot-toast"
 import 'katex/dist/katex.min.css'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Toaster position="bottom-center" />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
       </body>
     </html>
   )
