@@ -8,9 +8,13 @@ import BlogPostToolbar from "./BlogPostToolbar"
 import Link from "next/link"
 import matter from "gray-matter"
 import { remark } from "remark"
-import html from "remark-html"
 import remarkGfm from "remark-gfm"
 import remarkBreaks from "remark-breaks"
+import remarkMath from 'remark-math'
+import remarkRehype from "remark-rehype"
+import rehypeKatex from "rehype-katex"
+import rehypeStringify from "rehype-stringify"
+import rehypeRaw from "rehype-raw"
 
 interface Props {
   category: string
@@ -53,13 +57,24 @@ export default async function BlogPostPage({ category, slug }: Props) {
     const { data, content } = matter(file)
     const frontmatter = data as BlogMeta
 
-    // Convert markdown to HTML using remark with plugins
+    // Normalize LaTeX delimiters: support \[...\] and \(...\) by converting to $$...$$ and $...$
+    const normalizedContent = content
+      // display math: \[ ... \]  ->  $$ ... $$
+      .replace(/\\\[([\s\S]*?)\\\]/g, (_match, inner) => `$$\n${inner}\n$$`)
+      // inline math: \( ... \)   ->  $ ... $
+      .replace(/\\\(([\s\S]*?)\\\)/g, (_match, inner) => `$${inner}$`)
+
+    // Convert markdown to HTML using remark + rehype with KaTeX
     const processedContent = await remark()
-      .use(remarkGfm) // GitHub Flavored Markdown
-      .use(remarkBreaks) // Convert line breaks to <br>
-      .use(html)
-      .process(content)
-    const contentHtml = processedContent.toString()
+      .use(remarkGfm)
+      .use(remarkBreaks)
+      .use(remarkMath)
+      .use(remarkRehype, { allowDangerousHtml: true }) // bridge mdast -> hast
+      .use(rehypeKatex)                                 // render LaTeX with KaTeX
+      .use(rehypeRaw)                                   // allow raw HTML in MD
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .process(normalizedContent)
+    const contentHtml = String(processedContent)
 
     console.log("Successfully loaded post:", frontmatter.title)
 
