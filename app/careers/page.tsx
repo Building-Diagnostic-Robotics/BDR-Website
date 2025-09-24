@@ -23,137 +23,18 @@ const locations = ["Brooklyn, NY", "Remote", "Chicago, IL", "Los Angeles, CA", "
 
 const jobTypes = ["Full-time", "Part-time", "Contract", "Internship"]
 
-// Dummy job listings
-const jobs = [
-  {
-    id: 1,
-    title: "Robotics Engineer",
-    department: "Engineering",
-    location: "Brooklyn, NY",
-    type: "Full-time",
-    postedDate: "2 days ago",
-    description: 
-      "Join our robotics team to develop and enhance our roof inspection robots. You'll work on mechanical design, sensor integration, and control systems.",
-    requirements: [
-      "BS/MS in Robotics, Mechanical Engineering, or related field",
-      "3+ years of experience in robotics design and development",
-      "Experience with ROS, sensor integration, and motion control",
-      "Strong programming skills in Python and C++"
-    ]
-  },
-  {
-    id: 2,
-    title: "Machine Learning Engineer",
-    department: "Data Science",
-    location: "Remote",
-    type: "Full-time",
-    postedDate: "1 week ago",
-    description: 
-      "Help us improve our AI algorithms for detecting moisture and structural issues in roofing systems using machine learning and computer vision.",
-    requirements: [
-      "MS/PhD in Computer Science, Machine Learning, or related field",
-      "3+ years of experience in machine learning and computer vision",
-      "Proficiency in PyTorch or TensorFlow",
-      "Experience with image processing and object detection algorithms"
-    ]
-  },
-  {
-    id: 3,
-    title: "Sales Representative",
-    department: "Sales",
-    location: "Chicago, IL",
-    type: "Full-time",
-    postedDate: "3 days ago",
-    description: 
-      "Drive business growth by selling our innovative roof inspection services to commercial building owners and property managers in the Midwest region.",
-    requirements: [
-      "Bachelor's degree in Business or related field",
-      "2+ years of B2B sales experience, preferably in construction or property services",
-      "Strong communication and negotiation skills",
-      "Experience with CRM systems"
-    ]
-  },
-  {
-    id: 4,
-    title: "Operations Manager",
-    department: "Operations",
-    location: "Los Angeles, CA",
-    type: "Full-time",
-    postedDate: "2 weeks ago",
-    description: 
-      "Oversee the day-to-day operations of our West Coast inspection teams, ensuring efficient scheduling, quality service delivery, and customer satisfaction.",
-    requirements: [
-      "Bachelor's degree in Business Management or related field",
-      "5+ years of operations management experience",
-      "Strong leadership and team management skills",
-      "Experience in construction, property management, or related industries"
-    ]
-  },
-  {
-    id: 5,
-    title: "Marketing Specialist",
-    department: "Marketing",
-    location: "Remote",
-    type: "Full-time",
-    postedDate: "5 days ago",
-    description: 
-      "Create and execute digital marketing strategies to increase brand awareness and generate leads for our robotic roof inspection services.",
-    requirements: [
-      "Bachelor's degree in Marketing or related field",
-      "3+ years of B2B digital marketing experience",
-      "Experience with content creation, SEO, and social media marketing",
-      "Knowledge of marketing automation and analytics tools"
-    ]
-  },
-  {
-    id: 6,
-    title: "Customer Success Manager",
-    department: "Customer Support",
-    location: "Miami, FL",
-    type: "Full-time",
-    postedDate: "1 week ago",
-    description: 
-      "Ensure our clients achieve maximum value from our roof inspection services by providing post-inspection support, report interpretation, and maintenance recommendations.",
-    requirements: [
-      "Bachelor's degree in Business or related field",
-      "3+ years of customer success or account management experience",
-      "Strong communication and problem-solving skills",
-      "Experience in construction, roofing, or property management a plus"
-    ]
-  },
-  {
-    id: 7,
-    title: "Data Analyst Intern",
-    department: "Data Science",
-    location: "Brooklyn, NY",
-    type: "Internship",
-    postedDate: "3 days ago",
-    description: 
-      "Support our data science team in analyzing roof inspection data, creating visualizations, and developing insights to improve our services.",
-    requirements: [
-      "Currently pursuing a degree in Data Science, Statistics, or related field",
-      "Strong analytical and problem-solving skills",
-      "Proficiency in Python, SQL, and data visualization tools",
-      "Familiarity with machine learning concepts"
-    ]
-  },
-  {
-    id: 8,
-    title: "Field Operations Technician",
-    department: "Operations",
-    location: "Seattle, WA",
-    type: "Full-time",
-    postedDate: "4 days ago",
-    description: 
-      "Operate our robotic inspection equipment on-site, ensuring proper data collection and preliminary analysis of roof conditions.",
-    requirements: [
-      "Associate's degree in technical field or equivalent experience",
-      "2+ years of field service or technical operations experience",
-      "Comfort with working at heights and in various weather conditions",
-      "Valid driver's license and clean driving record"
-    ]
-  },
-]
+type Job = {
+  id: number
+  title: string
+  department: string
+  location: string
+  type: string
+  postedDate: string
+  description: string
+  requirements: string[]
+}
+
+const jobs: Job[] = []
 
 export default function CareersPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -729,10 +610,13 @@ export default function CareersPage() {
                   ))
                 ) : (
                   <div className="text-center py-12 bg-white/5 border border-white/10 rounded-xl">
-                    <h3 className="text-xl font-bold mb-2">No jobs found</h3>
-                    <p className="text-white/70 mb-6">Try adjusting your search or filters to find what you're looking for.</p>
-                    <Button variant="outline" onClick={resetFilters} className="border-white/10 text-white">
-                      Reset Filters
+                    <h3 className="text-xl font-bold mb-2">No Open Roles Currently</h3>
+                    <p className="text-white/70 mb-6">We're not hiring right now, but feel free to check back later or reach out with your resume.</p>
+                    <Button asChild className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white rounded-full px-8 py-6 text-lg">
+                      <a href="mailto:info@bdx-robotics.com">
+                      Submit Your Resume
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                      </a>
                     </Button>
                   </div>
                 )}
@@ -746,7 +630,7 @@ export default function CareersPage() {
           {/* Background elements */}
           <div className="absolute inset-0 z-0 bg-gradient-to-b from-teal-950/30 to-black"></div>
 
-          <div className="container px-4 md:px-6 relative z-10">
+          {/* <div className="container px-4 md:px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-teal-500/10 to-cyan-600/10 p-1">
                 <div className="bg-black rounded-xl p-8 text-center">
@@ -770,7 +654,7 @@ export default function CareersPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </main>
 
