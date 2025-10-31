@@ -72,7 +72,7 @@ export default function RoofInspectionPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
-      <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4">
+      {/* <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4">
         <div className="container flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-xs md:text-sm font-medium text-center md:text-left">
             <strong>New Case Study:</strong> City of New York & Archdiocese—see how autonomous inspection unlocked
@@ -85,7 +85,7 @@ export default function RoofInspectionPage() {
             Read Case Study →
           </Link>
         </div>
-      </div>
+      </div> */}
 
       {!mobileMenuOpen && (
         <header
@@ -101,33 +101,9 @@ export default function RoofInspectionPage() {
               </div>
             </Link>
 
-            <div className="hidden md:flex items-center space-x-6 text-sm">
-              <a
-                href="tel:5105149518"
-                className="flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors"
-              >
-                <Phone className="h-4 w-4" />
-                <span>(510) 514-9518</span>
-              </a>
-              <a
-                href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors"
-              >
-                <MapPin className="h-4 w-4" />
-                <span>Brooklyn, NY</span>
-              </a>
-            </div>
-
+            {/* Navigation section */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <Link
-                href="/"
-                className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-              >
-                Home
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              {/* Solutions dropdown */}
               <div className="relative group">
                 <button className="relative text-sm font-medium text-gray-900 hover:text-green-600 transition-colors flex items-center">
                   Solutions
@@ -148,21 +124,39 @@ export default function RoofInspectionPage() {
                     Concrete Inspections
                   </Link>
                 </div>
-              </div>
-              <Link
-                href="/careers"
-                className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-              >
-                Careers
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link
-                href="/blogs"
-                className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-              >
-                Blogs
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+                </div>
+              {/* Channel Partners */}
+                <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  Channel Partners
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+
+                {/* About */}
+                <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  About
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+
+                {/* Resources dropdown */}
+                <div className="relative group">
+                  <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
+                    Resources
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
+                    <Link href="/blogs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
+                    <Link href="/case-studies" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
+                    <Link href="/sample-reports" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
+                    <Link href="/tech-sheets" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                  </div>
+                </div>
+
+                {/* FAQs */}
+                <Link href="/faqs" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  FAQs
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
             </nav>
 
             <div className="flex items-center gap-4 z-50">
@@ -203,6 +197,7 @@ export default function RoofInspectionPage() {
             >
               Home
             </Link>
+
             <div className="flex flex-col space-y-2 text-center">
               <span className="text-2xl font-medium text-gray-900">Solutions</span>
               <Link
@@ -226,26 +221,48 @@ export default function RoofInspectionPage() {
                 Concrete Inspections
               </Link>
             </div>
+
             <Link
-              href="/careers"
-              className="text-2xl font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              href="/partnerships/roofing"
+              className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
               onClick={() => {
                 setMobileMenuOpen(false)
                 document.body.style.overflow = "auto"
               }}
             >
-              Careers
+              Channel Partners
             </Link>
+
             <Link
-              href="/blogs"
-              className="text-2xl font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              href="/about"
+              className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
               onClick={() => {
                 setMobileMenuOpen(false)
                 document.body.style.overflow = "auto"
               }}
             >
-              Blogs
+              About
             </Link>
+
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-gray-900">Resources</span>
+              <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
+              <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
+              <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
+              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+            </div>
+
+            <Link
+              href="/faqs"
+              className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
+              onClick={() => {
+                setMobileMenuOpen(false)
+                document.body.style.overflow = "auto"
+              }}
+            >
+              FAQs
+            </Link>
+
             <Button
               onClick={() => setShowQuoteModal(true)}
               className="mt-8 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg"
@@ -258,7 +275,8 @@ export default function RoofInspectionPage() {
       )}
 
       <main className="flex-1">
-        <section className="relative w-full min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
               src="/aerial-view-of-commercial-flat-roof-inspection.jpg"
@@ -277,7 +295,7 @@ export default function RoofInspectionPage() {
               transition={{ duration: 0.5 }}
               className="max-w-4xl mx-auto text-center space-y-8"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white -mt-16 whitespace-nowrap">
                 Roof Inspection-as-a-Service
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
@@ -301,13 +319,7 @@ export default function RoofInspectionPage() {
                   Download Sample Report
                   <Download className="ml-2 h-5 w-5" />
                 </Button>
-                <Button
-                  onClick={() => scrollToSection("whitepaper")}
-                  variant="ghost"
-                  className="text-white hover:text-green-400 text-lg"
-                >
-                  Read Whitepaper →
-                </Button>
+                
               </div>
 
               <motion.div
@@ -333,6 +345,7 @@ export default function RoofInspectionPage() {
 
         <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
           <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
             <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-500/5 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-orange-500/5 blur-3xl rounded-full"></div>
           </div>
@@ -430,7 +443,7 @@ export default function RoofInspectionPage() {
                 <span className="text-gray-700">The Solution</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
-                Autonomous Roof Inspection-as-a-Service
+                Roof Inspection-as-a-Service
               </h2>
               <p className="text-xl text-gray-700">
                 <strong>Roofus</strong>, BDR's autonomous inspection platform, captures precision data across thousands
@@ -463,7 +476,7 @@ export default function RoofInspectionPage() {
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">Each inspection delivers:</h3>
+                <h3 className="text-3xl font-bold mb-6 text-gray-900">Each inspection delivers:</h3>
                 {[
                   {
                     icon: <Droplet className="h-5 w-5" />,
@@ -492,35 +505,36 @@ export default function RoofInspectionPage() {
                 ].map((deliverable, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <div className="flex-shrink-0 mt-1 text-green-600">{deliverable.icon}</div>
-                    <p className="text-gray-700">{deliverable.text}</p>
+                    <p className="text-xl text-gray-700">{deliverable.text}</p>
                   </div>
                 ))}
               </motion.div>
             </div>
-
+            
+            {/* Performance Benchmarks */}
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-gray pb-2">
+                Performance Benchmarks
+              </h3>
+            </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto"
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
             >
-              <div className="rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100/50 p-8 backdrop-blur-sm shadow-lg">
-                <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">Performance Benchmarks</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {[
-                    { label: "Turnaround", value: "< 48h" },
-                    { label: "Accuracy", value: "≥ 90%" },
-                    { label: "Coverage", value: "50K sq ft/hr" },
-                    { label: "Cost Reduction", value: "50–80%" },
-                  ].map((benchmark, index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">{benchmark.value}</div>
-                      <div className="text-sm text-gray-600">{benchmark.label}</div>
-                    </div>
-                  ))}
+              {[
+                { value: "< 48 hr", label: "Turnaround" },
+                { value: "≥ 90%", label: "Accuracy" },
+                { value: "50,000", label: "Sq ft/hr" },
+                { value: "50–80%", label: "Cost reduction vs. manual" },
+              ].map((benchmark, index) => (
+                <div key={index} className="text-center p-6 rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100/50 p-8 backdrop-blur-sm shadow-lg">
+                  <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">{benchmark.value}</div>
+                  <div className="text-gray-600">{benchmark.label}</div>
                 </div>
-              </div>
+              ))}
             </motion.div>
           </div>
         </section>
@@ -543,7 +557,9 @@ export default function RoofInspectionPage() {
                 <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
                 <span className="text-gray-700">Key Advantages</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Why Choose BDR</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Why Choose{" "} 
+                <span className="text-gray">BDR</span>
+              </h2>
               <p className="text-xl text-gray-700">
                 See the difference in our{" "}
                 <button onClick={() => setShowReportModal(true)} className="text-green-600 hover:underline font-medium">
@@ -557,13 +573,13 @@ export default function RoofInspectionPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+              className="grid md:grid-cols-1 lg:grid-cols-5 gap-3 max-w-6xl mx-auto"
             >
               {[
                 {
                   icon: <Zap className="h-8 w-8" />,
                   title: "Speed & Scale",
-                  description: "24–48 h turnaround · Up to 50 000 sq ft/hr coverage",
+                  description: "24–48 hours turnaround, Up to 50 000 sq ft/hr coverage",
                 },
                 {
                   icon: <DollarSign className="h-8 w-8" />,
@@ -578,12 +594,12 @@ export default function RoofInspectionPage() {
                 {
                   icon: <Shield className="h-8 w-8" />,
                   title: "Safety",
-                  description: "Zero nuclear gauges · Minimal on-roof labour",
+                  description: "Zero nuclear gauges,  Minimal on-roof labour",
                 },
                 {
                   icon: <Layers className="h-8 w-8" />,
                   title: "Integration-Ready",
-                  description: "AutoCAD/BIM compatible · API-enabled",
+                  description: "AutoCAD/BIM compatible, API-enabled",
                 },
               ].map((advantage, index) => (
                 <motion.div
@@ -594,8 +610,8 @@ export default function RoofInspectionPage() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-4 text-white">
                     {advantage.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{advantage.title}</h3>
-                  <p className="text-gray-600 text-sm">{advantage.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-gray">{advantage.title}</h3>
+                  <p className="text-gray-900 text-sm">{advantage.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -603,21 +619,22 @@ export default function RoofInspectionPage() {
         </section>
 
         <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
+          </div>
+
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto text-center mb-16"
+              className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Business as Usual vs BDR</h2>
-              <p className="text-xl text-gray-700">
-                Explore detailed comparisons and integration guidance in our{" "}
-                <Link href="#faq" className="text-green-600 hover:underline font-medium">
-                  FAQ →
-                </Link>
-              </p>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
+                <span className="text-green-600">BDR</span> vs <span className="text-gray">Business-as-Usual</span>
+              </h2>
             </motion.div>
 
             <motion.div
@@ -627,37 +644,56 @@ export default function RoofInspectionPage() {
               transition={{ duration: 0.5 }}
               className="max-w-6xl mx-auto overflow-x-auto"
             >
-              <div className="rounded-2xl border border-gray-200 bg-white backdrop-blur-sm overflow-hidden shadow-lg">
+              <div className="min-w-[800px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
-                      <th className="text-left p-4 font-bold text-gray-900">Category</th>
-                      <th className="text-left p-4 font-bold text-green-600">BDR Roof Inspection-as-a-Service</th>
-                      <th className="text-left p-4 font-bold text-gray-500">Business as Usual</th>
+                      <th className="text-left p-6 text-gray-700 font-medium">Category</th>
+                      <th className="text-center p-6 bg-gradient-to-r from-green-50 to-green-100">
+                        <span className="text-green-700 font-bold text-lg">BDR Roof Inspection-as-a-Service</span>
+                      </th>
+                      <th className="text-center bg-gradient-to-r from-gray-50 to-gray-200 p-6 text-gray-700 font-medium">
+                        Business as Usual
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {[
-                      { category: "Method", bdr: "Autonomous · repeatable · digital", bau: "Manual · labour-heavy" },
-                      { category: "Disruption", bdr: "Minimal · off-hours possible", bau: "High · daytime-only" },
-                      { category: "Output", bdr: "AutoCAD/BIM-ready digital reports", bau: "Mark-ups & static PDFs" },
-                      { category: "Turnaround", bdr: "24–48 hrs", bau: "Days – weeks" },
-                      { category: "Accuracy", bdr: "≥ 90 % (AI-verified)", bau: "Variable · subjective" },
-                      { category: "Cost", bdr: "$0.03 – $0.05 / sq ft", bau: "$0.05 – $0.30 / sq ft" },
-                      { category: "Safety", bdr: "Remote operation", bau: "On-roof labour" },
-                      { category: "Portfolio Insight", bdr: "Dashboards & analytics", bau: "One building at a time" },
-                      { category: "Compliance", bdr: "Defensible digital records", bau: "Inconsistent paper trail" },
+                      { category: "Method", bdr: "Autonomous · Repeatable · Digital", traditional: "Manual · Labour-heavy" },
+                      { category: "Disruption", bdr: "Minimal · Off-hours possible", traditional: "High · Intrusive site work" },
+                      { category: "Output", bdr: "AutoCAD/BIM-ready Reports", traditional: "Mark-ups & PDFs" },
+                      { category: "Turnaround", bdr: "24–48 hrs", traditional: "Days – Weeks" },
+                      { category: "Accuracy", bdr: "≥ 90% (AI-verified)", traditional: "Variable · Subjective" },
+                      { category: "Cost", bdr: "$0.03 – $0.05 / sq ft", traditional: "$0.05 – $0.30 / sq ft" },
+                      { category: "Safety", bdr: "Remote Operation", traditional: "On-roof Labour" },
+                      { category: "Portfolio Insight", bdr: "Dashboards & Analytics", traditional: "Building-by-Building" },
+                      { category: "Compliance", bdr: "Defensible Digital Record", traditional: "Inconsistent Paper Trail" },
                     ].map((row, index) => (
-                      <tr key={index} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td className="p-4 font-medium text-gray-900">{row.category}</td>
-                        <td className="p-4 text-green-600">{row.bdr}</td>
-                        <td className="p-4 text-gray-500">{row.bau}</td>
+                      <tr
+                        key={index}
+                        className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
+                      >
+                        <td className="p-6 font-medium text-gray-900">{row.category}</td>
+                        <td className="p-6 bg-gradient-to-r from-green-50/50 to-green-100/50 text-green-700 font-medium text-center">
+                          {row.bdr}
+                        </td>
+                        <td className="p-6 bg-gradient-to-r from-gray-50/50 to-gray-200/50 text-gray-700 font-medium text-center">
+                          {row.traditional}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </motion.div>
+            <div className="text-center mt-12">
+              <p className="text-lg text-gray-700">
+                Explore detailed comparisons and integration guidance in our{" "}
+                <Link href="/faqs" className="text-green-600 hover:underline font-medium">
+                  FAQ →
+                </Link>
+              </p>
+            </div>
           </div>
         </section>
 
@@ -720,7 +756,7 @@ export default function RoofInspectionPage() {
                       {useCase.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900">{useCase.title}</h3>
+                      <h3 className="text-xl font-bold mb-3 text-gray">{useCase.title}</h3>
                       <ul className="space-y-2">
                         {useCase.items.map((item, i) => (
                           <li key={i} className="flex items-start space-x-2">
@@ -738,6 +774,10 @@ export default function RoofInspectionPage() {
         </section>
 
         <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
+          </div>
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -746,7 +786,9 @@ export default function RoofInspectionPage() {
               transition={{ duration: 0.5 }}
               className="max-w-4xl mx-auto text-center mb-16"
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">The Roofus Technical Edge</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+                The <span className="text-gray">Roofus</span> Technical Edge
+              </h2>
               <p className="text-xl text-gray-700">Compact · Autonomous · Data-Secure.</p>
               <p className="text-lg text-gray-600 mt-2">
                 Built for precision, portability, and performance in roofing diagnostics.
@@ -764,8 +806,10 @@ export default function RoofInspectionPage() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
-                      <th className="text-left p-4 font-bold text-gray-900">Category</th>
-                      <th className="text-left p-4 font-bold text-gray-900">Specification</th>
+                      <th className="text-left p-6 text-gray-700 font-medium">Category</th>
+                      <th className="text-center p-6 bg-gradient-to-r from-green-50 to-green-100">
+                        <span className="text-green-700 font-bold text-lg">Specifications</span>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -789,7 +833,9 @@ export default function RoofInspectionPage() {
                     ].map((row, index) => (
                       <tr key={index} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td className="p-4 font-medium text-gray-700">{row.category}</td>
-                        <td className="p-4 text-green-600">{row.spec}</td>
+                        <td className="p-4 text-center bg-gradient-to-r from-green-50/50 to-green-100/50 text-green-700 font-medium">
+                          {row.spec}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -804,7 +850,9 @@ export default function RoofInspectionPage() {
               transition={{ duration: 0.5 }}
               className="max-w-4xl mx-auto"
             >
-              <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">Functional Highlights</h3>
+              <h3 className="text-2xl font-bold mb-6 text-center text-gray">
+                Functional Highlights
+              </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {[
                   "Portable and mailable · no special transport required.",
@@ -823,7 +871,7 @@ export default function RoofInspectionPage() {
               <div className="mt-8 text-center">
                 <Button
                   variant="outline"
-                  className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-6"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                 >
                   View Full Technical Specifications →
                   <Download className="ml-2 h-4 w-4" />
@@ -891,8 +939,8 @@ export default function RoofInspectionPage() {
                   </ul>
                 </div>
 
-                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-green-50 bg-white">
-                  Read Full Case Study →
+                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-gray bg-white">
+                  Read Full Case Study
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -928,7 +976,7 @@ export default function RoofInspectionPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-2 text-gray-900">{story.title}</h3>
-                      <p className="text-green-600 font-medium">{story.result}</p>
+                      <p className="text-gray font-medium">{story.result}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -938,7 +986,9 @@ export default function RoofInspectionPage() {
         </section>
 
         <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-          <div className="container px-4 md:px-6 relative z-10">
+          <div className="container px-4 md:px-6 inset z-10">
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/5 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-400/5 blur-3xl rounded-full"></div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -987,7 +1037,7 @@ export default function RoofInspectionPage() {
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-gray-900">{model.title}</h3>
-                  <div className="text-2xl font-bold text-green-600 mb-2">{model.price}</div>
+                  <div className="text-2xl font-bold text-gray mb-2">{model.price}</div>
                   <p className="text-gray-600 text-sm">{model.description}</p>
                 </motion.div>
               ))}
@@ -1051,7 +1101,7 @@ export default function RoofInspectionPage() {
                   variants={item}
                   className="flex items-start space-x-4 p-4 rounded-xl border border-gray-200 bg-white backdrop-blur-sm shadow-sm"
                 >
-                  <div className="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 font-bold text-white text-sm">
+                  <div className="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-gray-500 to-gray-400 font-bold text-white text-sm">
                     {index + 1}
                   </div>
                   <p className="text-lg text-gray-800">{question}</p>
@@ -1068,7 +1118,7 @@ export default function RoofInspectionPage() {
             >
               <Button
                 variant="outline"
-                className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-6"
+                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
               >
                 Download Readiness Checklist →
                 <Download className="ml-2 h-4 w-4" />
@@ -1088,6 +1138,10 @@ export default function RoofInspectionPage() {
           id="whitepaper"
           className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white"
         >
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/5 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-400/5 blur-3xl rounded-full"></div>
+          </div>
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1139,11 +1193,11 @@ export default function RoofInspectionPage() {
                     <div>
                       <p className="text-sm text-gray-600 mb-1">{resource.title}</p>
                       {resource.href ? (
-                        <Link href={resource.href} className="text-green-600 hover:underline font-medium">
+                        <Link href={resource.href} className="text-gray hover:underline font-medium whitespace-nowrap">
                           {resource.link}
                         </Link>
                       ) : (
-                        <button className="text-green-600 hover:underline font-medium">{resource.link}</button>
+                        <button className="text-gray hover:underline font-medium whitespace-nowrap">{resource.link}</button>
                       )}
                     </div>
                   </div>
@@ -1153,238 +1207,43 @@ export default function RoofInspectionPage() {
           </div>
         </section>
 
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+        <footer className="relative w-full bg-gradient-to-b from-green-50 via-green-200 to-green-400 text-gray-800 py-16">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-green-50/30 to-gray-50"></div>
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] bg-center opacity-10"></div>
           </div>
-
-          <div className="container px-4 md:px-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto text-center space-y-8"
-            >
-              <h2 className="text-4xl md:text-6xl font-bold text-gray-900">Smarter Roofs. Safer Futures.</h2>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button
-                  onClick={() => setShowQuoteModal(true)}
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg"
-                >
-                  Start My Inspection
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  variant="ghost"
-                  className="text-gray-700 hover:text-green-600 text-lg"
-                >
-                  Download Sample Report
-                  <Download className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-
-              <p className="text-gray-600">
-                Have questions? Visit our{" "}
-                <Link href="#faq" className="text-green-600 hover:underline font-medium">
-                  FAQ →
-                </Link>
-              </p>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="relative w-full border-t border-gray-200 py-12 overflow-hidden bg-white">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-green-500/5 blur-3xl rounded-full"></div>
-          <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-400/5 blur-3xl rounded-full"></div>
-        </div>
-
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <img src="/BDR.jpg" alt="BDR Logo" className="h-6 w-6 rounded-lg object-cover" />
-                <span className="font-bold text-lg text-gray-900">BDR</span>
+          <div className="container px-4 md:px-6 relative z-10 text-center space-y-8">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+              Smarter <span className="text-gray">Roofs</span>. Safer <span className="text-gray">Futures</span>.
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                onClick={() => setShowQuoteModal(true)}
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6"
+              >
+                Start My Inspection
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                onClick={() => setShowReportModal(true)}
+                variant="ghost"
+                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6"
+              >
+                Download Sample Report
+                <Download className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+            <p className="text-gray-700">
+              Have questions? Visit our{" "}
+              <Link href="#faq" className="text-green-600 hover:underline font-medium">
+                FAQ →
               </Link>
-              <p className="text-sm text-gray-600">
-                Building Diagnostic Robotics (BDR) provides advanced robotic inspection services that save clients 50%
-                or more compared to traditional methods while delivering superior accuracy.
-              </p>
-              <div className="flex space-x-4">
-                <a
-                  href="https://www.linkedin.com/company/building-diagnostic-robotics/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-linkedin"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.facebook.com/people/BDR/61575974576898/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-facebook"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.instagram.com/buildingdiagnosticrobotics?igsh=MTVkeDEyN3VtMXpqbQ=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-instagram"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                </a>
-                <a
-                  href="https://open.spotify.com/show/64ZFIlUZt4SrvRPkeX36wX?si=94f081623ab74bba"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 168 168"
-                    fill="currentColor"
-                    className="lucide lucide-spotify"
-                  >
-                    <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M121.6,121.5c-1.5,2.5-4.8,3.3-7.3,1.9 c-20-12.2-45.2-14.9-75.2-8c-2.9,0.7-5.8-1.1-6.5-4c-0.7-2.9,1.1-5.8,4-6.5c33.6-7.5,62.2-4.3,85.4,9.6 C122.2,116.1,123.1,119,121.6,121.5z M132.4,102.2c-1.8,2.9-5.6,3.9-8.5,2.1c-22.9-14.1-57.9-18.2-84.9-9.9 c-3.2,1-6.6-0.8-7.6-4.1c-1-3.2,0.8-6.6,4.1-7.6c31.8-9.8,70.4-5.3,97.8,11.2C133.3,94.9,134.2,99.3,132.4,102.2z M134.6,82.2 c-27.2-16.2-72.3-17.6-98.2-9.6c-3.7,1.2-7.7-0.9-8.9-4.6c-1.2-3.7,0.9-7.7,4.6-8.9c30.6-9.8,80.5-8.2,112.3,11.3 c3.2,1.9,4.3,6.1,2.3,9.3C144.7,83.5,138.5,84.6,134.6,82.2z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold text-gray-900">Services</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/solutions/roof" className="text-gray-600 hover:text-gray-900 text-sm">
-                    Roof Inspections
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/solutions/concrete" className="text-gray-600 hover:text-gray-900 text-sm">
-                    Concrete Inspections
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold text-gray-900">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/#about" className="text-gray-600 hover:text-gray-900 text-sm">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/careers" className="text-gray-600 hover:text-gray-900 text-sm">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blogs" className="text-gray-600 hover:text-gray-900 text-sm">
-                    Blogs
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold text-gray-900">Contact</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-green-600" />
-                  <a href="tel:5105149518" className="text-gray-600 hover:text-gray-900 text-sm">
-                    (510) 514-9518
-                  </a>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4 text-green-600" />
-                  <a href="mailto:info@bdx-robotics.com" className="text-gray-600 hover:text-gray-900 text-sm">
-                    info@bdx-robotics.com
-                  </a>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-green-600" />
-                  <a
-                    href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900 text-sm"
-                  >
-                    19 Morris Ave, Brooklyn, NY
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Building Diagnostic Robotics. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                Terms of Service
-              </Link>
-            </div>
+            <p className="text-sm text-gray-600 mt-10">
+              © {new Date().getFullYear()} Building Diagnostic Robotics. All rights reserved.
+            </p>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </main>
 
       {showQuoteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">

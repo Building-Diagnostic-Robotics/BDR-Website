@@ -1,31 +1,36 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-
+import Image from "next/image"
 import type React from "react"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import Footer from "@/components/Footer"
 import {
+  Activity,
+  AlertCircle,
   ArrowRight,
+  BarChart3,
   Building2,
   CheckCircle,
   Clock,
+  DollarSign,
   Download,
+  Droplet,
   FileText,
+  Layers,
   Mail,
   MapPin,
   Menu,
   Phone,
   Shield,
+  Target,
+  TrendingUp,
   Users,
   X,
   Zap,
-  DollarSign,
-  AlertCircle,
-  Target,
-  BarChart3,
 } from "lucide-react"
 import { ExitIntentPopup } from "@/components/exit-intent-popup"
 import { ChatBot } from "@/components/chat-bot"
@@ -169,28 +174,9 @@ export default function Home() {
                 </div>
               </Link>
 
-              {/* Contact Points in Header */}
-              <div className="hidden md:flex items-center space-x-6 text-sm">
-                <a
-                  href="tel:5105149518"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors"
-                >
-                  <Phone className="h-4 w-4" />
-                  <span>(510) 514-9518</span>
-                </a>
-                <a
-                  href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors"
-                >
-                  <MapPin className="h-4 w-4" />
-                  <span>Brooklyn, NY</span>
-                </a>
-              </div>
-
+              {/* Navigation section */}
               <nav className="hidden lg:flex items-center space-x-8">
-                {/* Solutions dropdown moved to first */}
+                {/* Solutions dropdown */}
                 <div className="relative group">
                   <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
                     Solutions
@@ -198,47 +184,41 @@ export default function Home() {
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
                   </button>
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                    <Link
-                      href="/solutions/roof"
-                      className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg"
-                    >
-                      Roof Inspections
-                    </Link>
-                    <Link
-                      href="/solutions/concrete"
-                      className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg"
-                    >
-                      Concrete Inspections
-                    </Link>
+                    <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
+                    <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link>
                   </div>
                 </div>
-                {/* Update order: Benefits, Coverage, Testimonials, About */}
-                {["results", "proof", "who-we-serve", "resources"].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-                  >
-                    {item === "results" && "Results"}
-                    {item === "proof" && "Proof"}
-                    {item === "who-we-serve" && "Who We Serve"}
-                    {item === "resources" && "Resources"}
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                  </button>
-                ))}
-                {/* Contact Us Button */}
-                <Link
-                  href="/partnerships/roofing"
-                  className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-                >
-                  Partnerships
+
+                {/* Channel Partners */}
+                <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  Channel Partners
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-                <Link
-                  href="/blogs"
-                  className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-                >
-                  Blogs
+
+                {/* About */}
+                <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  About
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+
+                {/* Resources dropdown */}
+                <div className="relative group">
+                  <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
+                    Resources
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
+                    <Link href="/blogs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
+                    <Link href="/case-studies" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
+                    <Link href="/sample-reports" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
+                    <Link href="/tech-sheets" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                  </div>
+                </div>
+
+                {/* FAQs */}
+                <Link href="/faqs" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+                  FAQs
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               </nav>
@@ -279,155 +259,80 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center h-full space-y-8 px-8 pt-8 pb-8">
             <div className="flex flex-col space-y-2 text-center">
               <span className="text-2xl font-medium text-gray-900">Solutions</span>
-              <Link
-                href="/solutions/roof"
-                className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  document.body.style.overflow = "auto"
-                }}
-              >
-                Roof Inspections
-              </Link>
-              <Link
-                href="/solutions/concrete"
-                className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  document.body.style.overflow = "auto"
-                }}
-              >
-                Concrete Inspections
-              </Link>
+              <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
+              <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link>
             </div>
 
-            {["results", "proof", "who-we-serve", "resources"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-              >
-                {item === "results" && "Results"}
-                {item === "proof" && "Proof"}
-                {item === "who-we-serve" && "Who We Serve"}
-                {item === "resources" && "Resources"}
-              </button>
-            ))}
+            <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
 
-            <Link
-              href="/partnerships/roofing"
-              className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Partnerships{" "}
-            </Link>
+            <Link href="/about" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>About</Link>
 
-            <Link
-              href="/blogs"
-              className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                document.body.style.overflow = "auto"
-              }}
-            >
-              Blogs
-            </Link>
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-gray-900">Resources</span>
+              <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
+              <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
+              <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
+              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+            </div>
 
-            <Button
-              onClick={() => setShowQuoteModal(true)}
-              className="mt-8 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg"
-            >
+            <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
+
+            <Button onClick={() => setShowQuoteModal(true)} className="mt-8 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg">
               Start My Inspection
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
-
+            
         <main className="flex-1">
-          <section className="relative w-full min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+          {/* Hero Section */}
+          <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
             <div className="absolute inset-0 z-0">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-green-50 to-gray-50"></div>
-              <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-green-500/10 blur-3xl rounded-full"></div>
-              <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-green-600/10 blur-3xl rounded-full"></div>
-              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-
-              {/* Placeholder for aerial roof image */}
-              <div className="absolute inset-0 opacity-10">
-                <img
-                  src="/aerial-roof-inspection.jpg"
-                  alt="Aerial roof inspection"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Image
+                src="/aerial-roof-inspection.jpg"
+                alt="Aerial roof inspection"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             <div className="container px-4 md:px-6 z-10">
-              <div className="flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="space-y-6"
-                >
-                  <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-gray-900">
-                    Inspections to Impact.
-                  </h1>
-                  <p className="text-xl md:text-2xl text-gray-800 max-w-3xl mx-auto leading-relaxed">
-                    The new standard for roof diagnostics — fast, autonomous, and disruption-free.
-                  </p>
-                  <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                    Digital inspection data that delivers measurable results in cost, time, and risk.
-                  </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="max-w-4xl mx-auto text-center space-y-10"
+              >
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white -mt-16">
+                  Inspections to Impact
+                </h1>
+                <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+                  The new standard for roof diagnostics — fast, autonomous, and disruption-free.
+                </p>
+                <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+                  Digital inspection data that delivers measurable results in cost, time, and risk.
+                </p>
 
-                  {/* Metrics Overlay */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                    className="flex flex-wrap justify-center gap-6 mt-8"
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button
+                    onClick={() => setShowQuoteModal(true)}
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg"
                   >
-                    <div className="px-6 py-3 rounded-full border border-gray-200 bg-white backdrop-blur-sm shadow-sm">
-                      <span className="text-2xl font-bold text-green-600">50–80%</span>
-                      <span className="text-gray-600 ml-2">Lower Cost</span>
-                    </div>
-                    <div className="px-6 py-3 rounded-full border border-gray-200 bg-white backdrop-blur-sm shadow-sm">
-                      <span className="text-2xl font-bold text-green-600">&lt; 48h</span>
-                      <span className="text-gray-600 ml-2">Turnaround</span>
-                    </div>
-                    <div className="px-6 py-3 rounded-full border border-gray-200 bg-white backdrop-blur-sm shadow-sm">
-                      <span className="text-2xl font-bold text-green-600">90%+</span>
-                      <span className="text-gray-600 ml-2">Accuracy</span>
-                    </div>
-                  </motion.div>
-
-                  {/* CTAs */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
+                    Start My Inspection
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button
+                    onClick={() => setShowReportModal(true)}
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-gray/20 rounded-full px-8 py-6 text-lg transition-colors duration-300"
                   >
-                    <Button
-                      onClick={() => setShowQuoteModal(true)}
-                      className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg shadow-lg"
-                    >
-                      Start My Inspection Journey
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button
-                      onClick={() => setShowReportModal(true)}
-                      variant="outline"
-                      className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-6 text-lg"
-                    >
-                      View Sample Report
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </motion.div>
-                </motion.div>
-              </div>
+                    View Sample Report
+                    <Download className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </motion.div>
             </div>
           </section>
 
@@ -445,7 +350,8 @@ export default function Home() {
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  Roof Inspections Haven't Changed in Decades — Until Now.
+                  Roof Inspections Haven't Changed in Decades -{" "}
+                  <span className="text-green-600">Until Now.</span>
                 </h2>
                 <p className="max-w-3xl text-gray-600 text-lg md:text-xl leading-relaxed">
                   Most portfolios still rely on manual surveys that are slow, inconsistent, and costly to repeat. This
@@ -498,7 +404,7 @@ export default function Home() {
                 <Button
                   onClick={() => setShowReportModal(true)}
                   variant="outline"
-                  className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-4"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                 >
                   See How Automation Changes the Economics
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -508,7 +414,7 @@ export default function Home() {
           </section>
 
           <section
-            id="proof"
+            id="Solution"
             className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white"
           >
             <div className="absolute inset-0 z-0">
@@ -524,15 +430,19 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
-                <div className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-sm shadow-sm">
+                <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm backdrop-blur-sm mb-4">
                   <span className="mr-2 h-2 w-2 rounded-full bg-green-600"></span>
-                  The BDR Solution
+                  <span className="text-gray-700">The BDR Solution</span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  Roof Inspection-as-a-Service — Faster, Safer, Fully Digital.
+                  Roof Inspection-as-a-Service:
+                </h2>
+                
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-green-600 pb-2">
+                  Faster, Safer, Fully Digital
                 </h2>
                 <p className="max-w-4xl text-gray-600 text-lg md:text-xl leading-relaxed">
-                  BDR's Roofus platform uses ground-penetrating radar, LiDAR, and thermal imaging to capture millions of
+                  BDR's <strong>Roofus</strong> platform uses ground-penetrating radar, LiDAR, and thermal imaging to capture millions of
                   data points per scan — producing AI-verified reports within 48 hours.
                 </p>
               </motion.div>
@@ -545,22 +455,38 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">Each inspection delivers:</h3>
-                  <ul className="space-y-4">
-                    {[
-                      "Moisture & Thermal Maps",
-                      "AutoCAD / BIM-ready Roof Plans",
-                      "Remaining Service Life Estimate (RSLE)",
-                      "Repair Scope & Cost Summary (RSC)",
-                      "Warranty Compliance Log",
-                      "Optional Portfolio Dashboard",
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 text-lg">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 className="text-3xl font-bold text-gray-900">Each inspection delivers:</h3>
+                  {[
+                  {
+                    icon: <Droplet className="h-5 w-5" />,
+                    text: "Moisture & Thermal Maps",
+                  },
+                  {
+                    icon: <Layers className="h-5 w-5" />,
+                    text: "3D / AutoCAD Roof Plans",
+                  },
+                  {
+                    icon: <Activity className="h-5 w-5" />,
+                    text: "Remaining Service Life Estimate (RSLE)",
+                  },
+                  {
+                    icon: <FileText className="h-5 w-5" />,
+                    text: "Repair Scope & Cost Summary (RSC)",
+                  },
+                  {
+                    icon: <CheckCircle className="h-5 w-5" />,
+                    text: "Warranty Compliance Log",
+                  },
+                  {
+                    icon: <TrendingUp className="h-5 w-5" />,
+                    text: "Optional Portfolio Dashboard",
+                  },
+                ].map((deliverable, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 mt-1 text-green-600">{deliverable.icon}</div>
+                    <p className="text-xl text-gray-700">{deliverable.text}</p>
+                  </div>
+                ))}
                 </motion.div>
 
                 <motion.div
@@ -581,7 +507,12 @@ export default function Home() {
                 </motion.div>
               </div>
 
-              {/* Performance Benchmarks */}
+             {/* Performance Benchmarks */}
+              <div className="text-center mb-12">
+                <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-gray pb-2">
+                  Performance Benchmarks
+                </h3>
+              </div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -590,12 +521,12 @@ export default function Home() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
               >
                 {[
-                  { value: "< 48 hr", label: "turnaround" },
-                  { value: "≥ 90%", label: "accuracy" },
-                  { value: "50,000", label: "sq ft/hr" },
-                  { value: "50–80%", label: "lower cost" },
+                  { value: "< 48 hr", label: "Turnaround" },
+                  { value: "≥ 90%", label: "Accuracy" },
+                  { value: "50,000", label: "Sq ft/hr" },
+                  { value: "50–80%", label: "Lower cost" },
                 ].map((benchmark, index) => (
-                  <div key={index} className="text-center p-6 rounded-xl border border-gray-200 bg-white shadow-sm">
+                  <div key={index} className="text-center p-6 rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100/50 p-8 backdrop-blur-sm shadow-lg">
                     <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">{benchmark.value}</div>
                     <div className="text-gray-600">{benchmark.label}</div>
                   </div>
@@ -613,12 +544,80 @@ export default function Home() {
                 <Button
                   onClick={() => setShowReportModal(true)}
                   variant="outline"
-                  className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-4"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                 >
                   Download Example Report
                   <Download className="ml-2 h-4 w-4" />
                 </Button>
               </div>
+            </div>
+          </section>
+
+          <section
+            id="who-we-serve"
+            className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white"
+          >
+            <div className="absolute inset-0 z-0">
+              <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+              <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
+            </div>
+
+            <div className="container px-4 md:px-6 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
+              >
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">Who It's For</h2>
+                <p className="max-w-3xl text-gray-600 text-lg">
+                  Designed for every flat roof typology — from malls and schools to warehouses, big-box retail, and industrial sites.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto"
+              >
+                {[
+                  {
+                    icon: <Building2 className="h-10 w-10" />,
+                    title: "Portfolio Owners & Operators",
+                    description: "Benchmark, prioritize, and plan at scale.",
+                  },
+                  {
+                    icon: <Users className="h-10 w-10" />,
+                    title: "Contractors & Consultants",
+                    description: "Deliver faster, safer, data-driven bids.",
+                  },
+                  {
+                    icon: <Shield className="h-10 w-10" />,
+                    title: "Insurers & Adjusters",
+                    description: "Access defensible, standardized documentation.",
+                  },
+                  {
+                    icon: <BarChart3 className="h-10 w-10" />,
+                    title: "Channel Partners",
+                    description: "Embed BDR diagnostics into warranty or maintenance programs.",
+                  },
+                ].map((audience, index) => (
+                  <motion.div
+                    key={index}
+                    variants={item}
+                    className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
+                      {audience.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-600">{audience.title}</h3>
+                    <p className="text-gray-600">{audience.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </section>
 
@@ -636,7 +635,9 @@ export default function Home() {
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  Measurable Results, Every Time.
+                  Measurable{" "}
+                  <span className="text-green-600">Results,</span>{" "} 
+                  Every Time.
                 </h2>
                 <p className="max-w-3xl text-gray-600 text-lg">
                   Results verified through live pilots with Bauder, Amrize, and the City of New York.
@@ -690,8 +691,8 @@ export default function Home() {
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-4 text-white">
                       {result.icon}
                     </div>
-                    <div className="text-2xl font-bold text-green-600 mb-1">{result.metric}</div>
-                    <div className="text-lg font-semibold mb-2 text-gray-900">{result.description}</div>
+                    <div className="text-2xl font-bold text-gray mb-1">{result.metric}</div>
+                    <div className="text-lg mb-2 text-gray-900">{result.description}</div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -713,7 +714,9 @@ export default function Home() {
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  The Contrast: BDR vs Business-as-Usual
+                  The Contrast:{" "} 
+                  <span className="text-green-600">BDR</span>{" "} vs {" "}
+                  <span className="text-gray">Business-as-Usual</span>
                 </h2>
                 <p className="max-w-3xl text-gray-600 text-lg">
                   See how our Inspection-as-a-Service model compares to traditional methods.
@@ -732,10 +735,10 @@ export default function Home() {
                     <thead>
                       <tr className="border-b border-gray-200 bg-gray-50">
                         <th className="text-left p-6 text-gray-700 font-medium">Category</th>
-                        <th className="text-left p-6 bg-gradient-to-r from-green-50 to-green-100">
+                        <th className="text-center p-6 bg-gradient-to-r from-green-50 to-green-100">
                           <span className="text-green-700 font-bold text-lg">BDR Roof Inspection-as-a-Service</span>
                         </th>
-                        <th className="text-left p-6 text-gray-700 font-medium">Business as Usual</th>
+                        <th className="text-center bg-gradient-to-r from-gray-50 to-gray-200 p-6 text-gray-700 font-medium">Business as Usual</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -771,10 +774,12 @@ export default function Home() {
                           className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
                         >
                           <td className="p-6 font-medium text-gray-900">{row.category}</td>
-                          <td className="p-6 bg-gradient-to-r from-green-50/50 to-green-100/50 text-green-700 font-medium">
+                          <td className="p-6 bg-gradient-to-r from-green-50/50 to-green-100/50 text-green-700 font-medium text-center">
                             {row.bdr}
                           </td>
-                          <td className="p-6 text-gray-600">{row.traditional}</td>
+                          <td className="p-6 bg-gradient-to-r from-gray-50/50 to-gray-200/50 text-gray-700 font-medium text-center">
+                            {row.traditional}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -787,7 +792,7 @@ export default function Home() {
                 <Button
                   onClick={() => setShowReportModal(true)}
                   variant="outline"
-                  className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-4"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                 >
                   View Detailed Comparison
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -798,7 +803,7 @@ export default function Home() {
 
           <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
             <div className="absolute inset-0 z-0">
-              <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-teal-500/10 blur-3xl rounded-full"></div>
+              <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
             </div>
 
             <div className="container px-4 md:px-6 relative z-10">
@@ -814,66 +819,84 @@ export default function Home() {
                   Case Studies
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  Trusted by Leaders Modernizing Roof Management.
+                  Trusted by{" "} 
+                  <span className="text-gray">Leaders</span>{" "}
+                  Modernizing Roof Management.
                 </h2>
               </motion.div>
 
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
-                >
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-gray-900">City of New York & Archdiocese of New York</h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                      Autonomous inspections across <span className="text-green-600 font-semibold">2M+ sq ft</span>{" "}
-                      delivered verified moisture maps and warranty-ready reports within 48 hours — uncovering hidden
-                      leaks before handover and reducing inspection costs by{" "}
-                      <span className="text-green-600 font-semibold">70%</span>.
-                    </p>
-                    <Button
-                      onClick={() => setShowReportModal(true)}
-                      variant="ghost"
-                      className="text-green-600 hover:text-green-700 px-0"
-                    >
-                      Read Case Study
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-                </motion.div>
+                {/* Left column: stacked case study cards */}
+                <div className="space-y-8">
+                  {/* City of New York card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
+                  >
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold text-gray-900">City of New York & Archdiocese of New York</h3>
+                      <p className="text-gray-600 text-lg leading-relaxed">
+                        Autonomous inspections across <span className="text-gray-500 font-bold">2M+ sq ft</span>{" "}
+                        delivered verified moisture maps and warranty-ready reports within 48 hours — uncovering hidden
+                        leaks before handover and reducing inspection costs by{" "}
+                        <span className="text-gray-500 font-bold">70%</span>.
+                      </p>
+                      <Button
+                        onClick={() => setShowReportModal(true)}
+                        variant="ghost"
+                        className="text-green-600 hover:text-green-700 px-0"
+                      >
+                        Read Case Study
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="space-y-6"
-                >
-                  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  {/* Amrize card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                  >
                     <h4 className="text-xl font-bold mb-2 text-gray-900">Amrize Warranty Intelligence Pilot</h4>
                     <p className="text-gray-600">
-                      <span className="text-green-600 font-semibold">&gt; 90%</span> data correlation achieved
+                      <span className="text-gray-500 font-bold">&gt; 90%</span> data correlation achieved
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  {/* Bauder card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                  >
                     <h4 className="text-xl font-bold mb-2 text-gray-900">Bauder UK Localization</h4>
                     <p className="text-gray-600">
-                      <span className="text-green-600 font-semibold">2× coverage speed</span>, 0 radiation risk
+                      <span className="text-gray-500 font-bold">2× coverage speed</span>, 0 radiation risk
                     </p>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Right column: Case Study GIF */}
+                <div className="relative flex items-center justify-center border border-gray-200 bg-gray-50 rounded-2xl shadow-md overflow-hidden h-[500px] mt-12">
+                  <img
+                    src="/BDR_intro_no_logo.gif"
+                    alt="BDR Intro Animation"
+                    className="object-cover w-full h-full rounded-2xl"
+                  />
+                </div>
               </div>
             </div>
           </section>
 
-          <section
-            id="who-we-serve"
-            className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white"
-          >
+          <section id="resources" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
             <div className="absolute inset-0 z-0">
               <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
               <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
@@ -887,73 +910,9 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">Who We Serve</h2>
-                <p className="max-w-3xl text-gray-600 text-lg">
-                  Our inspection solutions are designed for professionals who demand accuracy, speed, and defensible
-                  data.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto"
-              >
-                {[
-                  {
-                    icon: <Building2 className="h-10 w-10" />,
-                    title: "Portfolio Owners & Operators",
-                    description: "Benchmark, prioritize, and plan at scale.",
-                  },
-                  {
-                    icon: <Users className="h-10 w-10" />,
-                    title: "Contractors & Consultants",
-                    description: "Deliver faster, safer, data-driven bids.",
-                  },
-                  {
-                    icon: <Shield className="h-10 w-10" />,
-                    title: "Insurers & Adjusters",
-                    description: "Access defensible, standardized documentation.",
-                  },
-                  {
-                    icon: <BarChart3 className="h-10 w-10" />,
-                    title: "Channel Partners",
-                    description: "Embed BDR diagnostics into warranty or maintenance programs.",
-                  },
-                ].map((audience, index) => (
-                  <motion.div
-                    key={index}
-                    variants={item}
-                    className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
-                      {audience.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">{audience.title}</h3>
-                    <p className="text-gray-600">{audience.description}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-
-          <section id="resources" className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
-            <div className="absolute inset-0 z-0">
-              <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
-            </div>
-
-            <div className="container px-4 md:px-6 relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
-              >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  Proof, Not Promises.
+                  <span className="text-gray">Proof,</span>{" "} 
+                  Not Promises.
                 </h2>
                 <p className="max-w-3xl text-gray-600 text-lg">
                   Access our library of technical resources, case studies, and example deliverables.
@@ -996,8 +955,8 @@ export default function Home() {
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
                       {resource.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">{resource.title}</h3>
-                    <p className="text-gray-600 mb-4">{resource.subtitle}</p>
+                    <h3 className="text-xl font-bold mb-2 text-gray">{resource.title}</h3>
+                    <p className="text-gray-900 mb-4">{resource.subtitle}</p>
                     <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
                       <span className="mr-2">{resource.cta}</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
@@ -1008,9 +967,9 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+          <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
             <div className="absolute inset-0 z-0">
-              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
+              {/* <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div> */}
               <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
             </div>
 
@@ -1045,7 +1004,7 @@ export default function Home() {
                     },
                   ].map((step, index) => (
                     <div key={index} className="relative">
-                      <div className="text-6xl font-bold text-green-500/70 mb-4">{step.number}</div>
+                      <div className="text-6xl font-bold text-gray-500/70 mb-4">{step.number}</div>
                       <h3 className="text-xl font-bold mb-2 text-gray-900">{step.title}</h3>
                       <p className="text-gray-600">{step.description}</p>
                     </div>
@@ -1063,7 +1022,7 @@ export default function Home() {
                   <Button
                     onClick={() => setShowReportModal(true)}
                     variant="outline"
-                    className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-6 text-lg"
+                    className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
                   >
                     Download Sample Report
                     <Download className="ml-2 h-5 w-5" />
@@ -1081,127 +1040,7 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="relative w-full border-t border-gray-200 py-12 overflow-hidden bg-white">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-green-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
-          </div>
-
-          <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              <div className="space-y-4">
-                <Link href="/" className="flex items-center space-x-2">
-                  <img src="/BDR.jpg" alt="BDR Logo" className="h-6 w-6 rounded-lg object-cover" />
-                  <span className="font-bold text-lg text-gray-900">BDR</span>
-                </Link>
-                <p className="text-sm text-gray-600">Smarter Buildings. Safer Futures.</p>
-                <p className="text-sm text-gray-600">BDR | Inspection-as-a-Service for the Built World</p>
-                <div className="flex space-x-4">
-                  {/* Linkedin */}
-                  <a
-                    href="https://www.linkedin.com/company/building-diagnostic-robotics/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-linkedin"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Services</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/solutions/roof" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Roof Inspections
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/solutions/concrete" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Concrete Inspections
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Company</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/careers" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Careers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blogs" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Blogs
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Contact</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <Phone className="h-4 w-4 text-green-600" />
-                    <a href="tel:5105149518" className="text-gray-600 hover:text-gray-900 text-sm">
-                      (510) 514-9518
-                    </a>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Mail className="h-4 w-4 text-green-600" />
-                    <a href="mailto:info@bdx-robotics.com" className="text-gray-600 hover:text-gray-900 text-sm">
-                      info@bdx-robotics.com
-                    </a>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <MapPin className="h-4 w-4 text-green-600" />
-                    <a
-                      href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-900 text-sm"
-                    >
-                      19 Morris Ave, Brooklyn, NY
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-500">© {new Date().getFullYear()} BDR Inc. All rights reserved.</p>
-              <div className="flex gap-6">
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                  Privacy Policy
-                </Link>
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                  Terms
-                </Link>
-                <button onClick={() => setShowQuoteModal(true)} className="text-sm text-gray-500 hover:text-gray-900">
-                  Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Exit Intent Popup */}
         {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
@@ -1227,7 +1066,7 @@ export default function Home() {
         {showReportModal && <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />}
 
         {/* Chat Bot */}
-        <ChatBot />
+        {/* <ChatBot /> */}
       </div>
     </>
   )
