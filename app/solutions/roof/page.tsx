@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { QuoteForm } from "@/components/quote-form"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import Footer from "@/components/Footer"
 import {
   ArrowRight,
   CheckCircle,
@@ -28,6 +29,7 @@ import {
   Building2,
   Droplet,
   Activity,
+  AlertCircle,
 } from "lucide-react"
 import SampleReportModal from "@/components/sample-report-modal"
 import { RoofCustomerTypeModal } from "@/components/roof-customer-type-modal"
@@ -346,8 +348,6 @@ export default function RoofInspectionPage() {
         <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
           <div className="absolute inset-0 z-0">
             <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-500/5 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-orange-500/5 blur-3xl rounded-full"></div>
           </div>
 
           <div className="container px-4 md:px-6 relative z-10">
@@ -356,17 +356,16 @@ export default function RoofInspectionPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-4xl mx-auto text-center mb-16"
+              className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
             >
-              <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm backdrop-blur-sm mb-4">
-                <AlertTriangle className="mr-2 h-4 w-4 text-orange-500" />
-                <span className="text-gray-700">The Challenge</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Why Roofs Still Fail</h2>
-              <p className="text-xl text-gray-700 mb-4">
-                Even the most advanced roofing systems can fail when inspections lag or data stays siloed.
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
+                Roof Inspections Haven't Changed in Decades -{" "}
+                <span className="text-green-600">Until Now.</span>
+              </h2>
+              <p className="max-w-3xl text-gray-600 text-lg md:text-xl leading-relaxed">
+                Most portfolios still rely on manual surveys that are slow, inconsistent, and costly to repeat. This
+                gap between inspection and insight drives warranty disputes, reactive repairs, and capital waste.
               </p>
-              <p className="text-lg text-gray-600">Across portfolios, the same issues repeat:</p>
             </motion.div>
 
             <motion.div
@@ -374,37 +373,38 @@ export default function RoofInspectionPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+              className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
             >
               {[
                 {
                   icon: <Clock className="h-8 w-8" />,
-                  title: "Manual moisture surveys take weeks and disrupt operations.",
+                  title: "Weeks of Delay",
+                  description:
+                    "Manual data collection creates bottlenecks that slow down decision-making and increase costs.",
                 },
                 {
-                  icon: <Activity className="h-8 w-8" />,
-                  title: "Inconsistent or subjective results make warranty verification difficult.",
+                  icon: <AlertCircle className="h-8 w-8" />,
+                  title: "Subjective Results",
+                  description:
+                    "Inconsistent findings that can't support warranty or insurance claims, leading to disputes.",
                 },
                 {
-                  icon: <AlertTriangle className="h-8 w-8" />,
-                  title: "Safety risks restrict access and increase labour cost.",
+                  icon: <DollarSign className="h-8 w-8" />,
+                  title: "Labour-Heavy Workflows",
+                  description:
+                    "Traditional methods inflate OPEX and limit your ability to scale inspections across portfolios.",
                 },
-                {
-                  icon: <TrendingUp className="h-8 w-8" />,
-                  title: "Reactive inspections drive unplanned CAPEX and missed ESG targets.",
-                },
-              ].map((challenge, index) => (
+              ].map((pain, index) => (
                 <motion.div
                   key={index}
                   variants={item}
-                  className="relative overflow-hidden rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-orange-50 p-6 backdrop-blur-sm"
+                  className="group relative overflow-hidden rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100 p-8 shadow-sm"
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-red-100 to-orange-100 text-red-600">
-                      {challenge.icon}
-                    </div>
-                    <p className="text-gray-800">{challenge.title}</p>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500/20 to-green-600/20 mb-6 border border-green-300">
+                    {pain.icon}
                   </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900">{pain.title}</h3>
+                  <p className="text-gray-600">{pain.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -416,10 +416,13 @@ export default function RoofInspectionPage() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-center mt-12"
             >
-              <p className="text-xl text-gray-700 font-medium">
-                The outcome:{" "}
-                <span className="text-red-600">high lifecycle cost, limited visibility, and preventable failures.</span>
-              </p>
+              <Button
+                onClick={() => setShowReportModal(true)}
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+              >
+                See How Automation Changes the Economics
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -558,7 +561,7 @@ export default function RoofInspectionPage() {
                 <span className="text-gray-700">Key Advantages</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Why Choose{" "} 
-                <span className="text-gray">BDR</span>
+                <span className="text-green-600">BDR</span>
               </h2>
               <p className="text-xl text-gray-700">
                 See the difference in our{" "}
@@ -787,7 +790,7 @@ export default function RoofInspectionPage() {
               className="max-w-4xl mx-auto text-center mb-16"
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
-                The <span className="text-gray">Roofus</span> Technical Edge
+                The <span className="text-green-600">Roofus</span> Technical Edge
               </h2>
               <p className="text-xl text-gray-700">Compact · Autonomous · Data-Secure.</p>
               <p className="text-lg text-gray-600 mt-2">
@@ -870,8 +873,7 @@ export default function RoofInspectionPage() {
 
               <div className="mt-8 text-center">
                 <Button
-                  variant="outline"
-                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
                 >
                   View Full Technical Specifications →
                   <Download className="ml-2 h-4 w-4" />
@@ -1053,7 +1055,7 @@ export default function RoofInspectionPage() {
               <p className="text-gray-700 mb-4">Request a custom proposal or rate card</p>
               <Button
                 onClick={() => setShowQuoteModal(true)}
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6"
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
               >
                 Contact BDR
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -1117,17 +1119,17 @@ export default function RoofInspectionPage() {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Button
-                variant="outline"
-                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
               >
-                Download Readiness Checklist →
+                Download Readiness Checklist
                 <Download className="ml-2 h-4 w-4" />
               </Button>
               <Button
+                variant="outline"
                 onClick={() => setShowQuoteModal(true)}
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6"
+                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
               >
-                Take Quick Assessment →
+                Take Quick Assessment
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
@@ -1204,46 +1206,16 @@ export default function RoofInspectionPage() {
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </section>
-
-        <footer className="relative w-full bg-gradient-to-b from-green-50 via-green-200 to-green-400 text-gray-800 py-16">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] bg-center opacity-10"></div>
-          </div>
-          <div className="container px-4 md:px-6 relative z-10 text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
-              Smarter <span className="text-gray">Roofs</span>. Safer <span className="text-gray">Futures</span>.
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                onClick={() => setShowQuoteModal(true)}
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6"
-              >
-                Start My Inspection
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                onClick={() => setShowReportModal(true)}
-                variant="ghost"
-                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6"
-              >
-                Download Sample Report
-                <Download className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
-            <p className="text-gray-700">
+            <p className="mt-8 text-center text-gray-500">
               Have questions? Visit our{" "}
-              <Link href="#faq" className="text-green-600 hover:underline font-medium">
+              <Link href="#faq" className="text-green-600 hover:underline font-medium ">
                 FAQ →
               </Link>
             </p>
-            <p className="text-sm text-gray-600 mt-10">
-              © {new Date().getFullYear()} Building Diagnostic Robotics. All rights reserved.
-            </p>
           </div>
-        </footer>
+        </section>
       </main>
+      <Footer />
 
       {showQuoteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">

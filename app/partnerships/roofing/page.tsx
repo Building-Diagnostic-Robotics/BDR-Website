@@ -3,7 +3,8 @@ import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Building2, CheckCircle, FileText, Mail, MapPin, Menu, Phone, X, Zap } from "lucide-react"
+import { ArrowRight, Building2, CheckCircle, FileText, Mail, MapPin, Menu, Phone, X, Zap, ChevronDown } from "lucide-react"
+import Footer from "@/components/Footer"
 
 export default function PartnershipsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -65,61 +66,47 @@ export default function PartnershipsPage() {
             </div>
           </Link>
 
-          {/* Contact Points in Header */}
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a
-              href="tel:5105149518"
-              className="flex items-center space-x-1 text-gray-700 hover:text-[#1f8a46] transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-gray-700 hover:text-[#1f8a46] transition-colors"
-            >
-              <MapPin className="h-4 w-4" />
-              <span>Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link
-              href="/"
-              className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full"></span>
+          <nav className="hidden lg:flex items-center space-x-8 ml-12">
+            {/* Solutions dropdown */}
+            <div className="relative group">
+              <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
+                Solutions
+                <ChevronDown className="ml-1 h-4 w-4" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
+                <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
+                <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link>
+              </div>
+            </div>
+            {/* Channel Partners active */}
+            <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-900 transition-colors">
+              Channel Partners
+              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600" />
             </Link>
-            <Link
-              href="/solutions/roof"
-              className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-            >
-              Roof Inspections
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full"></span>
+            {/* About */}
+            <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+              About
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
             </Link>
-            <Link
-              href="/partnerships/roofing"
-              className="relative text-sm font-medium text-gray-900 transition-colors group"
-            >
-              Partnerships
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600"></span>
-            </Link>
-            <Link
-              href="/careers"
-              className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-            >
-              Careers
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/blogs"
-              className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
-            >
-              Blogs
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full"></span>
+            {/* Resources dropdown */}
+            <div className="relative group">
+              <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
+                Resources
+                <ChevronDown className="ml-1 h-4 w-4" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
+                <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
+                <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Case Studies</Link>
+                <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Sample Reports</Link>
+                <Link href="/tech-sheets" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+              </div>
+            </div>
+            {/* FAQs */}
+            <Link href="/faqs" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
+              FAQs
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
             </Link>
           </nav>
 
@@ -146,79 +133,29 @@ export default function PartnershipsPage() {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <div className="flex flex-col items-center space-y-4 mb-8">
-            <a href="tel:5105149518" className="flex items-center space-x-2 text-gray-900 text-xl">
-              <Phone className="h-5 w-5" />
-              <span>(510) 514-9518</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-900 text-xl"
+          {/* Solutions Group */}
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-gray-900">Solutions</span>
+              <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
+              <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link>
+            </div>
+            <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-900" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
+            <Link href="/about" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>About</Link>
+            <div className="flex flex-col space-y-2 text-center">
+              <span className="text-2xl font-medium text-gray-900">Resources</span>
+              <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
+              <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
+              <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
+              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+            </div>
+            <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="mt-8 bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
             >
-              <MapPin className="h-5 w-5" />
-              <span>19 Morris Ave, Brooklyn, NY</span>
-            </a>
-          </div>
-
-          <Link
-            href="/"
-            className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Home
-          </Link>
-          <Link
-            href="/solutions/roof"
-            className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Roof Inspections
-          </Link>
-          <Link
-            href="/partnerships/roofing"
-            className="text-2xl font-medium text-gray-900 transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Partnerships
-          </Link>
-          <Link
-            href="/blogs"
-            className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Blogs
-          </Link>
-          <Link
-            href="/careers"
-            className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            Careers
-          </Link>
-          <Button
-            onClick={() => scrollToSection("contact")}
-            className="mt-8 bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
-          >
-            Become a Partner
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+              Become a Partner
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
         </div>
       </div>
 
@@ -241,7 +178,7 @@ export default function PartnershipsPage() {
                 className="space-y-6"
               >
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Channel Partner Program — Roof Inspection-as-a-Service
+                  Channel Partner Program
                 </h1>
                 <p className="max-w-[800px] text-gray-600 md:text-xl/relaxed">
                   Deliver faster, smarter, and more profitable roof inspections — together.
@@ -271,7 +208,7 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Who It's For Section */}
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -294,7 +231,7 @@ export default function PartnershipsPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+              className="flex flex-wrap justify-center gap-8"
             >
               {[
                 {
@@ -326,12 +263,12 @@ export default function PartnershipsPage() {
                 <motion.div
                   key={index}
                   variants={item}
-                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 w-full md:w-1/2 lg:w-1/3 max-w-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#1f8a46] to-green-600 text-white mb-6">
                     {audience.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{audience.title}</h3>
+                  <h3 className="text-xl text-gray font-bold mb-3">{audience.title}</h3>
                   <p className="text-gray-600">{audience.description}</p>
                 </motion.div>
               ))}
@@ -340,7 +277,7 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Why Partner Section */}
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
           <div className="absolute inset-0 z-0">
             <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-[#1f8a46]/10 blur-3xl rounded-full"></div>
             <div className="absolute bottom-1/4 right-0 w-1/4 h-1/4 bg-green-500/10 blur-3xl rounded-full"></div>
@@ -427,7 +364,7 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Partner Packages Section */}
-        <section id="packages" className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+        <section id="packages" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -531,7 +468,11 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Revenue Opportunities Section */}
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-[#1f8a46]/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-1/4 right-0 w-1/4 h-1/4 bg-green-500/10 blur-3xl rounded-full"></div>
+          </div>
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -612,7 +553,7 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Enablement & Support Section */}
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -680,25 +621,34 @@ export default function PartnershipsPage() {
                 transition={{ delay: 0.6, duration: 0.5 }}
                 className="pt-6 text-center"
               >
+                {/* Centered sentence */}
                 <p className="text-gray-600">
-                  Access proof tools and technical downloads in our Partner Resources:{" "}
+                  Access proof tools and technical downloads in our Partner Resources:
+                </p>
+
+                {/* CTAs on next line, centered with spacing */}
+                <div className="mt-3 flex flex-wrap justify-center gap-10">
                   <a href="#" className="text-[#1f8a46] hover:underline font-medium">
                     Whitepaper →
-                  </a>{" "}
+                  </a>
                   <a href="#" className="text-[#1f8a46] hover:underline font-medium">
                     Case Study →
-                  </a>{" "}
+                  </a>
                   <a href="#" className="text-[#1f8a46] hover:underline font-medium">
                     Example Reports →
                   </a>
-                </p>
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* Partner Journey Section */}
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-[#1f8a46]/10 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-1/4 right-0 w-1/4 h-1/4 bg-green-500/10 blur-3xl rounded-full"></div>
+          </div>
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -760,7 +710,7 @@ export default function PartnershipsPage() {
         </section>
 
         {/* Next Step / CTA Section */}
-        <section id="contact" className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+        <section id="contact" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -771,7 +721,7 @@ export default function PartnershipsPage() {
             >
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Next Step</h2>
-                <p className="text-gray-600 md:text-xl/relaxed">Ready to grow with BDR?</p>
+                <p className="text-gray-600 md:text-xl/relaxed pt-4">Ready to grow with BDR?</p>
                 <p className="text-gray-600 md:text-lg/relaxed">
                   Book a 30-minute meeting to explore which Partner Package best fits your roofing business.
                 </p>
@@ -784,7 +734,7 @@ export default function PartnershipsPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-gray-300 bg-white text-gray-900 hover:bg-gray-50 rounded-full px-8 py-6 text-lg"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
                 >
                   Download Program Overview (PDF)
                   <FileText className="ml-2 h-5 w-5" />
@@ -793,144 +743,9 @@ export default function PartnershipsPage() {
             </motion.div>
           </div>
         </section>
-
-        {/* Proof Band */}
-        <section className="relative w-full py-12 bg-gradient-to-r from-[#1f8a46] to-green-600 text-white">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-              <div className="flex items-center gap-2">
-                <Zap className="h-6 w-6" />
-                <span className="text-lg font-bold">Powered by Roofus</span>
-              </div>
-              <span className="hidden md:inline">—</span>
-              <p className="text-sm opacity-90">The Industry's Most Advanced Roof Inspection Platform</p>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* Footer */}
-      <footer className="relative w-full border-t border-gray-200 py-12 overflow-hidden bg-white">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-green-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-green-600/10 blur-3xl rounded-full"></div>
-          </div>
-
-          <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              <div className="space-y-4">
-                <Link href="/" className="flex items-center space-x-2">
-                  <img src="/BDR.jpg" alt="BDR Logo" className="h-6 w-6 rounded-lg object-cover" />
-                  <span className="font-bold text-lg text-gray-900">BDR</span>
-                </Link>
-                <p className="text-sm text-gray-600">Smarter Buildings. Safer Futures.</p>
-                <p className="text-sm text-gray-600">BDR | Inspection-as-a-Service for the Built World</p>
-                <div className="flex space-x-4">
-                  {/* Linkedin */}
-                  <a
-                    href="https://www.linkedin.com/company/building-diagnostic-robotics/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-linkedin"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Services</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/solutions/roof" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Roof Inspections
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/solutions/concrete" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Concrete Inspections
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Company</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/careers" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Careers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blogs" className="text-gray-600 hover:text-gray-900 text-sm">
-                      Blogs
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-gray-900">Contact</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <Phone className="h-4 w-4 text-green-600" />
-                    <a href="tel:5105149518" className="text-gray-600 hover:text-gray-900 text-sm">
-                      (510) 514-9518
-                    </a>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Mail className="h-4 w-4 text-green-600" />
-                    <a href="mailto:info@bdx-robotics.com" className="text-gray-600 hover:text-gray-900 text-sm">
-                      info@bdx-robotics.com
-                    </a>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <MapPin className="h-4 w-4 text-green-600" />
-                    <a
-                      href="https://maps.google.com/?q=19+Morris+Ave,+Brooklyn,+NY+11205"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-900 text-sm"
-                    >
-                      19 Morris Ave, Brooklyn, NY
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-500">© {new Date().getFullYear()} BDR Inc. All rights reserved.</p>
-              <div className="flex gap-6">
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                  Privacy Policy
-                </Link>
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
-                  Terms
-                </Link>
-                {/* <button onClick={() => setShowQuoteModal(true)} className="text-sm text-gray-500 hover:text-gray-900">
-                  Contact
-                </button> */}
-              </div>
-            </div>
-          </div>
-        </footer>
+      <Footer />
     </div>
   )
 }

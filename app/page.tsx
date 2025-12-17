@@ -175,7 +175,7 @@ export default function Home() {
               </Link>
 
               {/* Navigation section */}
-              <nav className="hidden lg:flex items-center space-x-8">
+              <nav className="hidden lg:flex items-center space-x-8 ml-24">
                 {/* Solutions dropdown */}
                 <div className="relative group">
                   <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
@@ -389,9 +389,9 @@ export default function Home() {
                   <motion.div
                     key={index}
                     variants={item}
-                    className="group relative overflow-hidden rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-orange-50 p-8 shadow-sm"
+                    className="group relative overflow-hidden rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100 p-8 shadow-sm"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 mb-6 border border-red-300">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500/20 to-green-600/20 mb-6 border border-green-300">
                       {pain.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-gray-900">{pain.title}</h3>
@@ -403,8 +403,7 @@ export default function Home() {
               <div className="mt-12 text-center">
                 <Button
                   onClick={() => setShowReportModal(true)}
-                  variant="outline"
-                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
                 >
                   See How Automation Changes the Economics
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -613,7 +612,7 @@ export default function Home() {
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
                       {audience.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-600">{audience.title}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-gray">{audience.title}</h3>
                     <p className="text-gray-600">{audience.description}</p>
                   </motion.div>
                 ))}
@@ -791,8 +790,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4">Compare full specs and workflow details in our FAQ</p>
                 <Button
                   onClick={() => setShowReportModal(true)}
-                  variant="outline"
-                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
                 >
                   View Detailed Comparison
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -820,7 +818,7 @@ export default function Home() {
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
                   Trusted by{" "} 
-                  <span className="text-gray">Leaders</span>{" "}
+                  <span className="text-green-600">Leaders</span>{" "}
                   Modernizing Roof Management.
                 </h2>
               </motion.div>
@@ -911,7 +909,7 @@ export default function Home() {
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
               >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
-                  <span className="text-gray">Proof,</span>{" "} 
+                  <span className="text-green-600">Proof,</span>{" "} 
                   Not Promises.
                 </h2>
                 <p className="max-w-3xl text-gray-600 text-lg">
@@ -1029,10 +1027,10 @@ export default function Home() {
                   </Button>
                 </div>
 
-                <p className="text-sm text-gray-500 mt-8">
+                <p className="text-gray-500 mt-8">
                   Not sure where to begin?{" "}
                   <button onClick={() => setShowReportModal(true)} className="text-green-600 hover:underline">
-                    Download our Readiness Checklist
+                    Download our Readiness Checklist →
                   </button>
                 </p>
               </motion.div>
