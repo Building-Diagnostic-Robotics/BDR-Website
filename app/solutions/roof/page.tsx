@@ -119,12 +119,12 @@ export default function RoofInspectionPage() {
                   >
                     Roof Inspections
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/solutions/concrete"
                     className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg"
                   >
                     Concrete Inspections
-                  </Link>
+                  </Link> */}
                 </div>
                 </div>
               {/* Channel Partners */}
@@ -212,7 +212,7 @@ export default function RoofInspectionPage() {
               >
                 Roof Inspections
               </Link>
-              <Link
+              {/* <Link
                 href="/solutions/concrete"
                 className="text-xl font-medium text-gray-500 hover:text-gray-900 transition-colors"
                 onClick={() => {
@@ -221,7 +221,7 @@ export default function RoofInspectionPage() {
                 }}
               >
                 Concrete Inspections
-              </Link>
+              </Link> */}
             </div>
 
             <Link
@@ -313,14 +313,15 @@ export default function RoofInspectionPage() {
                   Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg"
-                >
-                  Download Sample Report
-                  <Download className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/sample-reports">
+                  <Button
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg"
+                  >
+                    View Sample Reports
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
                 
               </div>
 
@@ -464,7 +465,7 @@ export default function RoofInspectionPage() {
               >
                 <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
                   <Image
-                    src="/robotic-roof-inspection-technology.jpg"
+                    src="/roofus1.jpg"
                     alt="Roofus autonomous inspection platform"
                     fill
                     className="object-cover"
@@ -565,9 +566,9 @@ export default function RoofInspectionPage() {
               </h2>
               <p className="text-xl text-gray-700">
                 See the difference in our{" "}
-                <button onClick={() => setShowReportModal(true)} className="text-green-600 hover:underline font-medium">
-                  Example Reports →
-                </button>
+                <Link href="/sample-reports" className="text-green-600 hover:underline font-medium">
+                  Sample Reports →
+                </Link>
               </p>
             </motion.div>
 
@@ -693,7 +694,7 @@ export default function RoofInspectionPage() {
               <p className="text-lg text-gray-700">
                 Explore detailed comparisons and integration guidance in our{" "}
                 <Link href="/faqs" className="text-green-600 hover:underline font-medium">
-                  FAQ →
+                  FAQs →
                 </Link>
               </p>
             </div>
@@ -872,12 +873,14 @@ export default function RoofInspectionPage() {
               </div>
 
               <div className="mt-8 text-center">
-                <Button
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
-                >
-                  View Full Technical Specifications →
-                  <Download className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/sample-reports">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
+                  >
+                    View Full Technical Specifications
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -940,11 +943,12 @@ export default function RoofInspectionPage() {
                     ))}
                   </ul>
                 </div>
-
-                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-gray bg-white">
-                  Read Full Case Study
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/case-studies/">
+                  <Button variant="outline" className="border-green-300 text-green-700 hover:bg-gray bg-white">
+                    Read Full Case Study
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
 
@@ -1208,8 +1212,8 @@ export default function RoofInspectionPage() {
             </motion.div>
             <p className="mt-8 text-center text-gray-500">
               Have questions? Visit our{" "}
-              <Link href="#faq" className="text-green-600 hover:underline font-medium ">
-                FAQ →
+              <Link href="/faqs" className="text-green-600 hover:underline font-medium ">
+                FAQs →
               </Link>
             </p>
           </div>

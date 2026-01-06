@@ -234,7 +234,7 @@ export default function FAQsPage() {
                 </button>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
                   <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                  <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link>
+                  {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
                 </div>
               </div>
 
@@ -310,7 +310,7 @@ export default function FAQsPage() {
             <nav className="flex flex-col p-6 space-y-4">
               <span className="text-xs uppercase text-gray-500 tracking-wider">Solutions</span>
               <Link href="/solutions/roof" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Roof Inspections</Link>
-              <Link href="/solutions/concrete" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Concrete Inspections</Link>
+              {/* <Link href="/solutions/concrete" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Concrete Inspections</Link> */}
               <span className="text-xs uppercase text-gray-500 tracking-wider mt-4">Company</span>
               <Link href="/partnerships/roofing" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Channel Partners</Link>
               <Link href="/about" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>About</Link>

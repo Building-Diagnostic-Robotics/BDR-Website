@@ -45,16 +45,23 @@ export default function PartnershipsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-50 to-white text-gray-900">
       {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-[#1f8a46] to-green-600 text-white py-2 px-4">
-        <div className="container flex justify-between items-center">
-          <p className="text-sm md:text-base font-medium">
+      <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4">
+        <div className="container flex flex-col md:flex-row justify-between items-center gap-2">
+          <p className="text-xs md:text-sm font-medium text-center md:text-left">
             Download our Whitepaper: The Future of Roof Inspection Technology
           </p>
-          <a href="tel:5105149518" className="text-white font-bold hover:underline whitespace-nowrap">
-            Call: (510) 514-9518
+          
+          <a href="/sample-report.pdf" download>
+            <Button
+              variant="ghost"
+              className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
+            >
+              Download Now <ArrowRight className="ml-2 h-3 w-3" />
+            </Button>
           </a>
+          
         </div>
-      </div>
+        </div>
 
       {/* Header */}
       <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -76,7 +83,7 @@ export default function PartnershipsPage() {
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
                 <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link>
+                {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
               </div>
             </div>
             {/* Channel Partners active */}
@@ -137,7 +144,7 @@ export default function PartnershipsPage() {
             <div className="flex flex-col space-y-2 text-center">
               <span className="text-2xl font-medium text-gray-900">Solutions</span>
               <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
-              <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link>
+              {/* <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link> */}
             </div>
             <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-900" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
             <Link href="/about" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>About</Link>
@@ -195,13 +202,14 @@ export default function PartnershipsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
-                >
-                  Book a Meeting to Learn More
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="https://app.usemotion.com/meet/bilal-is/1psfn3c" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
+                  >
+                    Book a Meeting to Learn More
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -354,7 +362,7 @@ export default function PartnershipsPage() {
               >
                 <p className="text-gray-600">
                   See how Roofus transformed portfolio inspections in our{" "}
-                  <a href="#" className="text-[#1f8a46] hover:underline font-medium">
+                  <a href="/case-studies/" className="text-[#1f8a46] hover:underline font-medium">
                     City of New York & Archdiocese Case Study →
                   </a>
                 </p>
@@ -628,14 +636,14 @@ export default function PartnershipsPage() {
 
                 {/* CTAs on next line, centered with spacing */}
                 <div className="mt-3 flex flex-wrap justify-center gap-10">
-                  <a href="#" className="text-[#1f8a46] hover:underline font-medium">
+                  <a href="/sample-report.pdf" download className="text-[#1f8a46] hover:underline font-medium">
                     Whitepaper →
                   </a>
-                  <a href="#" className="text-[#1f8a46] hover:underline font-medium">
+                  <a href="/case-studies/" className="text-[#1f8a46] hover:underline font-medium">
                     Case Study →
                   </a>
-                  <a href="#" className="text-[#1f8a46] hover:underline font-medium">
-                    Example Reports →
+                  <a href="/sample-reports/" className="text-[#1f8a46] hover:underline font-medium">
+                    Sample Reports →
                   </a>
                 </div>
               </motion.div>
@@ -728,17 +736,21 @@ export default function PartnershipsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg">
-                  Book a Meeting
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
-                >
-                  Download Program Overview (PDF)
-                  <FileText className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="https://app.usemotion.com/meet/bilal-is/1psfn3c" target="_blank" rel="noopener noreferrer">
+                  <Button className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg">
+                    Book a Meeting
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <a href="/sample-report.pdf" download>
+                  <Button
+                    variant="outline"
+                    className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
+                  >
+                    Download Program Overview (PDF)
+                    <FileText className="ml-2 h-5 w-5" />
+                  </Button>
+                </a>
               </div>
             </motion.div>
           </div>

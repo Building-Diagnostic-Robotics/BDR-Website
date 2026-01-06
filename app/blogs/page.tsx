@@ -149,12 +149,12 @@ export default function BlogsPage() {
                   >
                     Roof Inspections
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/solutions/concrete"
                     className="block px-4 py-3 text-white hover:text-teal-400 hover:bg-white/5 transition-colors rounded-b-lg"
                   >
                     Concrete Inspections
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
               <a
@@ -244,7 +244,7 @@ export default function BlogsPage() {
                 >
                   Roof Inspections
                 </Link>
-                <Link
+                {/* <Link
                   href="/solutions/concrete"
                   className="text-xl font-medium text-white/60 hover:text-white transition-colors"
                   onClick={() => {
@@ -253,7 +253,7 @@ export default function BlogsPage() {
                   }}
                 >
                   Concrete Inspections
-                </Link>
+                </Link> */}
               </div>
               <a
                 href="/#contact"
@@ -657,11 +657,11 @@ export default function BlogsPage() {
                     Roof Inspections
                   </Link>
                 </li>
-                <li>
-                  <Link href="/solutions/concrete" className="text-white/70 hover:text-white text-sm">
+                {/* <li>
+                  {/* <Link href="/solutions/concrete" className="text-white/70 hover:text-white text-sm">
                     Concrete Inspections
-                  </Link>
-                </li>
+                  </Link
+                </li> */}
               </ul>
             </div>
 

@@ -185,7 +185,7 @@ export default function Home() {
                   </button>
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
                     <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                    <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link>
+                    {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
                   </div>
                 </div>
 
@@ -260,7 +260,7 @@ export default function Home() {
             <div className="flex flex-col space-y-2 text-center">
               <span className="text-2xl font-medium text-gray-900">Solutions</span>
               <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
-              <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link>
+              {/* <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link> */}
             </div>
 
             <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
@@ -323,14 +323,15 @@ export default function Home() {
                     Start My Inspection
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <Button
-                    onClick={() => setShowReportModal(true)}
-                    variant="outline"
-                    className="border-white/30 text-white hover:bg-gray/20 rounded-full px-8 py-6 text-lg transition-colors duration-300"
-                  >
-                    View Sample Report
-                    <Download className="ml-2 h-5 w-5" />
-                  </Button>
+                  <Link href="/sample-reports">
+                    <Button
+                      variant="outline"
+                      className="border-white/30 text-white hover:bg-gray/20 rounded-full px-8 py-6 text-lg transition-colors duration-300"
+                    >
+                      View Sample Reports
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             </div>
@@ -497,7 +498,7 @@ export default function Home() {
                 >
                   <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 shadow-2xl">
                     <img
-                      src="/robotic-roof-inspection-technology.jpg"
+                      src="/roofus1.jpg"
                       alt="BDR Roofus platform in action"
                       className="w-full h-full object-cover"
                     />
@@ -540,14 +541,15 @@ export default function Home() {
                   View Full Technical Specifications
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  variant="outline"
-                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
-                >
-                  Download Example Report
-                  <Download className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/sample-reports">
+                  <Button
+                    variant="outline"
+                    className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                  >
+                  Download Sample Reports
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </section>
@@ -842,14 +844,12 @@ export default function Home() {
                         leaks before handover and reducing inspection costs by{" "}
                         <span className="text-gray-500 font-bold">70%</span>.
                       </p>
-                      <Button
-                        onClick={() => setShowReportModal(true)}
-                        variant="ghost"
-                        className="text-green-600 hover:text-green-700 px-0"
-                      >
-                        Read Case Study
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      <Link href="/case-studies" className="group mt-6 inline-block">
+                        <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
+                          <span className="mr-2">Read Case Study</span>
+                          <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
                     </div>
                   </motion.div>
 
@@ -924,43 +924,59 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto"
               >
-                {[
-                  {
-                    icon: <FileText className="h-10 w-10" />,
-                    title: "Whitepaper",
-                    subtitle: "Reimagining Building Diagnostics",
-                    cta: "Download Now",
-                  },
-                  {
-                    icon: <Building2 className="h-10 w-10" />,
-                    title: "Case Study",
-                    subtitle: "City of New York & Archdiocese",
-                    cta: "Read Case Study",
-                  },
-                  {
-                    icon: <Download className="h-10 w-10" />,
-                    title: "Example Reports",
-                    subtitle: "View Roof Inspection Deliverables",
-                    cta: "View Reports",
-                  },
-                ].map((resource, index) => (
+                {/* Whitepaper */}
+                <motion.a
+                  variants={item}
+                  href="/sample-report.pdf"
+                  download
+                  className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
+                    <FileText className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-gray">Whitepaper</h3>
+                  <p className="text-gray-900 mb-4">Reimagining Building Diagnostics</p>
+                  <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
+                    <span className="mr-2">Download Now</span>
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </motion.a>
+
+                {/* Case Study */}
+                <Link href="/case-studies">
                   <motion.div
-                    key={index}
                     variants={item}
                     className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
-                    onClick={() => setShowReportModal(true)}
                   >
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
-                      {resource.icon}
+                      <Building2 className="h-10 w-10" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray">{resource.title}</h3>
-                    <p className="text-gray-900 mb-4">{resource.subtitle}</p>
+                    <h3 className="text-xl font-bold mb-2 text-gray">Case Study</h3>
+                    <p className="text-gray-900 mb-4">City of New York & Archdiocese</p>
                     <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
-                      <span className="mr-2">{resource.cta}</span>
+                      <span className="mr-2">Read Case Study</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </motion.div>
-                ))}
+                </Link>
+
+                {/* Sample Reports */}
+                <Link href="/sample-reports">
+                  <motion.div
+                    variants={item}
+                    className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
+                      <Download className="h-10 w-10" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 text-gray">Sample Reports</h3>
+                    <p className="text-gray-900 mb-4">View Inspection Deliverables</p>
+                    <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
+                      <span className="mr-2">View Reports</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </motion.div>
+                </Link>
               </motion.div>
             </div>
           </section>
@@ -1017,14 +1033,15 @@ export default function Home() {
                     Start My Inspection
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <Button
-                    onClick={() => setShowReportModal(true)}
-                    variant="outline"
-                    className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
-                  >
-                    Download Sample Report
-                    <Download className="ml-2 h-5 w-5" />
-                  </Button>
+                  <Link href="/sample-reports">
+                    <Button
+                      variant="outline"
+                      className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
+                    >
+                      View Sample Reports
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
                 </div>
 
                 <p className="text-gray-500 mt-8">
@@ -1054,7 +1071,7 @@ export default function Home() {
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <QuoteForm />
+                <QuoteForm onClose={() => setShowQuoteModal(false)} />
               </div>
             </div>
           </div>
