@@ -182,7 +182,7 @@ export default function AboutPage() {
                   <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
                   <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
                   <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                  <Link href="/tech-sheets" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                  <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
                 </div>
               </div>
 
@@ -236,7 +236,7 @@ export default function AboutPage() {
             <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
             <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
             <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-            <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+            <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
           </div>
           <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
           <Link href="/#contact" className="mt-4" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>

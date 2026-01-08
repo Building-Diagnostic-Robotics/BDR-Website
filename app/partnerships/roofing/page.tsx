@@ -107,7 +107,7 @@ export default function PartnershipsPage() {
                 <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
                 <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Case Studies</Link>
                 <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                <Link href="/tech-sheets" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
               </div>
             </div>
             {/* FAQs */}
@@ -153,7 +153,7 @@ export default function PartnershipsPage() {
               <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
               <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
               <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+              <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
             </div>
             <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
             <Button
@@ -202,7 +202,7 @@ export default function PartnershipsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <Link href="https://app.usemotion.com/meet/bilal-is/1psfn3c" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
                   <Button
                     className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
                   >
@@ -736,13 +736,13 @@ export default function PartnershipsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://app.usemotion.com/meet/bilal-is/1psfn3c" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
                   <Button className="bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg">
                     Book a Meeting
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="/sample-report.pdf" download>
+                <a href="/Program_Overview_Sheet.pdf" download>
                   <Button
                     variant="outline"
                     className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"

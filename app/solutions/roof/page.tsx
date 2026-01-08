@@ -150,7 +150,7 @@ export default function RoofInspectionPage() {
                     <Link href="/blogs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
                     <Link href="/case-studies" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
                     <Link href="/sample-reports" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                    <Link href="/tech-sheets" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                    <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
                   </div>
                 </div>
 
@@ -251,7 +251,7 @@ export default function RoofInspectionPage() {
               <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
               <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
               <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+              <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
             </div>
 
             <Link
@@ -451,7 +451,7 @@ export default function RoofInspectionPage() {
               </h2>
               <p className="text-xl text-gray-700">
                 <strong>Roofus</strong>, BDR's autonomous inspection platform, captures precision data across thousands
-                of square feet in minutes—turning roof inspection from a one-off task into a continuous stream of
+                of square feet in minutes - turning roof inspection from a one-off task into a continuous stream of
                 actionable intelligence.
               </p>
             </motion.div>
@@ -484,27 +484,27 @@ export default function RoofInspectionPage() {
                 {[
                   {
                     icon: <Droplet className="h-5 w-5" />,
-                    text: "Moisture & Thermal Maps — GPR + infrared overlays revealing hidden anomalies.",
+                    text: "Moisture & Thermal Maps: GPR + infrared overlays revealing hidden anomalies.",
                   },
                   {
                     icon: <Layers className="h-5 w-5" />,
-                    text: "3D / AutoCAD Roof Plans — fully dimensioned, slope-accurate digital models.",
+                    text: "3D / AutoCAD Roof Plans: fully dimensioned, slope-accurate digital models.",
                   },
                   {
                     icon: <Activity className="h-5 w-5" />,
-                    text: "Remaining Service Life Estimate (RSLE) — AI-modeled longevity forecasts.",
+                    text: "Remaining Service Life Estimate (RSLE): AI-modeled longevity forecasts.",
                   },
                   {
                     icon: <FileText className="h-5 w-5" />,
-                    text: "Repair Scope & Cost Summary (RSC) — prioritized, cost-referenced actions.",
+                    text: "Repair Scope & Cost Summary (RSC): prioritized, cost-referenced actions.",
                   },
                   {
                     icon: <CheckCircle className="h-5 w-5" />,
-                    text: "Warranty Compliance Log — time-stamped inspection proof for claims.",
+                    text: "Warranty Compliance Log: time-stamped inspection proof for claims.",
                   },
                   {
                     icon: <TrendingUp className="h-5 w-5" />,
-                    text: "Optional Portfolio Dashboard — multi-building benchmarking and trend insight.",
+                    text: "Optional Portfolio Dashboard: multi-building benchmarking and trend insight.",
                   },
                 ].map((deliverable, index) => (
                   <div key={index} className="flex items-start space-x-3">
@@ -530,7 +530,7 @@ export default function RoofInspectionPage() {
             >
               {[
                 { value: "< 48 hr", label: "Turnaround" },
-                { value: "≥ 90%", label: "Accuracy" },
+                { value: "≥ 90%", label: "Accuracy Improvement" },
                 { value: "50,000", label: "Sq ft/hr" },
                 { value: "50–80%", label: "Cost reduction vs. manual" },
               ].map((benchmark, index) => (
@@ -667,7 +667,7 @@ export default function RoofInspectionPage() {
                       { category: "Disruption", bdr: "Minimal · Off-hours possible", traditional: "High · Intrusive site work" },
                       { category: "Output", bdr: "AutoCAD/BIM-ready Reports", traditional: "Mark-ups & PDFs" },
                       { category: "Turnaround", bdr: "24–48 hrs", traditional: "Days – Weeks" },
-                      { category: "Accuracy", bdr: "≥ 90% (AI-verified)", traditional: "Variable · Subjective" },
+                      { category: "Accuracy", bdr: "≥ 90% Improvement (AI-verified)", traditional: "Variable · Subjective" },
                       { category: "Cost", bdr: "$0.03 – $0.05 / sq ft", traditional: "$0.05 – $0.30 / sq ft" },
                       { category: "Safety", bdr: "Remote Operation", traditional: "On-roof Labour" },
                       { category: "Portfolio Insight", bdr: "Dashboards & Analytics", traditional: "Building-by-Building" },
@@ -819,7 +819,7 @@ export default function RoofInspectionPage() {
                   <tbody>
                     {[
                       { category: "Dimensions & Weight", spec: "18″ × 18″ × 12″ (≈ 11 kg)" },
-                      { category: "Ingress Protection", spec: "IP63 — weather-resistant for light rain & dust" },
+                      { category: "Ingress Protection", spec: "IP63 - weather-resistant for light rain & dust" },
                       { category: "Mobility & Control", spec: "Fully autonomous navigation + obstacle avoidance" },
                       { category: "Sensors", spec: "GPR · LiDAR · Thermal · Optical · GPS/IMU" },
                       {
@@ -833,7 +833,7 @@ export default function RoofInspectionPage() {
                       { category: "Operating Duration", spec: "≈ 2 hours per charge" },
                       { category: "Data Security", spec: "Encrypted upload (HTTPS/S3) · auditable version trail" },
                       { category: "Integration", spec: "AutoCAD (DWG/DXF) · Revit (RVT) · BIM 360 API-ready" },
-                      { category: "Accuracy", spec: "≥ 90 % correlation to field benchmarks" },
+                      { category: "Accuracy", spec: "≥ 90% Improvement correlation to field benchmarks" },
                     ].map((row, index) => (
                       <tr key={index} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td className="p-4 font-medium text-gray-700">{row.category}</td>
@@ -873,7 +873,7 @@ export default function RoofInspectionPage() {
               </div>
 
               <div className="mt-8 text-center">
-                <Link href="/sample-reports">
+                <Link href="/roofus-tech-specs">
                   <Button
                     className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
                   >
@@ -1171,7 +1171,8 @@ export default function RoofInspectionPage() {
                   icon: <FileText className="h-8 w-8" />,
                   title: "Whitepaper:",
                   link: "Reimagining Building Diagnostics →",
-                  href: "#",
+                  href: "/GPR-Former_ROOFER360_Whitepaper_v1.pdf",
+                  download: true,
                 },
                 {
                   icon: <Building2 className="h-8 w-8" />,
@@ -1181,16 +1182,15 @@ export default function RoofInspectionPage() {
                 },
                 {
                   icon: <Download className="h-8 w-8" />,
-                  title: "Example Reports:",
+                  title: "Sample Reports:",
                   link: "View Roof Inspection Deliverables →",
-                  action: () => setShowReportModal(true),
+                  href: "/sample-reports",
                 },
               ].map((resource, index) => (
                 <motion.div
                   key={index}
                   variants={item}
                   className="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm hover:shadow-lg shadow-green-500/5 transition-all duration-300 cursor-pointer"
-                  onClick={resource.action || (() => {})}
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 text-white">
@@ -1198,12 +1198,14 @@ export default function RoofInspectionPage() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-600 mb-1">{resource.title}</p>
-                      {resource.href ? (
+                      {resource.download ? (
+                        <a href={resource.href} download className="text-gray hover:underline font-medium whitespace-nowrap">
+                          {resource.link}
+                        </a>
+                      ) : (
                         <Link href={resource.href} className="text-gray hover:underline font-medium whitespace-nowrap">
                           {resource.link}
                         </Link>
-                      ) : (
-                        <button className="text-gray hover:underline font-medium whitespace-nowrap">{resource.link}</button>
                       )}
                     </div>
                   </div>

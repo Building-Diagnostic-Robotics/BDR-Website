@@ -261,7 +261,7 @@ export default function FAQsPage() {
                   <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
                   <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
                   <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                  <Link href="/tech-sheets" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                  <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
                 </div>
               </div>
 
@@ -318,7 +318,7 @@ export default function FAQsPage() {
               <Link href="/blogs" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Blogs</Link>
               <Link href="/case-studies" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Case Studies</Link>
               <Link href="/sample-reports" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Sample Reports</Link>
-              <Link href="/tech-sheets" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Tech Sheets</Link>
+              <Link href="/roofus-tech-specs" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Roofus Tech Specs</Link>
               <Link href="/faqs" className="text-lg font-medium text-green-600" onClick={toggleMobileMenu}>FAQs</Link>
               <Button
                 onClick={() => {

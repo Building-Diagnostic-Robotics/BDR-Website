@@ -148,13 +148,14 @@ export default function Home() {
             <p className="text-xs md:text-sm font-medium text-center md:text-left">
               Reimagining Building Diagnostics — How BDR Is Making the Future of Asset Intelligence Real Today.
             </p>
-            <Button
-              variant="ghost"
-              className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
-              onClick={() => setShowReportModal(true)}
-            >
-              Download Now <ArrowRight className="ml-2 h-3 w-3" />
-            </Button>
+            <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
+              >
+                Download Now <ArrowRight className="ml-2 h-3 w-3" />
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -212,7 +213,7 @@ export default function Home() {
                     <Link href="/blogs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
                     <Link href="/case-studies" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
                     <Link href="/sample-reports" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                    <Link href="/tech-sheets" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Tech Sheets</Link>
+                    <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
                   </div>
                 </div>
 
@@ -272,7 +273,7 @@ export default function Home() {
               <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
               <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
               <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-              <Link href="/tech-sheets" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Tech Sheets</Link>
+              <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
             </div>
 
             <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
@@ -309,7 +310,7 @@ export default function Home() {
                   Inspections to Impact
                 </h1>
                 <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                  The new standard for roof diagnostics — fast, autonomous, and disruption-free.
+                  The new standard for roof diagnostics - fast, autonomous, and disruption-free.
                 </p>
                 <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
                   Digital inspection data that delivers measurable results in cost, time, and risk.
@@ -443,7 +444,7 @@ export default function Home() {
                 </h2>
                 <p className="max-w-4xl text-gray-600 text-lg md:text-xl leading-relaxed">
                   BDR's <strong>Roofus</strong> platform uses ground-penetrating radar, LiDAR, and thermal imaging to capture millions of
-                  data points per scan — producing AI-verified reports within 48 hours.
+                  data points per scan - producing AI-verified reports within 48 hours.
                 </p>
               </motion.div>
 
@@ -522,7 +523,7 @@ export default function Home() {
               >
                 {[
                   { value: "< 48 hr", label: "Turnaround" },
-                  { value: "≥ 90%", label: "Accuracy" },
+                  { value: "≥ 90%", label: "Accuracy Improvement" },
                   { value: "50,000", label: "Sq ft/hr" },
                   { value: "50–80%", label: "Lower cost" },
                 ].map((benchmark, index) => (
@@ -534,13 +535,14 @@ export default function Home() {
               </motion.div>
 
               <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg"
-                >
-                  View Full Technical Specifications
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/roofus-tech-specs">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg"
+                  >
+                    View Full Technical Specifications
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
                 <Link href="/sample-reports">
                   <Button
                     variant="outline"
@@ -573,7 +575,7 @@ export default function Home() {
               >
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">Who It's For</h2>
                 <p className="max-w-3xl text-gray-600 text-lg">
-                  Designed for every flat roof typology — from malls and schools to warehouses, big-box retail, and industrial sites.
+                  Designed for every flat roof typology - from malls and schools to warehouses, big-box retail, and industrial sites.
                 </p>
               </motion.div>
 
@@ -670,7 +672,7 @@ export default function Home() {
                   },
                   {
                     icon: <Target className="h-8 w-8" />,
-                    metric: "90%+ accuracy",
+                    metric: "90%+ accuracy improvement",
                     description: "Verified across 2M+ sq ft",
                   },
                   {
@@ -756,7 +758,7 @@ export default function Home() {
                         },
                         { category: "Output", bdr: "AutoCAD/BIM-ready Reports", traditional: "Mark-ups & PDFs" },
                         { category: "Turnaround", bdr: "24–48 hrs", traditional: "Days – Weeks" },
-                        { category: "Accuracy", bdr: "≥ 90% (AI-verified)", traditional: "Variable · Subjective" },
+                        { category: "Accuracy", bdr: "≥ 90% Improvement (AI-verified)", traditional: "Variable · Subjective" },
                         { category: "Cost", bdr: "$0.03 – $0.05 / sq ft", traditional: "$0.05 – $0.30 / sq ft" },
                         { category: "Safety", bdr: "Remote Operation", traditional: "On-roof Labour" },
                         {
@@ -927,7 +929,7 @@ export default function Home() {
                 {/* Whitepaper */}
                 <motion.a
                   variants={item}
-                  href="/sample-report.pdf"
+                  href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf"
                   download
                   className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
