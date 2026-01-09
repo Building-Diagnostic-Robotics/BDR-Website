@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Footer from "@/components/Footer"
+import Navbar from "@/components/navbar"
 import {
   Activity,
   AlertCircle,
@@ -36,7 +37,6 @@ import { ExitIntentPopup } from "@/components/exit-intent-popup"
 import { ChatBot } from "@/components/chat-bot"
 import { QuoteForm } from "@/components/quote-form"
 import { ChevronDown } from "lucide-react"
-import SampleReportModal from "@/components/sample-report-modal"
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -146,7 +146,7 @@ export default function Home() {
         <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4">
           <div className="container flex flex-col md:flex-row justify-between items-center gap-2">
             <p className="text-xs md:text-sm font-medium text-center md:text-left">
-              Reimagining Building Diagnostics — How BDR Is Making the Future of Asset Intelligence Real Today.
+              Reimagining Building Diagnostics - How BDR Is Making the Future of Asset Intelligence Real Today.
             </p>
             <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
               <Button
@@ -159,131 +159,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Main Navbar: hide when mobileMenuOpen */}
-        {!mobileMenuOpen && (
-          <header
-            className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-              isScrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200" : "bg-white/50 backdrop-blur-sm"
-            }`}
-          >
-            <div className="container flex h-20 items-center justify-between">
-              <Link href="/" className="flex items-center space-x-2 z-50">
-                <div className="relative bg-gradient-to-br from-green-600 to-green-500 rounded-lg flex items-center justify-center w-16 h-16">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-500 rounded-lg blur-lg opacity-50 z-0"></div>
-
-                  <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-                </div>
-              </Link>
-
-              {/* Navigation section */}
-              <nav className="hidden lg:flex items-center space-x-8 ml-24">
-                {/* Solutions dropdown */}
-                <div className="relative group">
-                  <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                    Solutions
-                    <ChevronDown className="ml-1 h-4 w-4" />
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                  </button>
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                    <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                    {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
-                  </div>
-                </div>
-
-                {/* Channel Partners */}
-                <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-                  Channel Partners
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-
-                {/* About */}
-                <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-                  About
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-
-                {/* Resources dropdown */}
-                <div className="relative group">
-                  <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                    Resources
-                    <ChevronDown className="ml-1 h-4 w-4" />
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                  </button>
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                    <Link href="/blogs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
-                    <Link href="/case-studies" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
-                    <Link href="/sample-reports" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                    <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
-                  </div>
-                </div>
-
-                {/* FAQs */}
-                <Link href="/faqs" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-                  FAQs
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              </nav>
-
-              <div className="flex items-center gap-4 z-50">
-                <Button
-                  onClick={() => setShowQuoteModal(true)}
-                  className="hidden md:flex bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full"
-                >
-                  Start My Inspection
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-
-                <button onClick={toggleMobileMenu} className="lg:hidden text-gray-900 p-2" aria-label="Toggle menu">
-                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                </button>
-              </div>
-            </div>
-          </header>
-        )}
-
-        {/* Mobile menu */}
-        <div
-          className={`fixed inset-0 z-40 bg-white transform transition-transform duration-300 lg:hidden ${
-            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          {/* Close button */}
-          <button
-            className="absolute top-4 right-4 text-gray-900 text-3xl z-50"
-            onClick={() => {
-              setMobileMenuOpen(false)
-              document.body.style.overflow = "auto"
-            }}
-          >
-            &times;
-          </button>
-          <div className="flex flex-col items-center justify-center h-full space-y-8 px-8 pt-8 pb-8">
-            <div className="flex flex-col space-y-2 text-center">
-              <span className="text-2xl font-medium text-gray-900">Solutions</span>
-              <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
-              {/* <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link> */}
-            </div>
-
-            <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
-
-            <Link href="/about" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>About</Link>
-
-            <div className="flex flex-col space-y-2 text-center">
-              <span className="text-2xl font-medium text-gray-900">Resources</span>
-              <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
-              <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
-              <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-              <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
-            </div>
-
-            <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
-
-            <Button onClick={() => setShowQuoteModal(true)} className="mt-8 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg">
-              Start My Inspection
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
+        {/* Main Navbar */}
+        <Navbar
+          isScrolled={isScrolled}
+          mobileMenuOpen={mobileMenuOpen}
+          onToggleMobileMenu={toggleMobileMenu}
+          onButtonClick={() => setShowQuoteModal(true)}
+          buttonText="Start My Inspection"
+        />
             
         <main className="flex-1">
           {/* Hero Section */}
@@ -548,7 +431,7 @@ export default function Home() {
                     variant="outline"
                     className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                   >
-                  Download Sample Reports
+                  View Sample Reports
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -830,68 +713,90 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {/* Left column: stacked case study cards */}
                 <div className="space-y-8">
-                  {/* City of New York card */}
+                  {/* Multi-Faith Portfolio Case Study (clickable download + read button) */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
+                    onClick={() => {
+                      const a = document.createElement('a');
+                      a.href = '/Roofus_Case_Study_1-Portfolio.pdf';
+                      a.setAttribute('download', '');
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                    }}
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg group cursor-pointer"
                   >
                     <div className="space-y-4">
-                      <h3 className="text-2xl font-bold text-gray-900">City of New York & Archdiocese of New York</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 group-hover:underline">Multi-Site Faith-Based Portfolio: 65 Roofs, One Standardized Plan</h3>
                       <p className="text-gray-600 text-lg leading-relaxed">
-                        Autonomous inspections across <span className="text-gray-500 font-bold">2M+ sq ft</span>{" "}
-                        delivered verified moisture maps and warranty-ready reports within 48 hours — uncovering hidden
-                        leaks before handover and reducing inspection costs by{" "}
-                        <span className="text-gray-500 font-bold">70%</span>.
+                        Out of 65 roofs, 3 were flagged as critical, while 15 sites received quick-win repair recommendations to extend roof life.
                       </p>
-                      <Link href="/case-studies" className="group mt-6 inline-block">
                         <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
                           <span className="mr-2">Read Case Study</span>
                           <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                         </div>
-                      </Link>
                     </div>
                   </motion.div>
 
-                  {/* Amrize card */}
-                  <motion.div
+                  {/* Amrize card (clickable download with icon) */}
+                  <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                    href="/Roofus_Case_Study_1-Portfolio.pdf"
+                    download
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm group cursor-pointer block"
                   >
-                    <h4 className="text-xl font-bold mb-2 text-gray-900">Amrize Warranty Intelligence Pilot</h4>
+                    <Download className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-hover:text-green-600 transition-colors" />
+                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">Amrize Warranty Intelligence Pilot</h4>
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">&gt; 90%</span> data correlation achieved
                     </p>
-                  </motion.div>
+                  </motion.a>
 
-                  {/* Bauder card */}
-                  <motion.div
+                  {/* Bauder card (clickable download with icon) */}
+                  <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.5 }}
-                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                    href="/Roofus_Case_Study_1-Portfolio.pdf"
+                    download
+                    className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm group cursor-pointer block"
                   >
-                    <h4 className="text-xl font-bold mb-2 text-gray-900">Bauder UK Localization</h4>
+                    <Download className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-hover:text-green-600 transition-colors" />
+                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">Bauder UK Localization</h4>
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">2× coverage speed</span>, 0 radiation risk
                     </p>
-                  </motion.div>
+                  </motion.a>
                 </div>
 
                 {/* Right column: Case Study GIF */}
-                <div className="relative flex items-center justify-center border border-gray-200 bg-gray-50 rounded-2xl shadow-md overflow-hidden h-[500px] mt-12">
-                  <img
-                    src="/BDR_intro_no_logo.gif"
-                    alt="BDR Intro Animation"
-                    className="object-cover w-full h-full rounded-2xl"
+                <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+                  <video
+                    src="/roofus.mp4"
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                   />
                 </div>
+              </div>
+              <div className="mt-12 text-center">
+                <Link href="/case-studies">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+                  >
+                    View all Case Studies
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </section>
@@ -1078,12 +983,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
-        {/* Report Modal */}
-        {showReportModal && <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />}
-
-        {/* Chat Bot */}
-        {/* <ChatBot /> */}
       </div>
     </>
   )

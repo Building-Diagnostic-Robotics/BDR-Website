@@ -5,15 +5,14 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, ArrowRight, Phone, MapPin, Menu, X, Check, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import SampleReportModal from "@/components/sample-report-modal"
 import Footer from "@/components/Footer"
+import Navbar from "@/components/navbar"
 
 export default function FAQsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
-  const [showReportModal, setShowReportModal] = useState(false)
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -197,142 +196,27 @@ export default function FAQsPage() {
       <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4">
         <div className="container flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-xs md:text-sm font-medium text-center md:text-left">
-            Reimagining Building Diagnostics — How BDR Is Making the Future of Asset Intelligence Real Today.
+            Reimagining Building Diagnostics - How BDR Is Making the Future of Asset Intelligence Real Today.
           </p>
-          <Button
-            variant="ghost"
-            className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
-            onClick={() => setShowReportModal(true)}
-          >
-            Download Now <ArrowRight className="ml-2 h-3 w-3" />
-          </Button>
+          <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+            <Button
+              variant="ghost"
+              className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
+            >
+              Download Now <ArrowRight className="ml-2 h-3 w-3" />
+            </Button>
+          </a>
         </div>
       </div>
 
-      {/* Navigation */}
-      {!mobileMenuOpen && (
-        <header
-          className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-            isScrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200" : "bg-white/50 backdrop-blur-sm"
-          }`}
-        >
-          <div className="container flex h-20 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2 z-50">
-              <div className="relative bg-gradient-to-br from-green-600 to-green-500 rounded-lg flex items-center justify-center w-16 h-16">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-500 rounded-lg blur-lg opacity-50 z-0"></div>
-                <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-              </div>
-            </Link>
-
-            <nav className="hidden lg:flex items-center space-x-8 ml-12">
-              {/* Solutions dropdown */}
-              <div className="relative group">
-                <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                  Solutions
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full" />
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                  <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                  {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
-                </div>
-              </div>
-
-              {/* Channel Partners */}
-              <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-                Channel Partners
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full" />
-              </Link>
-
-              {/* About */}
-              <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-                About
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full" />
-              </Link>
-
-              {/* Resources dropdown */}
-              <div className="relative group">
-                <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                  Resources
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 group-hover:w-full" />
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                  <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
-                  <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Case Studies</Link>
-                  <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                  <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
-                </div>
-              </div>
-
-              {/* FAQs active */}
-              <Link href="/faqs" className="relative text-sm font-medium text-gray-900 transition-colors">
-                FAQs
-                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-green-600 to-green-500" />
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-4 z-50">
-              <Button
-                onClick={() => setShowQuoteModal(true)}
-                className="hidden md:flex bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full"
-              >
-                Start My Inspection
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <button onClick={toggleMobileMenu} className="lg:hidden text-gray-900 p-2" aria-label="Toggle menu">
-                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </header>
-      )}
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-50 bg-white"
-          >
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <Link href="/" className="flex items-center space-x-2">
-                <div className="relative bg-gradient-to-br from-green-600 to-green-500 rounded-lg flex items-center justify-center w-16 h-16">
-                  <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-                </div>
-              </Link>
-              <button onClick={toggleMobileMenu} className="text-gray-900 p-2">
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-            <nav className="flex flex-col p-6 space-y-4">
-              <span className="text-xs uppercase text-gray-500 tracking-wider">Solutions</span>
-              <Link href="/solutions/roof" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Roof Inspections</Link>
-              {/* <Link href="/solutions/concrete" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Concrete Inspections</Link> */}
-              <span className="text-xs uppercase text-gray-500 tracking-wider mt-4">Company</span>
-              <Link href="/partnerships/roofing" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Channel Partners</Link>
-              <Link href="/about" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>About</Link>
-              <span className="text-xs uppercase text-gray-500 tracking-wider mt-4">Resources</span>
-              <Link href="/blogs" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Blogs</Link>
-              <Link href="/case-studies" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Case Studies</Link>
-              <Link href="/sample-reports" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Sample Reports</Link>
-              <Link href="/roofus-tech-specs" className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors" onClick={toggleMobileMenu}>Roofus Tech Specs</Link>
-              <Link href="/faqs" className="text-lg font-medium text-green-600" onClick={toggleMobileMenu}>FAQs</Link>
-              <Button
-                onClick={() => {
-                  setShowQuoteModal(true)
-                  toggleMobileMenu()
-                }}
-                className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white"
-              >
-                Start My Inspection
-              </Button>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Navbar
+        isScrolled={isScrolled}
+        mobileMenuOpen={mobileMenuOpen}
+        onToggleMobileMenu={toggleMobileMenu}
+        onButtonClick={() => setShowQuoteModal(true)}
+        activePage="/faqs"
+        buttonText="Start My Inspection"
+      />
 
       {/* Hero Section */}
       <section className="relative py-24 overflow-hidden">
@@ -519,7 +403,6 @@ export default function FAQsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-      {showReportModal && <SampleReportModal open={showReportModal} onClose={() => setShowReportModal(false)} />}
       <Footer />
     </div>
   )

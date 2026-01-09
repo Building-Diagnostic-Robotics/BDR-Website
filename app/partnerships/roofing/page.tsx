@@ -1,8 +1,9 @@
 "use client"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import Navbar from "@/components/navbar"
 import { ArrowRight, Building2, CheckCircle, FileText, Mail, MapPin, Menu, Phone, X, Zap, ChevronDown } from "lucide-react"
 import Footer from "@/components/Footer"
 
@@ -51,7 +52,7 @@ export default function PartnershipsPage() {
             Download our Whitepaper: The Future of Roof Inspection Technology
           </p>
           
-          <a href="/sample-report.pdf" download>
+          <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
             <Button
               variant="ghost"
               className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
@@ -63,108 +64,21 @@ export default function PartnershipsPage() {
         </div>
         </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="container flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 z-50">
-            <div className="relative bg-gradient-to-br from-[#1f8a46] to-green-600 rounded-lg flex items-center justify-center w-16 h-16">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1f8a46] to-green-600 rounded-lg blur-lg opacity-50 z-0"></div>
-              <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-            </div>
-          </Link>
-
-          <nav className="hidden lg:flex items-center space-x-8 ml-12">
-            {/* Solutions dropdown */}
-            <div className="relative group">
-              <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                Solutions
-                <ChevronDown className="ml-1 h-4 w-4" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                <Link href="/solutions/roof" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Roof Inspections</Link>
-                {/* <Link href="/solutions/concrete" className="block px-4 py-3 text-gray-900 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Concrete Inspections</Link> */}
-              </div>
-            </div>
-            {/* Channel Partners active */}
-            <Link href="/partnerships/roofing" className="relative text-sm font-medium text-gray-900 transition-colors">
-              Channel Partners
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600" />
-            </Link>
-            {/* About */}
-            <Link href="/about" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-              About
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
-            </Link>
-            {/* Resources dropdown */}
-            <div className="relative group">
-              <button className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group flex items-center">
-                Resources
-                <ChevronDown className="ml-1 h-4 w-4" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-t-lg">Blogs</Link>
-                <Link href="/case-studies" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Case Studies</Link>
-                <Link href="/sample-reports" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors">Sample Reports</Link>
-                <Link href="/roofus-tech-specs" className="block px-4 py-3 text-gray-700 hover:text-[#1f8a46] hover:bg-gray-50 transition-colors rounded-b-lg">Roofus Tech Specs</Link>
-              </div>
-            </div>
-            {/* FAQs */}
-            <Link href="/faqs" className="relative text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group">
-              FAQs
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1f8a46] to-green-600 transition-all duration-300 group-hover:w-full" />
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4 z-50">
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="hidden md:flex bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full"
-            >
-              Become a Partner
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-
-            <button onClick={toggleMobileMenu} className="lg:hidden text-gray-900 p-2" aria-label="Toggle menu">
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-white transform transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          {/* Solutions Group */}
-            <div className="flex flex-col space-y-2 text-center">
-              <span className="text-2xl font-medium text-gray-900">Solutions</span>
-              <Link href="/solutions/roof" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roof Inspections</Link>
-              {/* <Link href="/solutions/concrete" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Concrete Inspections</Link> */}
-            </div>
-            <Link href="/partnerships/roofing" className="text-2xl font-medium text-gray-900" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Channel Partners</Link>
-            <Link href="/about" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>About</Link>
-            <div className="flex flex-col space-y-2 text-center">
-              <span className="text-2xl font-medium text-gray-900">Resources</span>
-              <Link href="/blogs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Blogs</Link>
-              <Link href="/case-studies" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Case Studies</Link>
-              <Link href="/sample-reports" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Sample Reports</Link>
-              <Link href="/roofus-tech-specs" className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>Roofus Tech Specs</Link>
-            </div>
-            <Link href="/faqs" className="text-2xl font-medium text-gray-700 hover:text-gray-900 transition-colors" onClick={() => { setMobileMenuOpen(false); document.body.style.overflow = "auto"; }}>FAQs</Link>
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="mt-8 bg-gradient-to-r from-[#1f8a46] to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-8 py-6 text-lg"
-            >
-              Become a Partner
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-        </div>
-      </div>
+      <Navbar
+        isScrolled={false}
+        mobileMenuOpen={mobileMenuOpen}
+        onToggleMobileMenu={() => {
+          setMobileMenuOpen(!mobileMenuOpen)
+          if (!mobileMenuOpen) {
+            document.body.style.overflow = "hidden"
+          } else {
+            document.body.style.overflow = "auto"
+          }
+        }}
+        onButtonClick={() => scrollToSection("contact")}
+        activePage="/partnerships/roofing"
+        buttonText="Become a Partner"
+      />
 
       <main className="flex-1">
         {/* Hero Section */}
