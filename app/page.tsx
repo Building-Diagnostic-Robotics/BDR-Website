@@ -286,13 +286,14 @@ export default function Home() {
               </motion.div>
 
               <div className="mt-12 text-center">
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
-                >
-                  See How Automation Changes the Economics
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="/solutions/roof">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+                  >
+                    Explore BDR's Roof Inspection as a Service
+                    <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
+              </Link>
               </div>
             </div>
           </section>
@@ -674,14 +675,15 @@ export default function Home() {
               </motion.div>
 
               <div className="mt-12 text-center">
-                <p className="text-gray-600 mb-4">Compare full specs and workflow details in our FAQ</p>
-                <Button
-                  onClick={() => setShowReportModal(true)}
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
-                >
-                  View Detailed Comparison
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <p className="text-gray-600 mb-4">Compare partner packages and workflow details in our Channel Partners</p>
+                <Link href="/partnerships/roofing">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+                  >
+                    Channel Partner Program
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </section>
@@ -741,7 +743,7 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Amrize card (clickable download with icon) */}
+                  {/* IR Analyzers(clickable download with icon) */}
                   <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -752,13 +754,13 @@ export default function Home() {
                     className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm group cursor-pointer block"
                   >
                     <Download className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-hover:text-green-600 transition-colors" />
-                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">Amrize Warranty Intelligence Pilot</h4>
+                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">IR Analyzers</h4>
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">&gt; 90%</span> data correlation achieved
                     </p>
                   </motion.a>
 
-                  {/* Bauder card (clickable download with icon) */}
+                  {/* City of New York card (clickable download with icon) */}
                   <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -769,7 +771,7 @@ export default function Home() {
                     className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm group cursor-pointer block"
                   >
                     <Download className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-hover:text-green-600 transition-colors" />
-                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">Bauder UK Localization</h4>
+                    <h4 className="text-xl font-bold mb-2 text-gray-900 group-hover:underline">City of New York</h4>
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">2× coverage speed</span>, 0 radiation risk
                     </p>
@@ -858,10 +860,10 @@ export default function Home() {
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-500 mb-6 text-white">
                       <Building2 className="h-10 w-10" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray">Case Study</h3>
-                    <p className="text-gray-900 mb-4">City of New York & Archdiocese</p>
+                    <h3 className="text-xl font-bold mb-2 text-gray">Case Studies</h3>
+                    <p className="text-gray-900 mb-4">City of New York & Others</p>
                     <div className="flex items-center text-green-600 group-hover:text-green-700 transition-colors">
-                      <span className="mr-2">Read Case Study</span>
+                      <span className="mr-2">View Case Studies</span>
                       <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </motion.div>
@@ -953,9 +955,9 @@ export default function Home() {
 
                 <p className="text-gray-500 mt-8">
                   Not sure where to begin?{" "}
-                  <button onClick={() => setShowReportModal(true)} className="text-green-600 hover:underline">
-                    Download our Readiness Checklist →
-                  </button>
+                  <a href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">
+                    Schedule a Meeting Us →
+                  </a>
                 </p>
               </motion.div>
             </div>
@@ -964,8 +966,8 @@ export default function Home() {
 
         <Footer />
 
-        {/* Exit Intent Popup */}
-        {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
+        {/* Exit Intent Popup
+        {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />} */}
 
         {/* Quote Modal */}
         {showQuoteModal && (
@@ -977,7 +979,7 @@ export default function Home() {
                   onClick={() => setShowQuoteModal(false)}
                 >
                   <X className="h-5 w-5" />
-                </button>
+               </button>
                 <QuoteForm onClose={() => setShowQuoteModal(false)} />
               </div>
             </div>

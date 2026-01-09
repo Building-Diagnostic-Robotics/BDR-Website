@@ -276,8 +276,8 @@ export default function RoofInspectionPage() {
                 className="inline-flex items-center rounded-full border border-green-500/30 bg-green-500/10 px-6 py-3 backdrop-blur-sm"
               >
                 <span className="text-sm md:text-base text-white">
-                  <strong>New Case Study:</strong> City of New York & Archdiocese—see how autonomous inspection
-                  unlocked portfolio-wide roof intelligence.
+                  <strong>New Case Study:</strong> Multi-Site Faith-Based Portfolio - see how autonomous inspection
+                  unlocked portfolio-wide roof intelligence for 65 roofs.
                 </span>
                 <button
                   onClick={() => scrollToSection("case-studies")}
@@ -362,17 +362,17 @@ export default function RoofInspectionPage() {
               className="text-center mt-12"
             >
               <Button
-                
+                onClick={() => scrollToSection("solution")}
                 className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
               >
-                See How Automation Changes the Economics
+                Explore BDR's Roof Inspection as a Service
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
           </div>
         </section>
 
-        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <section id = "solution" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="absolute inset-0 z-0">
             <div className="absolute top-1/4 left-0 w-1/3 h-1/3 bg-green-500/5 blur-3xl rounded-full"></div>
             <div className="absolute bottom-1/4 right-0 w-1/4 h-1/4 bg-green-400/5 blur-3xl rounded-full"></div>
@@ -892,11 +892,11 @@ export default function RoofInspectionPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2 text-gray-900 group-hover:underline">
-                      Case Study: City of New York
+                      Case Study: Multi-Site Faith-Based Portfolio
                     </h3>
                     <p className="text-gray-700">
-                      BDR deployed autonomous inspections across diverse roof types—from municipal facilities to
-                      heritage structures—capturing 2 M+ sq ft in days.
+                      Roofus delivered standardized roof assessments across 65 occupied churches and schools in New York City, giving facilities and finance a single, defensible portfolio view. 
+                      The team got building-level reports plus a five-year repair-vs-replace roadmap, with critical roofs flagged and quick-win repairs identified to stretch limited capital.
                     </p>
                   </div>
                 </div>
@@ -905,9 +905,9 @@ export default function RoofInspectionPage() {
                   <p className="text-lg font-medium text-gray-900">Results included:</p>
                   <ul className="space-y-3">
                     {[
-                      "Hidden leaks detected pre-handover (avoiding weeks of delay).",
-                      "24–48 h digital reporting validated by facility teams.",
-                      "Early data integration into capital-planning dashboards.",
+                      "65 roofs assessed across a complex, multi-site NYC faith-based portfolio",
+                      "3 roofs flagged as critical, giving leadership a clear, defensible top priority list.",
+                      "15 sites got quick-win repair actions, extending roof life and reducing near-term risk.",
                     ].map((result, index) => (
                       <li key={index} className="flex items-start space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -934,12 +934,12 @@ export default function RoofInspectionPage() {
             >
               {[
                 {
-                  title: "Amrize Warranty Intelligence Pilot",
+                  title: "City of New York",
                   result: "> 90 % data correlation",
                   icon: <CheckCircle className="h-6 w-6" />,
                 },
                 {
-                  title: "Bauder UK Localization Pilot",
+                  title: "IR Analyzers",
                   result: "2× faster coverage, zero radiation risk",
                   icon: <Zap className="h-6 w-6" />,
                 },
@@ -1098,20 +1098,23 @@ export default function RoofInspectionPage() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
-              >
-                Download Readiness Checklist
-                <Download className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => setShowQuoteModal(true)}
-                className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
-              >
-                Take Quick Assessment
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <a href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
+                <Button
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4"
+                >
+                  Schedule a Meeting
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              <Link href="/partnerships/roofing">
+                <Button
+                  variant="outline"
+                  className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
+                >
+                  Channel Partner Program
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </section>
@@ -1145,20 +1148,20 @@ export default function RoofInspectionPage() {
               {[
                 {
                   icon: <FileText className="h-8 w-8" />,
-                  title: "Whitepaper:",
+                  title: "Whitepaper",
                   link: "Reimagining Building Diagnostics →",
                   href: "/GPR-Former_ROOFER360_Whitepaper_v1.pdf",
                   download: true,
                 },
                 {
                   icon: <Building2 className="h-8 w-8" />,
-                  title: "Case Study:",
-                  link: "City of New York →",
+                  title: "Case Studies",
+                  link: "City of New York & Others →",
                   href: "#case-studies",
                 },
                 {
                   icon: <Download className="h-8 w-8" />,
-                  title: "Sample Reports:",
+                  title: "Sample Reports",
                   link: "View Roof Inspection Deliverables →",
                   href: "/sample-reports",
                 },

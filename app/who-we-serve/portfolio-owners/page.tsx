@@ -23,6 +23,7 @@ import {
   TrendingUp,
   Droplet,
   Activity,
+  X,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -71,7 +72,7 @@ export default function PortfolioOwnersPage() {
         onToggleMobileMenu={toggleMobileMenu}
         onButtonClick={() => setShowQuoteModal(true)}
         activePage="portfolio-owners"
-        buttonText="Get Sample Report"
+        buttonText="Book a Demo"
       />
 
       <main className="flex-1">
@@ -589,6 +590,20 @@ export default function PortfolioOwnersPage() {
       </main>
 
       <Footer />
+
+      {showQuoteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-lg w-full">
+            <button
+              className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full p-2 transition-colors"
+              onClick={() => setShowQuoteModal(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <QuoteForm />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

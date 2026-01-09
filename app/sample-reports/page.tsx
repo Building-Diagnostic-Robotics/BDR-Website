@@ -12,10 +12,12 @@ import {
 	X,
 	ChevronDown,
 } from "lucide-react"
+import { QuoteForm } from "@/components/quote-form"
 
 export default function SampleReportsPage() {
 	const [isScrolled, setIsScrolled] = useState(false)
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+	const [showQuoteModal, setShowQuoteModal] = useState(false)
 
 	useEffect(() => {
 		const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -32,18 +34,18 @@ export default function SampleReportsPage() {
 	const reports = [
 		{
 			title: "Roof Inspection Sample",
-			description: "Moisture mapping, defects, and visual documentation for a commercial flat roof.",
-			href: "/sample-report.pdf",
+			description: "A brief overview of the moisture damage and visual anomalies detected in the building.",
+			href: "/Sample_Building_111_report.pdf",
 		},
 		{
-			title: "Concrete Inspection Sample",
-			description: "Subsurface anomalies, delamination indicators, and repair prioritization guidance.",
-			href: "/sample-report.pdf",
+			title: "Visual Anomaly Appendix",
+			description: "Detailed imagery and data supporting the roof inspection findings.",
+			href: "/Sample_Building_111_appendix.pdf",
 		},
 		{
-			title: "Sample Report 3",
-			description: "Condensed, standardized and brief report format ready for adjusters and carriers.",
-			href: "/sample-report.pdf",
+			title: "Scope of Work + Cost Analysis",
+			description: "Recommended repairs and associated cost estimates based on inspection results.",
+			href: "/Sample_Building_111_appendix_C.pdf",
 		},
 	]
 
@@ -53,7 +55,7 @@ export default function SampleReportsPage() {
 				isScrolled={isScrolled}
 				mobileMenuOpen={mobileMenuOpen}
 				onToggleMobileMenu={toggleMobileMenu}
-				onButtonClick={() => { window.location.href = "/#contact" }}
+				onButtonClick={() => setShowQuoteModal(true)}
 				activePage="sample-reports"
 				buttonText="Start My Inspection"
 			/>
@@ -128,6 +130,20 @@ export default function SampleReportsPage() {
 			</section>
 
 			<Footer />
+
+			{showQuoteModal && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">
+					<div className="relative max-w-lg w-full">
+						<button
+							className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full p-2 transition-colors"
+							onClick={() => setShowQuoteModal(false)}
+						>
+							<X className="h-5 w-5" />
+						</button>
+						<QuoteForm />
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }

@@ -7,6 +7,7 @@ import { ChevronDown, ArrowRight, Phone, MapPin, Menu, X, Check, Download } from
 import { Button } from "@/components/ui/button"
 import Footer from "@/components/Footer"
 import Navbar from "@/components/navbar"
+import { QuoteForm } from "@/components/quote-form"
 
 export default function FAQsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -28,19 +29,19 @@ export default function FAQsPage() {
   const faqSections = [
     {
       id: "basics",
-      title: "The Basics: Understanding BDR & Inspection-as-a-Service",
+      title: "Understanding BDR & Inspection-as-a-Service",
       faqs: [
         {
           id: "q1",
           question: "What is BDR?",
           answer:
-            "BDR provides autonomous, AI-powered inspections for roofs and concrete structures. Our robots collect data with precision sensors, generating 3D digital reports that identify leaks, moisture, and hidden damage — delivered in 24–48 hours.",
+            "BDR provides autonomous, AI-powered inspections for roofs and concrete structures. Our robots collect data with precision sensors, generating 3D digital reports that identify leaks, moisture, and hidden damage - delivered in 24–48 hours.",
         },
         {
           id: "q2",
           question: "How is this different from traditional inspection?",
           answer:
-            "Traditional inspections are manual, disruptive, and depend on inconsistent field notes. BDR replaces that process with standardized robotic scans and digital reports — faster, safer, and far more accurate.",
+            "Traditional inspections are manual, disruptive, and depend on inconsistent field notes. BDR replaces that process with standardized robotic scans and digital reports - faster, safer, and far more accurate.",
         },
         {
           id: "q3",
@@ -52,7 +53,7 @@ export default function FAQsPage() {
           id: "q4",
           question: "Does BDR work on any building type?",
           answer:
-            "Yes. Our systems are flexible enough for commercial, multifamily, institutional, and industrial assets — anywhere precision and minimal disruption are priorities.",
+            "Yes. Our systems are flexible enough for commercial, multifamily, institutional, and industrial assets - anywhere precision and minimal disruption are priorities.",
         },
       ],
     },
@@ -64,7 +65,7 @@ export default function FAQsPage() {
           id: "q5",
           question: "How long does an inspection take?",
           answer:
-            "Most scans are completed in a few hours, with digital results delivered in 24–48 hours. No shutdowns or tenant displacement needed.",
+            "Most scans are completed in a few hours, with digital results delivered in 24-48 hours. No shutdowns or tenant displacement needed.",
         },
         {
           id: "q6",
@@ -76,7 +77,7 @@ export default function FAQsPage() {
           id: "q7",
           question: "What happens after the scan?",
           answer:
-            "Our AI analyzes the data, producing visual reports with severity ratings, repair recommendations, and cost estimates — ready for insurance, maintenance, or capital planning.",
+            "Our AI analyzes the data, producing visual reports with severity ratings, repair recommendations, and cost estimates - ready for insurance, maintenance, or capital planning.",
         },
         {
           id: "q8",
@@ -94,7 +95,7 @@ export default function FAQsPage() {
           id: "q9",
           question: "How accurate is the technology?",
           answer:
-            "Our sensors achieve over 90% accuracy in moisture and subsurface detection — validated on more than 2 million square feet of roofs and concrete. We'll gladly share sample reports from similar buildings.",
+            "Our sensors achieve over 90% accuracy in moisture and subsurface detection - validated on more than 2 million square feet of roofs and concrete. We'll gladly share sample reports from similar buildings.",
         },
         {
           id: "q10",
@@ -106,7 +107,7 @@ export default function FAQsPage() {
           id: "q11",
           question: "Do I own the inspection data?",
           answer:
-            "Yes — you own and control all scan results. BDR simply provides a secure cloud platform for access, sharing, and historical comparison.",
+            "Yes - you own and control all scan results. BDR simply provides a secure cloud platform for access, sharing, and historical comparison.",
         },
       ],
     },
@@ -118,7 +119,7 @@ export default function FAQsPage() {
           id: "q12",
           question: "How much does a BDR inspection cost?",
           answer:
-            "Pricing depends on scope — roof area, number of floors, or portfolio size — but averages 50–65% less than traditional methods. We'll provide a detailed quote after a short discovery call.",
+            "Pricing depends on scope - roof area, number of floors, or portfolio size - but averages 50-65% less than traditional methods. We'll provide a detailed quote after a short discovery call.",
         },
         {
           id: "q13",
@@ -142,13 +143,13 @@ export default function FAQsPage() {
           id: "q15",
           question: "Are BDR reports accepted by insurers or regulators?",
           answer:
-            "Yes — our digital documentation is insurance-ready and aligns with common compliance frameworks, providing defensible, timestamped evidence.",
+            "Yes - our digital documentation is insurance-ready and aligns with common compliance frameworks, providing defensible, timestamped evidence.",
         },
         {
           id: "q16",
           question: "Does this support ESG or decarbonization goals?",
           answer:
-            "Indirectly — BDR's data helps owners plan maintenance that extends building life and reduces embodied carbon from unnecessary replacements.",
+            "Indirectly - BDR's data helps owners plan maintenance that extends building life and reduces embodied carbon from unnecessary replacements.",
         },
         {
           id: "q17",
@@ -166,7 +167,7 @@ export default function FAQsPage() {
           id: "q18",
           question: "Who does BDR partner with?",
           answer:
-            "We collaborate with contractors, distributors, and portfolio owners — supported by organizations such as NYSERDA, U.S. DOE, and Scale for Climate Tech.",
+            "We collaborate with contractors, distributors, and portfolio owners - supported by organizations such as NYSERDA, U.S. DOE, and Scale for Climate Tech.",
         },
         {
           id: "q19",
@@ -178,16 +179,16 @@ export default function FAQsPage() {
           id: "q20",
           question: "How do I get started?",
           answer:
-            "Schedule a quick project review. We'll confirm fit, outline costs, and deliver a custom inspection plan — no commitment required.",
+            "Schedule a quick project review. We'll confirm fit, outline costs, and deliver a custom inspection plan - no commitment required.",
         },
       ],
     },
   ]
 
   const stats = [
-    { label: "Average report delivery", value: "24–48 hours" },
-    { label: "Typical cost reduction", value: "50–65% vs manual inspections" },
-    { label: "Accuracy rate", value: "90%+ across 2 million sq ft scanned" },
+    { label: "Average report delivery", value: "24-48 hours" },
+    { label: "Typical cost reduction", value: "50-65% vs manual inspections" },
+    { label: "Accuracy rate", value: "90%+ across 2M sq ft scanned" },
   ]
 
   return (
@@ -290,7 +291,7 @@ export default function FAQsPage() {
                 ))}
               </div>
 
-              {/* Callout boxes after sections 2 and 4 */}
+              {/* Callout boxes after sections 2 and 4
               {(sectionIndex === 1 || sectionIndex === 3) && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -312,7 +313,7 @@ export default function FAQsPage() {
                     ))}
                   </div>
                 </motion.div>
-              )}
+              )} */}
             </div>
           ))}
         </div>
@@ -334,75 +335,33 @@ export default function FAQsPage() {
             <p className="text-xl text-gray-600 mb-8 text-balance">
               Book a free project review and get personalized answers from our team.
             </p>
-            <Button
-              onClick={() => setShowQuoteModal(true)}
-              size="lg"
-              className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg shadow-lg"
-            >
-              Book a Free Project Review
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 text-lg shadow-lg"
+              >
+                Book a Meeting
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
 
       {/* Quote Modal */}
-      <AnimatePresence>
-        {showQuoteModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setShowQuoteModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
+      {showQuoteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-lg w-full">
+            <button
+              className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full p-2 transition-colors"
+              onClick={() => setShowQuoteModal(false)}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Free Quote</h3>
-              <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-                <textarea
-                  placeholder="Tell us about your project"
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                ></textarea>
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white"
-                >
-                  Submit Request
-                </Button>
-              </form>
-              <button
-                onClick={() => setShowQuoteModal(false)}
-                className="mt-4 text-gray-500 hover:text-gray-700 text-sm"
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <X className="h-5 w-5" />
+            </button>
+            <QuoteForm />
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   )

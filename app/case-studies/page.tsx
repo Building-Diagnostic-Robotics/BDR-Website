@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
         }}
         onButtonClick={() => setShowQuoteModal(true)}
         activePage="case-studies"
-        buttonText="Get Started"
+        buttonText="Start My Inspection"
       />
 
       {/* Hero Section */}

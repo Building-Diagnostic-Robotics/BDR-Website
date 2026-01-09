@@ -157,13 +157,13 @@ export default function Navbar({
                   }`} />
                 </button>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg">
-                  <Link href="/blogs" className={`block px-4 py-3 transition-colors rounded-t-lg ${
+                  {/* <Link href="/blogs" className={`block px-4 py-3 transition-colors rounded-t-lg ${
                     isActiveLink("blogs")
                       ? "text-green-600 bg-gray-50 font-medium"
                       : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
                   }`}>
                     Blogs
-                  </Link>
+                  </Link> */}
                   <Link href="/case-studies" className={`block px-4 py-3 transition-colors ${
                     isActiveLink("case-studies")
                       ? "text-green-600 bg-gray-50 font-medium"
@@ -284,13 +284,13 @@ export default function Navbar({
 
           <div className="flex flex-col space-y-2 text-center">
             <span className="text-2xl font-medium text-gray-900">Resources</span>
-            <Link
+            {/* <Link
               href="/blogs"
               className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors"
               onClick={handleMobileMenuClose}
             >
               Blogs
-            </Link>
+            </Link> */}
             <Link
               href="/case-studies"
               className="text-xl font-medium text-gray-600 hover:text-gray-900 transition-colors"

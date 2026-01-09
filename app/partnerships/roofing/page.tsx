@@ -102,11 +102,11 @@ export default function PartnershipsPage() {
                   Channel Partner Program
                 </h1>
                 <p className="max-w-[800px] text-gray-600 md:text-xl/relaxed">
-                  Deliver faster, smarter, and more profitable roof inspections — together.
+                  Deliver faster, smarter, and more profitable roof inspections - together.
                 </p>
                 <p className="max-w-[800px] text-gray-600 md:text-lg/relaxed">
                   BDR's autonomous Roofus platform helps partners transform how roofing systems are inspected,
-                  benchmarked, and maintained. Each partnership tier expands your business opportunity—from streamlined
+                  benchmarked, and maintained. Each partnership tier expands your business opportunity-from streamlined
                   service delivery to new recurring-revenue streams through Inspection-as-a-Service (IaaS).
                 </p>
               </motion.div>
@@ -229,7 +229,7 @@ export default function PartnershipsPage() {
                 {
                   title: "Differentiate Your Offer",
                   description:
-                    "Bring AI-powered, autonomous inspection to clients — cutting time and cost by up to 65%.",
+                    "Bring AI-powered, autonomous inspection to clients - cutting time and cost by up to 65%.",
                 },
                 {
                   title: "Simplify Operations",
@@ -277,7 +277,7 @@ export default function PartnershipsPage() {
                 <p className="text-gray-600">
                   See how Roofus transformed portfolio inspections in our{" "}
                   <a href="/case-studies/" className="text-[#1f8a46] hover:underline font-medium">
-                    City of New York & Archdiocese Case Study →
+                    Multi-Site Portfolio Case Study →
                   </a>
                 </p>
               </motion.div>
@@ -303,7 +303,7 @@ export default function PartnershipsPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  tier: "Tier 1 — Authorized Partner",
+                  tier: "Tier 1: Authorized Partner",
                   subtitle:
                     "Who It's For: Contractors, consultants, or distributors completing their first BDR project or adding roof inspections to their service line.",
                   includes: [
@@ -317,22 +317,22 @@ export default function PartnershipsPage() {
                     "A frictionless entry point to deliver your first BDR roof inspection confidently, backed by full support from our field and analytics team.",
                 },
                 {
-                  tier: "Tier 2 — Certified Partner",
+                  tier: "Tier 2: Certified Partner",
                   subtitle:
                     "Who It's For: Experienced providers scaling roof-inspection services or integrating BDR's robotics and analytics platform into their workflows.",
                   includes: [
-                    "Volume-based pricing + margin incentives (10–15%)",
+                    "Volume-based pricing + margin incentives (10-15%)",
                     "Co-branded sales / marketing assets",
                     "Shared project leads from BDR's pipeline",
                     "Rights to resell Roof Inspection-as-a-Service subscriptions (recurring-revenue share)",
                     "Dedicated Partner Manager for sales + marketing alignment",
                   ],
                   value:
-                    "A growth tier for partners embedding autonomous roof inspection into their business model — unlocking recurring revenue, shared visibility, and portfolio expansion.",
+                    "A growth tier for partners embedding autonomous roof inspection into their business model - unlocking recurring revenue, shared visibility, and portfolio expansion.",
                   featured: true,
                 },
                 {
-                  tier: "Tier 3 — Strategic Alliance Partner",
+                  tier: "Tier 3: Strategic Alliance Partner",
                   subtitle:
                     "Who It's For: National suppliers, large contractors, insurers, or asset networks pursuing portfolio-scale inspection programs.",
                   includes: [
@@ -342,7 +342,7 @@ export default function PartnershipsPage() {
                     "Dedicated technical-integration & project-design team",
                   ],
                   value:
-                    "BDR's highest collaboration tier — reserved for long-term partners shaping the future of autonomous roof diagnostics and digital-asset management.",
+                    "BDR's highest collaboration tier - reserved for long-term partners shaping the future of autonomous roof diagnostics and digital-asset management.",
                   invitation: true,
                 },
               ].map((pkg, index) => (
@@ -431,12 +431,12 @@ export default function PartnershipsPage() {
                       {
                         stream: "Inspection Margin",
                         description: "Volume-based IaaS pricing",
-                        benefit: "10–25% markup range",
+                        benefit: "10-25% markup range",
                       },
                       {
                         stream: "Operational Efficiency",
                         description: "Faster deployment · fewer rescans",
-                        benefit: "3–5× more projects / quarter",
+                        benefit: "3-5× more projects / quarter",
                       },
                       {
                         stream: "Subscription Upsell",
@@ -467,9 +467,9 @@ export default function PartnershipsPage() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="mt-8 text-center"
             >
-              <p className="text-gray-600">
+              {/* <p className="text-gray-600">
                 Use our ROI calculator and pricing toolkit — available in the Partner Portal.
-              </p>
+              </p> */}
             </motion.div>
           </div>
         </section>

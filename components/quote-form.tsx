@@ -51,7 +51,7 @@ export function QuoteForm({ onClose }: { onClose?: () => void }) {
 
   return (
     <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Free Quote</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">Start Your Inspection</h3>
       <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

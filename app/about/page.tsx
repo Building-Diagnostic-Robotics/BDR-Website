@@ -20,10 +20,12 @@ import {
   ChevronDown,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { QuoteForm } from "@/components/quote-form"
 
 export default function AboutPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,10 +137,7 @@ export default function AboutPage() {
         isScrolled={isScrolled}
         mobileMenuOpen={mobileMenuOpen}
         onToggleMobileMenu={toggleMobileMenu}
-        onButtonClick={() => {
-          // Navigate to home contact section
-          window.location.href = "/#contact"
-        }}
+        onButtonClick={() => setShowQuoteModal(true)}
         activePage="/about"
         buttonText="Start My Inspection"
       />
@@ -159,12 +158,12 @@ export default function AboutPage() {
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 text-balance">Why BDR</h1>
             <p className="text-2xl md:text-3xl font-semibold text-green-600 mb-6">From Uncertainty to Insight</p>
             <p className="text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto text-pretty">
-              BDR is redefining how building inspections are done — turning manual, disruptive, and inconsistent
+              BDR is redefining how building inspections are done - turning manual, disruptive, and inconsistent
               processes into fast, digital, and actionable intelligence.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-3xl mx-auto text-pretty">
-              We deliver autonomous roof and concrete inspections that help owners, contractors, and partners make
-              smarter, safer decisions — all within 48 hours.
+              We deliver autonomous roof inspections that help owners, contractors, and partners make
+              smarter, safer decisions - all within 48 hours.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto text-pretty">
               Our platform transforms raw scan data into defensible, visual reports that empower better planning, faster
@@ -197,7 +196,7 @@ export default function AboutPage() {
                 costs, and expose owners to hidden risks.
               </p>
               <p className="text-pretty">
-                We founded BDR to eliminate that uncertainty — giving every stakeholder the clarity and confidence to
+                We founded BDR to eliminate that uncertainty - giving every stakeholder the clarity and confidence to
                 act before problems become expensive.
               </p>
               <div className="bg-gradient-to-br from-green-50 to-white border border-green-200 rounded-2xl p-8 mt-8">
@@ -226,7 +225,7 @@ export default function AboutPage() {
               Technology should simplify decision-making, not complicate it.
             </p>
             <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto text-pretty">
-              We believe that insight is only valuable when it improves real-world outcomes — safer sites, smarter
+              We believe that insight is only valuable when it improves real-world outcomes - safer sites, smarter
               capital planning, fewer surprises.
             </p>
             <p className="text-lg text-gray-700 text-center mb-12 font-medium">
@@ -311,7 +310,7 @@ export default function AboutPage() {
                 From single-site projects to city-wide portfolios, BDR transforms inspection from a headache into a
                 strategic advantage.
               </p>
-              <Link href="/solutions/roof">
+              <Link href="/case-studies">
                 <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full text-lg px-8 py-6">
                   Read the Latest Case Study
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -362,7 +361,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
               <p className="text-lg text-gray-700 mb-8 text-pretty">
-                Our work is trusted across both public and private projects — supported by NYSERDA, U.S. Department of
+                Our work is trusted across both public and private projects - supported by NYSERDA, U.S. Department of
                 Energy, and Scale for Climate Tech.
               </p>
               <Link href="/partnerships/roofing">
@@ -397,17 +396,31 @@ export default function AboutPage() {
                 From uncertainty to insight, BDR makes every building decision faster, smarter, and safer.
               </p>
             </div>
-            <Link href="/#contact">
+            <a href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
               <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full text-lg px-8 py-6">
                 Get in Touch with Our Team
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
 
       <Footer />
+
+      {showQuoteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-lg w-full">
+            <button
+              className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full p-2 transition-colors"
+              onClick={() => setShowQuoteModal(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <QuoteForm />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

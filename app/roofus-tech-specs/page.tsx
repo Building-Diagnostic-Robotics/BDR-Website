@@ -21,10 +21,12 @@ import {
 	FileText,
 	Download,
 } from "lucide-react"
+import { QuoteForm } from "@/components/quote-form"
 
 export default function RoofusTechSpecsPage() {
 	const [isScrolled, setIsScrolled] = useState(false)
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+	const [showQuoteModal, setShowQuoteModal] = useState(false)
 
 	useEffect(() => {
 		const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -44,9 +46,9 @@ export default function RoofusTechSpecsPage() {
 				isScrolled={isScrolled}
 				mobileMenuOpen={mobileMenuOpen}
 				onToggleMobileMenu={toggleMobileMenu}
-				onButtonClick={() => {}}
+				onButtonClick={() => setShowQuoteModal(true)}
 				activePage="roofus-tech-specs"
-				buttonText="Download Specs"
+				buttonText="Book a Demo"
 			/>
 
 			{/* Hero Section */}
@@ -141,7 +143,7 @@ export default function RoofusTechSpecsPage() {
 						>
 						<Link href="https://app.usemotion.com/meet/bilal-is/looking-forward-to-meeting-you?d=25" target="_blank" rel="noopener noreferrer">
 							<Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-6 shadow-lg">
-								Book a Demo
+								Schedule a Meeting
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>
 						</Link>
@@ -354,6 +356,20 @@ export default function RoofusTechSpecsPage() {
 			</section>
 
 			<Footer />
+
+			{showQuoteModal && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/70 backdrop-blur-sm p-4">
+					<div className="relative max-w-lg w-full">
+						<button
+							className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full p-2 transition-colors"
+							onClick={() => setShowQuoteModal(false)}
+						>
+							<X className="h-5 w-5" />
+						</button>
+						<QuoteForm />
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
