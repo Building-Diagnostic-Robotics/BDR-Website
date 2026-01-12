@@ -245,7 +245,7 @@ export default function RoofInspectionPage() {
                 Roof Inspection-as-a-Service
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                Autonomous, digital, and defensible roof diagnostics—built for warranty, compliance, and capital
+                Autonomous, digital, and defensible roof diagnostics - built for warranty, compliance, and capital
                 planning.
               </p>
 
