@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BDR – Roof Inspections",
+  title: "BDR - Roof Inspections",
   icons: "/BDR.jpg",
 };
 
