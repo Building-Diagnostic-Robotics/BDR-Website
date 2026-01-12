@@ -53,7 +53,7 @@ export default function AboutPage() {
     {
       icon: Zap,
       title: "Speed",
-      description: "24–48-hour turnaround with minimal disruption.",
+      description: "24-48 hour turnaround with minimal disruption.",
     },
     {
       icon: DollarSign,
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 variant="ghost"
                 className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
               >
-                Download Now <ArrowRight className="ml-2 h-3 w-3" />
+                Download Whitepaper <ArrowRight className="ml-2 h-3 w-3" />
               </Button>
             </a>
         </div>
