@@ -23,22 +23,22 @@ export default function CaseStudiesPage() {
       image: "/robotic-roof-inspection-technology.jpg",
       
     },
-    {
-      id: 2,
-      title: "Smart Scanning for Complex Builds.",
-      shortDescription:
-        "This concept centers on BDR's collaboration with Truebeck, focusing on concrete scanning and digital mapping to streamline the retrofit and fit-out process for a major California life sciences project.",
-      image: "/robotic-roof-inspection-technology.jpg",
+    // {
+    //   id: 2,
+    //   title: "Smart Scanning for Complex Builds.",
+    //   shortDescription:
+    //     "This concept centers on BDR's collaboration with Truebeck, focusing on concrete scanning and digital mapping to streamline the retrofit and fit-out process for a major California life sciences project.",
+    //   image: "/robotic-roof-inspection-technology.jpg",
       
-    },
-    {
-      id: 3,
-      title: "Reimagining Building Diagnostics",
-      shortDescription:
-        "This concept presents BDR's shift to a recurring, data-driven inspection-as-a-service (IaaS) model, detailing how clients (from municipal agencies to contractors) leverage ongoing, automated diagnostics for cost savings, operational clarity, and portfolio-wide asset management.",
-      image: "/robotic-roof-inspection-technology.jpg",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Reimagining Building Diagnostics",
+    //   shortDescription:
+    //     "This concept presents BDR's shift to a recurring, data-driven inspection-as-a-service (IaaS) model, detailing how clients (from municipal agencies to contractors) leverage ongoing, automated diagnostics for cost savings, operational clarity, and portfolio-wide asset management.",
+    //   image: "/robotic-roof-inspection-technology.jpg",
       
-    },
+    // },
   ]
 
 
@@ -63,7 +63,7 @@ export default function CaseStudiesPage() {
           <p className="text-xs md:text-sm font-medium text-center md:text-left">
             Reimagining Building Diagnostics - How BDR Is Making the Future of Asset Intelligence Real Today.
           </p>
-          <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+          <a href="BDR_Technical_Whitepaper.pdf" download>
             <Button
               variant="ghost"
               className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
@@ -126,7 +126,7 @@ export default function CaseStudiesPage() {
                     <h2 className="text-3xl font-bold text-gray-900 text-balance">{study.title}</h2>
                     <p className="text-lg text-gray-700 leading-relaxed">{study.shortDescription}</p>
                     <a
-                      href="/Roofus_Case_Study_1-Portfolio.pdf"
+                      href="/BDR_Case_Study_Portfolio_Roof_Plannin_for_a_Multi_Site_Faith_Based_Organization.pdf"
                       download
                       className="inline-flex items-center justify-center w-fit bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-md px-4 py-2"
                     >

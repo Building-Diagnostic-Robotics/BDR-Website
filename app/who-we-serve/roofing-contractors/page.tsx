@@ -105,7 +105,7 @@ export default function PortfolioOwnersPage() {
                 Commercial Flat Roofing Contractors
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                Cash flow is unpredictable as clients only call for leaks or bids, keeping relationships transactional and easy to undercut.
+                BDR helps roofing contractors add recurring inspection and planning services with consistent, digitized roof condition data.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -126,22 +126,91 @@ export default function PortfolioOwnersPage() {
                   </Button>
                 </Link>
               </div>
-
-              <Link href="#solution">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                    className="inline-flex items-center rounded-full border border-green-400/40 bg-green-500/10 px-6 py-3 backdrop-blur-sm cursor-pointer hover:border-green-300 hover:bg-green-500/20 transition-colors mt-10"
-                >
-                    <span className="text-sm md:text-base text-white hover:underline transition-all">
-                    <strong>See How BDR Helps:</strong> Explore the solution for stabilizing roofing revenue.
-                    </span>
-                </motion.div>
-              </Link>
             </motion.div>
           </div>
         </section>
+
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+            <div className="absolute inset-0 z-0">
+              <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+            </div>
+
+            <div className="container px-4 md:px-6 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
+              >
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
+                  Your Roofing Revenue Depends on Leaks and Bids -{" "}
+                  <span className="text-green-600">Until Now.</span>
+                </h2>
+                <p className="max-w-3xl text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Cash flow is unpredictable as clients only call for leaks or bids, keeping relationships transactional and easy to undercut.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto"
+              >
+                {[
+                  {
+                    icon: <TrendingUp className="h-8 w-8" />,
+                    title: "Feast-or-Famine Revenue",
+                    description:
+                      "Revenue swings between big jobs create unpredictable cash flow and idle crews between projects.",
+                  },
+                  {
+                    icon: <Handshake className="h-8 w-8" />,
+                    title: "Transactional Relationships",
+                    description:
+                      "Clients only call when there's a leak or a bid request, so relationships stay reactive instead of strategic.",
+                  },
+                  {
+                    icon: <Users className="h-8 w-8" />,
+                    title: "Easy to Undercut",
+                    description:
+                      "On paper, most contractors look the same, making it easy for competitors to undercut you on price.",
+                  },
+                  {
+                    icon: <FileText className="h-8 w-8" />,
+                    title: "Missing Storm Documentation",
+                    description:
+                      "After storms, many owners lack clean roof documentation-slowing claims and leaving money on the table.",
+                  },
+                ].map((pain, index) => (
+                  <motion.div
+                    key={index}
+                    variants={item}
+                    className="group relative overflow-hidden rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100 p-8 shadow-sm"
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500/20 to-green-600/20 mb-6 border border-green-300 text-gray-900">
+                      {pain.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">{pain.title}</h3>
+                    <p className="text-gray-600">{pain.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <div className="mt-12 text-center">
+                <Link href="#solution">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+                  >
+                    Explore BDR's Roof Inspection as a Service
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              </div>
+            </div>
+          </section>
 
         <section id="solution" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="absolute inset-0 z-0">
@@ -237,7 +306,7 @@ export default function PortfolioOwnersPage() {
                     variant="outline"
                     className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                   >
-                  Download Sample Reports
+                  View Sample Reports
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>

@@ -147,7 +147,7 @@ export default function RoofusTechSpecsPage() {
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>
 						</Link>
-						<a href="/Roofus_Product_sheet.pdf" download>
+						<a href="/BDR_Roofus_Product_sheet.pdf" download>
 							<Button
 								variant="outline"
 								className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6"
@@ -345,7 +345,7 @@ export default function RoofusTechSpecsPage() {
 						transition={{ duration: 0.5, delay: 0.2 }}
 						className="text-center mt-12"
 					>
-						<a href="/Technical_Specs_Document.pdf" download>
+						<a href="/BDR_Roofus_Technical_Specs.pdf" download>
 							<Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg">
 								Download Full Hardware Specs
 								<Download className="ml-2 h-4 w-4" />

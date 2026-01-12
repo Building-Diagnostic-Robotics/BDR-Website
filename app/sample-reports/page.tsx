@@ -33,19 +33,19 @@ export default function SampleReportsPage() {
 
 	const reports = [
 		{
-			title: "Roof Inspection Sample",
+			title: "Roof Inspection Sample Report",
 			description: "A brief overview of the moisture damage and visual anomalies detected in the building.",
-			href: "/Sample_Building_111_report.pdf",
+			href: "/BDR_sample_report-Roof_Inspection.pdf",
 		},
 		{
 			title: "Visual Anomaly Appendix",
-			description: "Detailed imagery and data supporting the roof inspection findings.",
-			href: "/Sample_Building_111_appendix.pdf",
+			description: "Detailed visual anomaly imagery and data supporting the roof inspection findings.",
+			href: "/BDR_sample_report-Visual_Anomaly.pdf",
 		},
 		{
 			title: "Scope of Work + Cost Analysis",
 			description: "Recommended repairs and associated cost estimates based on inspection results.",
-			href: "/Sample_Building_111_appendix_C.pdf",
+			href: "/BDR_sample_report-SOW_&_Cost_Analysis.pdf",
 		},
 	]
 

@@ -121,7 +121,7 @@ export default function AboutPage() {
           <p className="text-xs md:text-sm font-medium text-center md:text-left">
             Reimagining Building Diagnostics - How BDR Is Making the Future of Asset Intelligence Real Today.
           </p>
-            <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+            <a href="BDR_Technical_Whitepaper.pdf" download>
               <Button
                 variant="ghost"
                 className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"

@@ -148,7 +148,7 @@ export default function Home() {
             <p className="text-xs md:text-sm font-medium text-center md:text-left">
               Reimagining Building Diagnostics - How BDR Is Making the Future of Asset Intelligence Real Today.
             </p>
-            <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+            <a href="/BDR_Technical_Whitepaper.pdf" download>
               <Button
                 variant="ghost"
                 className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
@@ -712,9 +712,9 @@ export default function Home() {
                 </h2>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
                 {/* Left column: stacked case study cards */}
-                <div className="space-y-8">
+                <div className="flex flex-col items-center justify-center">
                   {/* Multi-Faith Portfolio Case Study (clickable download + read button) */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -723,7 +723,7 @@ export default function Home() {
                     transition={{ duration: 0.5 }}
                     onClick={() => {
                       const a = document.createElement('a');
-                      a.href = '/Roofus_Case_Study_1-Portfolio.pdf';
+                      a.href = '/BDR_Case_Study_Portfolio_Roof_Plannin_for_a_Multi_Site_Faith_Based_Organization.pdf';
                       a.setAttribute('download', '');
                       document.body.appendChild(a);
                       a.click();
@@ -744,7 +744,7 @@ export default function Home() {
                   </motion.div>
 
                   {/* IR Analyzers(clickable download with icon) */}
-                  <motion.a
+                  {/* <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -758,10 +758,10 @@ export default function Home() {
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">&gt; 90%</span> data correlation achieved
                     </p>
-                  </motion.a>
+                  </motion.a> */}
 
                   {/* City of New York card (clickable download with icon) */}
-                  <motion.a
+                  {/* <motion.a
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -775,7 +775,7 @@ export default function Home() {
                     <p className="text-gray-600">
                       <span className="text-gray-500 font-bold">2× coverage speed</span>, 0 radiation risk
                     </p>
-                  </motion.a>
+                  </motion.a> */}
                 </div>
 
                 {/* Right column: Case Study GIF */}
@@ -799,6 +799,119 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+            <div className="absolute inset-0 z-0">
+              <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+            </div>
+
+            <div className="container px-4 md:px-6 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
+              >
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
+                  Who We Work With
+                </h2>
+                <p className="text-gray-600 text-lg">
+                  Trusted by leading companies across the roofing, insurance, and building diagnostics industries.
+                </p>
+              </motion.div>
+
+              <div className="relative overflow-hidden">
+                <style>{`
+                  @keyframes scroll {
+                    0% {
+                      transform: translateX(0);
+                    }
+                    100% {
+                      transform: translateX(-50%);
+                    }
+                  }
+                  .logos-scroll {
+                    display: flex;
+                    animation: scroll 30s linear infinite;
+                  }
+                  .logo-item {
+                    flex: 0 0 auto;
+                    min-width: 200px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 20px;
+                  }
+                `}</style>
+                <div className="overflow-hidden">
+                  <div className="logos-scroll">
+                    {[
+                      "bauder.png",
+                      "amrize.png",
+                      "IR_analyzers.png",
+                      "NYUTandon_Color.png",
+                      "US_army.jpg",
+                      "US_dept_energy.png",
+                      "archidocese.png",
+                      "bny.png",
+                      "building_envelope_tech.png",
+                      "entuitive.png",
+                      "formwork_labs.png",
+                      "kingspan.png",
+                      "newlab.png",
+                      "nsf.png",
+                      "nyc_dcas.jpeg",
+                      "prof_roof_consultants.jpeg",
+                      "skanska.png",
+                      "truebeck.jpg",
+                    ].map((logo, index) => (
+                      <div key={index} className="logo-item">
+                        <Image
+                          src={`/who-we-work-with-logos/${logo}`}
+                          alt={`Company logo ${index + 1}`}
+                          width={150}
+                          height={80}
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
+                    {/* Duplicate for seamless loop */}
+                    {[
+                      "bauder.png",
+                      "amrize.png",
+                      "IR_analyzers.png",
+                      "NYUTandon_Color.png",
+                      "US_army.jpg",
+                      "US_dept_energy.png",
+                      "archidocese.png",
+                      "bny.png",
+                      "building_envelope_tech.png",
+                      "entuitive.png",
+                      "formwork_labs.png",
+                      "kingspan.png",
+                      "newlab.png",
+                      "nsf.png",
+                      "nyc_dcas.jpeg",
+                      "prof_roof_consultants.jpeg",
+                      "skanska.png",
+                      "truebeck.jpg",
+                    ].map((logo, index) => (
+                      <div key={`duplicate-${index}`} className="logo-item">
+                        <Image
+                          src={`/who-we-work-with-logos/${logo}`}
+                          alt={`Company logo ${index + 1}`}
+                          width={150}
+                          height={80}
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -836,7 +949,7 @@ export default function Home() {
                 {/* Whitepaper */}
                 <motion.a
                   variants={item}
-                  href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf"
+                  href="/BDR_Technical_Whitepaper.pdf"
                   download
                   className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >

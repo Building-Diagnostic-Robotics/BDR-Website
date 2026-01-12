@@ -11,8 +11,9 @@ import {
   ArrowRight,
   Zap,
   DollarSign,
-  CheckCircle2,
-  Building2,
+  EyeOff,
+  AlertTriangle,
+  Timer,
   Users,
   FileTextIcon,
   FileCheck,
@@ -81,7 +82,7 @@ export default function PortfolioOwnersPage() {
         <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/aerial-view-of-commercial-flat-roof-inspection.jpg"
+              src="/aerial_roof_2.jpg"
               alt="Aerial roof inspection"
               fill
               className="object-cover"
@@ -104,9 +105,8 @@ export default function PortfolioOwnersPage() {
                 Insurance & Warranty Underwriters
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                Roof condition is often a black box. Data is inconsistent, and hard to verify letting hidden issues become costly claims.               
+                BDR helps insurance and warranty underwriters replace inconsistent roof info with standardized, defensible condition data.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button
                   onClick={() => setShowQuoteModal(true)}
@@ -125,22 +125,85 @@ export default function PortfolioOwnersPage() {
                   </Button>
                 </Link>
               </div>
-
-              <Link href="#solution">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                    className="inline-flex items-center rounded-full border border-green-400/40 bg-green-500/10 px-6 py-3 backdrop-blur-sm cursor-pointer hover:border-green-300 hover:bg-green-500/20 transition-colors mt-10"
-                >
-                    <span className="text-sm md:text-base text-white hover:underline transition-all">
-                    <strong>See How BDR Helps:</strong> Explore the solution for de-risking insurance and warranty underwriting decisions.
-                    </span>
-                </motion.div>
-              </Link>
             </motion.div>
           </div>
         </section>
+
+        <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
+            <div className="absolute inset-0 z-0">
+              <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-green-500/10 blur-3xl rounded-full"></div>
+            </div>
+
+            <div className="container px-4 md:px-6 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
+              >
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 pb-2">
+                  You're Pricing Roof Risk With Incomplete Data -{" "}
+                  <span className="text-green-600">Until Now.</span>
+                </h2>
+                <p className="max-w-3xl text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Roof condition is often a black box. Data is inconsistent, and hard to verify letting hidden issues become costly claims.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+              >
+                {[
+                  {
+                    icon: <EyeOff className="h-8 w-8" />,
+                    title: "Black-Box Roof Condition",
+                    description:
+                      "Roof data is inconsistent, subjective, and hard to verify making true condition tough to see.",
+                  },
+                  {
+                    icon: <AlertTriangle className="h-8 w-8" />,
+                    title: "Uncertain Risk Pricing",
+                    description:
+                      "Risk is priced with uncertainty, so hidden issues slip through and turn into expensive claims.",
+                  },
+                  {
+                    icon: <Timer className="h-8 w-8" />,
+                    title: "Friction in Underwriting",
+                    description:
+                      "Slow, unclear roof data creates delays, rework, and friction in underwriting and coverage decisions.",
+                  },
+                ].map((pain, index) => (
+                  <motion.div
+                    key={index}
+                    variants={item}
+                    className="group relative overflow-hidden rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-green-100 p-8 shadow-sm"
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500/20 to-green-600/20 mb-6 border border-green-300 text-gray-900">
+                      {pain.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">{pain.title}</h3>
+                    <p className="text-gray-600">{pain.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <div className="mt-12 text-center">
+                <Link href="#solution">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full px-8 py-4 shadow-lg transition-colors duration-300"
+                  >
+                    Explore BDR's Roof Inspection as a Service
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              </div>
+            </div>
+          </section>
 
         <section id="solution" className="relative w-full py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
           <div className="absolute inset-0 z-0">
@@ -236,7 +299,7 @@ export default function PortfolioOwnersPage() {
                     variant="outline"
                     className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-4"
                   >
-                  Download Sample Reports
+                  View Sample Reports
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -285,12 +348,12 @@ export default function PortfolioOwnersPage() {
                 {
                   icon: <Zap className="h-8 w-8" />,
                   title: "Speed & Scale",
-                  description: "24–48 hours turnaround, Up to 50 000 sq ft/hr coverage",
+                  description: "24-48 hours turnaround, Up to 50 000 sq ft/hr coverage",
                 },
                 {
                   icon: <DollarSign className="h-8 w-8" />,
                   title: "Lower Cost",
-                  description: "50–80 % below manual surveys",
+                  description: "50-80 % below manual surveys",
                 },
                 {
                   icon: <FileText className="h-8 w-8" />,

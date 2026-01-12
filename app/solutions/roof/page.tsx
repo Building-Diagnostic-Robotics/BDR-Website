@@ -878,7 +878,7 @@ export default function RoofInspectionPage() {
               <div 
                 onClick={() => {
                   const a = document.createElement('a');
-                  a.href = '/Roofus_Case_Study_1-Portfolio.pdf';
+                  a.href = '/BDR_Case_Study_Portfolio_Roof_Plannin_for_a_Multi_Site_Faith_Based_Organization.pdf';
                   a.setAttribute('download', '');
                   document.body.appendChild(a);
                   a.click();
@@ -916,7 +916,7 @@ export default function RoofInspectionPage() {
                     ))}
                   </ul>
                 </div>
-                <a href="/Roofus_Case_Study_1-Portfolio.pdf" download onClick={(e) => e.stopPropagation()}>
+                <a href="/BDR_Case_Study_Portfolio_Roof_Plannin_for_a_Multi_Site_Faith_Based_Organization.pdf" download onClick={(e) => e.stopPropagation()}>
                   <Button variant="outline" className="border-green-300 text-green-700 hover:bg-gray bg-white">
                     Read Full Case Study
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -925,7 +925,7 @@ export default function RoofInspectionPage() {
               </div>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               variants={container}
               initial="hidden"
               whileInView="show"
@@ -947,7 +947,7 @@ export default function RoofInspectionPage() {
                 <motion.a
                   key={index}
                   variants={item}
-                  href="/Roofus_Case_Study_1-Portfolio.pdf"
+                  href="/BDR_Case_Study_Portfolio_Roof_Planning_for_a_Multi_Site_Faith_Based_Organization.pdf"
                   download
                   className="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm shadow-md group cursor-pointer hover:shadow-lg transition-shadow"
                 >
@@ -963,7 +963,7 @@ export default function RoofInspectionPage() {
                   </div>
                 </motion.a>
               ))}
-            </motion.div>
+            </motion.div> */}
           </div>
         </section>
 
@@ -1150,7 +1150,7 @@ export default function RoofInspectionPage() {
                   icon: <FileText className="h-8 w-8" />,
                   title: "Whitepaper",
                   link: "Reimagining Building Diagnostics →",
-                  href: "/GPR-Former_ROOFER360_Whitepaper_v1.pdf",
+                  href: "/BDR_Technical_Whitepaper.pdf",
                   download: true,
                 },
                 {

@@ -52,7 +52,7 @@ export default function PartnershipsPage() {
             Download our Whitepaper: The Future of Roof Inspection Technology
           </p>
           
-          <a href="/GPR-Former_ROOFER360_Whitepaper_v1.pdf" download>
+          <a href="/BDR_Technical_Whitepaper.pdf" download>
             <Button
               variant="ghost"
               className="text-white hover:bg-white/20 text-xs md:text-sm whitespace-nowrap"
@@ -550,7 +550,7 @@ export default function PartnershipsPage() {
 
                 {/* CTAs on next line, centered with spacing */}
                 <div className="mt-3 flex flex-wrap justify-center gap-10">
-                  <a href="/sample-report.pdf" download className="text-[#1f8a46] hover:underline font-medium">
+                  <a href="/BDR_Technical_Whitepaper.pdf" download className="text-[#1f8a46] hover:underline font-medium">
                     Whitepaper →
                   </a>
                   <a href="/case-studies/" className="text-[#1f8a46] hover:underline font-medium">
@@ -656,7 +656,7 @@ export default function PartnershipsPage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="/Program_Overview_Sheet.pdf" download>
+                <a href="/BDR_Program_Overview_Sheet.pdf" download>
                   <Button
                     variant="outline"
                     className="border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full px-8 py-6 text-lg"
