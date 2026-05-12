@@ -233,7 +233,7 @@ export default function PortfolioOwnersPage() {
                 Roof Inspection-as-a-Service
               </h2>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                Annual, digitized roof inspections that create a clear, trackable record for every asset in your portfolioso funding decisions are backed by objective data, not guesswork.
+                Annual, digitized roof inspections that create a clear, trackable record for every asset in your portfolio so funding decisions are backed by objective data, not guesswork.
               </p>
             </motion.div>
 
