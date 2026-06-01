@@ -125,7 +125,7 @@ export default function RoofusTechSpecsPage() {
 									</div>
 									<div className="bg-gradient-to-br from-green-50 to-gray-50 p-8 flex items-center justify-center min-h-[400px]">
 										<img
-											src="/Roofus(no_bg).png"
+											src="/roofus1-no_bg.png"
 											alt="Roofus Robot"
 											className="w-full max-w-md h-auto object-contain"
 										/>

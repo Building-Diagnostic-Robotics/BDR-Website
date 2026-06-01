@@ -383,7 +383,7 @@ export default function Home() {
                 >
                   <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 shadow-2xl">
                     <img
-                      src="/roofus1.jpg"
+                      src="/roofus1.jpeg"
                       alt="BDR Roofus platform in action"
                       className="w-full h-full object-cover"
                     />
