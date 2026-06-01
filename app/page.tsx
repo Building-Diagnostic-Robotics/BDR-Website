@@ -44,7 +44,10 @@ export default function Home() {
   const [showExitPopup, setShowExitPopup] = useState(false)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
   const [showReportModal, setShowReportModal] = useState(false)
+  const [roofusImageIndex, setRoofusImageIndex] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
+
+  const roofusImages = ["/roofus1.jpeg", "/roofus2.jpeg"]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,6 +79,14 @@ export default function Home() {
       document.removeEventListener("mouseleave", handleMouseLeave)
     }
   }, [])
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setRoofusImageIndex((currentIndex) => (currentIndex + 1) % roofusImages.length)
+    }, 10000)
+
+    return () => window.clearInterval(intervalId)
+  }, [roofusImages.length])
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -382,12 +393,47 @@ export default function Home() {
                   className="relative"
                 >
                   <div className="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 shadow-2xl">
-                    <img
-                      src="/roofus1.jpeg"
-                      alt="BDR Roofus platform in action"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <motion.img
+                        key={roofusImages[roofusImageIndex]}
+                        src={roofusImages[roofusImageIndex]}
+                        alt="BDR Roofus platform in action"
+                        initial={{ opacity: 0, scale: 1.02 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="w-full h-full object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setRoofusImageIndex((currentIndex) => (currentIndex - 1 + roofusImages.length) % roofusImages.length)
+                        }
+                      className="absolute bottom-4 left-4 z-20 rounded-full bg-black/45 p-3 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+                        aria-label="View previous Roofus image"
+                      >
+                        <ArrowRight className="h-5 w-5 rotate-180" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setRoofusImageIndex((currentIndex) => (currentIndex + 1) % roofusImages.length)}
+                      className="absolute bottom-4 right-4 z-20 rounded-full bg-black/45 p-3 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+                        aria-label="View next Roofus image"
+                      >
+                        <ArrowRight className="h-5 w-5" />
+                      </button>
+                    <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/35 px-3 py-2 backdrop-blur-sm">
+                        {roofusImages.map((image, index) => (
+                          <button
+                            key={image}
+                            type="button"
+                            onClick={() => setRoofusImageIndex(index)}
+                            className={`h-2.5 w-2.5 rounded-full transition-all ${
+                              index === roofusImageIndex ? "bg-white scale-110" : "bg-white/50 hover:bg-white/80"
+                            }`}
+                            aria-label={`View Roofus image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   </div>
                 </motion.div>
               </div>
