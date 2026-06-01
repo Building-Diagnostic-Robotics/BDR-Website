@@ -409,7 +409,7 @@ export default function RoofInspectionPage() {
               >
                 <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
                   <Image
-                    src="/roofus1.jpg"
+                    src="/roofus1.jpeg"
                     alt="Roofus autonomous inspection platform"
                     fill
                     className="object-cover"
