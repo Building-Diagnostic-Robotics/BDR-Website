@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { useRef } from "react"
 import { QuoteForm } from "@/components/quote-form"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -40,6 +41,11 @@ export default function RoofInspectionPage() {
   const [selectedCustomerType, setSelectedCustomerType] = useState<string | null>(null)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [roofusImageIndex, setRoofusImageIndex] = useState(0)
+
+  const roofusImages = ["/roofus1.jpeg", "/roofus2.jpeg"]
+
+  const roofusIntervalRef = useRef<number | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +76,17 @@ export default function RoofInspectionPage() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   }
+
+  useEffect(() => {
+    // auto-advance every 12 seconds
+    roofusIntervalRef.current = window.setInterval(() => {
+      setRoofusImageIndex((current) => (current + 1) % roofusImages.length)
+    }, 10000)
+
+    return () => {
+      if (roofusIntervalRef.current) clearInterval(roofusIntervalRef.current)
+    }
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
@@ -408,12 +425,51 @@ export default function RoofInspectionPage() {
                 transition={{ duration: 0.5 }}
               >
                 <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
-                  <Image
-                    src="/roofus1.jpeg"
+                  <motion.img
+                    key={roofusImages[roofusImageIndex]}
+                    src={roofusImages[roofusImageIndex]}
                     alt="Roofus autonomous inspection platform"
-                    fill
-                    className="object-cover"
+                    initial={{ opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="w-full h-full object-cover"
                   />
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setRoofusImageIndex((currentIndex) => (currentIndex - 1 + roofusImages.length) % roofusImages.length)
+                    }
+                    className="absolute bottom-4 left-4 z-20 rounded-full bg-black/45 p-3 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+                    aria-label="View previous Roofus image"
+                  >
+                    <ArrowRight className="h-5 w-5 rotate-180" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setRoofusImageIndex((currentIndex) => (currentIndex + 1) % roofusImages.length)}
+                    className="absolute bottom-4 right-4 z-20 rounded-full bg-black/45 p-3 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+                    aria-label="View next Roofus image"
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
+
+                  <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/35 px-3 py-2 backdrop-blur-sm">
+                    {roofusImages.map((image, index) => (
+                      <button
+                        key={image}
+                        type="button"
+                        onClick={() => setRoofusImageIndex(index)}
+                        className={`h-2.5 w-2.5 rounded-full transition-all ${
+                          index === roofusImageIndex ? "bg-white scale-110" : "bg-white/50 hover:bg-white/80"
+                        }`}
+                        aria-label={`View Roofus image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
               </motion.div>
 
