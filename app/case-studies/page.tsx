@@ -20,7 +20,7 @@ export default function CaseStudiesPage() {
       id: 1,
       title: "Multi-Site Faith-Based Portfolio: 65 Roofs, One Standardized Plan",
       shortDescription: "Roofus delivered standardized roof assessments across 65 occupied churches and schools in New York City, giving facilities and finance a single, defensible portfolio view.",
-      image: "/robotic-roof-inspection-technology.jpg",
+      image: "/roofus1.jpeg",
       
     },
     // {

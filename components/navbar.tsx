@@ -45,11 +45,12 @@ export default function Navbar({
           }`}
         >
           <div className="container flex h-20 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2 z-50">
-              <div className="relative bg-gradient-to-br from-green-600 to-green-500 rounded-lg flex items-center justify-center w-16 h-16">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-500 rounded-lg blur-lg opacity-50 z-0" />
-                <img src="/BDR.jpg" alt="BDR Logo" className="h-16 w-16 rounded-lg z-10" />
-              </div>
+            <Link href="/" className="z-50">
+              <img
+                src="/bdr_logo_name.png"
+                alt="BDR Logo"
+                className="h-28 w-auto"
+              />
             </Link>
 
             <nav className="hidden lg:flex items-center space-x-8 ml-24">
