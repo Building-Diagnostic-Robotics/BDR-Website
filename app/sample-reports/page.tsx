@@ -34,18 +34,13 @@ export default function SampleReportsPage() {
 	const reports = [
 		{
 			title: "Roof Inspection Sample Report",
-			description: "A brief overview of the moisture damage and visual anomalies detected in the building.",
+			description: "An overview of the moisture damage, visual anomalies and recommended repairs with associated cost estimates based on inspection results.",
 			href: "/BDR_sample_report-Roof_Inspection.pdf",
 		},
 		{
 			title: "Visual Anomaly Appendix",
-			description: "Detailed visual anomaly imagery and data supporting the roof inspection findings.",
+			description: "Detailed visual anomaly imagery and data for all anomalies detected, supporting the roof inspection findings.",
 			href: "/BDR_sample_report-Visual_Anomaly.pdf",
-		},
-		{
-			title: "Scope of Work + Cost Analysis",
-			description: "Recommended repairs and associated cost estimates based on inspection results.",
-			href: "/BDR_sample_report-SOW_&_Cost_Analysis.pdf",
 		},
 	]
 
@@ -102,7 +97,7 @@ export default function SampleReportsPage() {
 							Each sample showcases the format, visuals, and level of detail you can expect from BDR inspections.
 						</p>
 
-						<div className="grid md:grid-cols-3 gap-6">
+						<div className="grid max-w-4xl mx-auto md:grid-cols-2 gap-6">
 							{reports.map((report, idx) => (
 								<motion.a
 									key={report.title}
@@ -112,7 +107,7 @@ export default function SampleReportsPage() {
 									transition={{ duration: 0.5, delay: idx * 0.05 }}
 									href={report.href}
 									download
-									className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-green-300 hover:shadow-xl transition-all duration-300"
+									className="group h-full bg-white rounded-2xl p-8 border border-gray-200 hover:border-green-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
 								>
 									<div>
 										<h3 className="text-xl font-bold text-gray-900">{report.title}</h3>
@@ -147,4 +142,3 @@ export default function SampleReportsPage() {
 		</div>
 	)
 }
-
