@@ -35,12 +35,17 @@ export default function SampleReportsPage() {
 		{
 			title: "Roof Inspection Sample Report",
 			description: "An overview of the moisture damage, visual anomalies and recommended repairs with associated cost estimates based on inspection results.",
-			href: "/BDR_sample_report-Roof_Inspection.pdf",
+			href: "/sample-reports/BDR_sample_report-Roof_Inspection.pdf",
 		},
 		{
 			title: "Visual Anomaly Appendix",
 			description: "Detailed visual anomaly imagery and data for all anomalies detected, supporting the roof inspection findings.",
-			href: "/BDR_sample_report-Visual_Anomaly.pdf",
+			href: "/sample-reports/BDR_sample_report-Visual_Anomaly.pdf",
+		},
+		{
+			title: "Roof TakeOff Report",
+			description: "A sample roof takeoff report outlining roof areas, measurements, and supporting details for project planning.",
+			href: "/sample-reports/BDR_sample_report-Roof_Takeoff.pdf",
 		},
 	]
 
@@ -94,10 +99,10 @@ export default function SampleReportsPage() {
 					>
 						<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">Download Samples</h2>
 						<p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto text-pretty">
-							Each sample showcases the format, visuals, and level of detail you can expect from BDR inspections.
+							We tailor our report format to each client's requirements. These samples showcase the visuals and level of detail you can expect from BDR inspections.
 						</p>
 
-						<div className="grid max-w-4xl mx-auto md:grid-cols-2 gap-6">
+						<div className="grid md:grid-cols-3 gap-6">
 							{reports.map((report, idx) => (
 								<motion.a
 									key={report.title}
