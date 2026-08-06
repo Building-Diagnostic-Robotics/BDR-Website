@@ -43,7 +43,7 @@ export default function RoofInspectionPage() {
   const [mounted, setMounted] = useState(false)
   const [roofusImageIndex, setRoofusImageIndex] = useState(0)
 
-  const roofusImages = ["/roofus1.jpeg", "/roofus2.jpeg"]
+  const roofusImages = ["/roofus.jpg", "/roofus1.jpeg"]
 
   const roofusIntervalRef = useRef<number | null>(null)
 
@@ -432,7 +432,7 @@ export default function RoofInspectionPage() {
                     initial={{ opacity: 0, scale: 1.02 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
 
                   <button

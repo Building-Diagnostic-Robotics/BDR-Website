@@ -47,7 +47,7 @@ export default function Home() {
   const [roofusImageIndex, setRoofusImageIndex] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
 
-  const roofusImages = ["/roofus1.jpeg", "/roofus2.jpeg"]
+  const roofusImages = ["/roofus.jpg","/roofus1.jpeg"]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -400,7 +400,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 1.02 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.35, ease: "easeOut" }}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                       <button
                         type="button"
