@@ -44,25 +44,25 @@ export default function Navbar({
             isScrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200" : "bg-white/50 backdrop-blur-sm"
           }`}
         >
-          <div className="container flex h-20 items-center justify-between">
-            <Link href="/" className="z-50">
+          <div className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+            <Link href="/" className="z-50 shrink-0">
               <img
                 src="/bdr_logo_name.png"
                 alt="BDR Logo"
-                className="h-28 w-auto"
+                className="h-20 xl:h-24 w-auto"
               />
             </Link>
 
-            <nav className="hidden lg:flex items-center space-x-8 ml-24">
+            <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 2xl:space-x-8 mx-auto">
               {/* Solutions dropdown */}
               <div className="relative group">
-                <button className={`relative text-sm font-medium transition-colors group flex items-center ${
+                <button className={`relative text-xs xl:text-sm font-medium transition-colors group flex items-center whitespace-nowrap ${
                   isActiveLink("/solutions/roof")
                     ? "text-gray-900"
                     : "text-gray-600 hover:text-gray-900"
                 }`}>
                   Solutions
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <ChevronDown className="ml-1 h-3.5 w-3.5 xl:h-4 xl:w-4" />
                   <span className={`absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 ${
                     isActiveLink("/solutions/roof") ? "w-full" : "w-0 group-hover:w-full"
                   }`} />
@@ -80,13 +80,13 @@ export default function Navbar({
 
               {/* Who We Serve dropdown */}
               <div className="relative group">
-                <button className={`relative text-sm font-medium transition-colors group flex items-center ${
+                <button className={`relative text-xs xl:text-sm font-medium transition-colors group flex items-center whitespace-nowrap ${
                   ["portfolio-owners", "insurance-underwriters", "roofing-contractors"].includes(activePage || "")
                     ? "text-gray-900"
                     : "text-gray-600 hover:text-gray-900"
                 }`}>
                   Who We Serve
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <ChevronDown className="ml-1 h-3.5 w-3.5 xl:h-4 xl:w-4" />
                   <span className={`absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 ${
                     ["portfolio-owners", "insurance-underwriters", "roofing-contractors"].includes(activePage || "")
                       ? "w-full"
@@ -119,7 +119,7 @@ export default function Navbar({
               </div>
 
               {/* Channel Partners */}
-              <Link href="/partnerships/roofing" className={`relative text-sm font-medium transition-colors group ${
+              <Link href="/partnerships/roofing" className={`relative text-xs xl:text-sm font-medium transition-colors group whitespace-nowrap ${
                 isActiveLink("/partnerships/roofing")
                   ? "text-gray-900"
                   : "text-gray-600 hover:text-gray-900"
@@ -131,7 +131,7 @@ export default function Navbar({
               </Link>
 
               {/* About */}
-              <Link href="/about" className={`relative text-sm font-medium transition-colors group ${
+              <Link href="/about" className={`relative text-xs xl:text-sm font-medium transition-colors group whitespace-nowrap ${
                 isActiveLink("/about")
                   ? "text-gray-900"
                   : "text-gray-600 hover:text-gray-900"
@@ -144,13 +144,13 @@ export default function Navbar({
 
               {/* Resources dropdown */}
               <div className="relative group">
-                <button className={`relative text-sm font-medium transition-colors group flex items-center ${
+                <button className={`relative text-xs xl:text-sm font-medium transition-colors group flex items-center whitespace-nowrap ${
                   ["blogs", "case-studies", "sample-reports", "roofus-tech-specs"].includes(activePage || "")
                     ? "text-gray-900"
                     : "text-gray-600 hover:text-gray-900"
                 }`}>
                   Resources
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <ChevronDown className="ml-1 h-3.5 w-3.5 xl:h-4 xl:w-4" />
                   <span className={`absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-green-600 to-green-500 transition-all duration-300 ${
                     ["blogs", "case-studies", "sample-reports", "roofus-tech-specs"].includes(activePage || "")
                       ? "w-full"
@@ -190,7 +190,7 @@ export default function Navbar({
               </div>
 
               {/* FAQs */}
-              <Link href="/faqs" className={`relative text-sm font-medium transition-colors group ${
+              <Link href="/faqs" className={`relative text-xs xl:text-sm font-medium transition-colors group whitespace-nowrap ${
                 isActiveLink("/faqs")
                   ? "text-gray-900"
                   : "text-gray-600 hover:text-gray-900"
@@ -202,13 +202,24 @@ export default function Navbar({
               </Link>
             </nav>
 
-            <div className="flex items-center gap-4 z-50">
+            <div className="flex items-center gap-2 xl:gap-4 z-50 shrink-0">
+              <a
+                href="https://bdrdashboard.netlify.app/projects"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outline"
+                  className="hidden md:inline-flex border-gray text-gray bg-white hover:bg-gray hover:text-white hover:border-gray transition-colors duration-300 rounded-full h-9 px-3 text-xs xl:h-10 xl:px-4 xl:text-sm whitespace-nowrap"
+                >
+                  Customer Portal
+                </Button>
+              </a>
               <Button
                 onClick={onButtonClick}
-                className="hidden md:flex bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full"
+                className="hidden md:flex bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-full h-9 px-3 text-xs xl:h-10 xl:px-4 xl:text-sm whitespace-nowrap"
               >
                 {buttonText}
-                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <button onClick={onToggleMobileMenu} className="lg:hidden text-gray-900 p-2" aria-label="Toggle menu">
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -322,6 +333,16 @@ export default function Navbar({
           >
             FAQs
           </Link>
+
+          <a
+            href="https://bdrdashboard.netlify.app/projects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl font-medium text-green-600 hover:text-green-700 transition-colors"
+            onClick={handleMobileMenuClose}
+          >
+            Customer Portal
+          </a>
 
           <Button
             onClick={() => {
